@@ -1,0 +1,10 @@
+{
+	"ios_admob_client_id": "ca-app-pub-7585239226773233~5762787797",
+	"ios_unity_game_id": 1639260,
+	"ios_vungle_client_id": "5bdbc67a6d9d2200139056f9",
+	"ios_max_try_load_reward_ad": 7,
+	"ios_max_try_load_interstitial_ad": 7,
+	"ios_max_try_load_native_ad": 7,
+	"ios_fb_reward_ad_timeout_time": 6000,
+	
+}
