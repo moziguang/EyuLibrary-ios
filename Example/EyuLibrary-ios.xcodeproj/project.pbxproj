@@ -675,7 +675,7 @@
 				INFOPLIST_FILE = "EyuLibrary-ios/EyuLibrary-ios-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = com.eyu.pianodream;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wonder.privatemoney;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "$(inherited)";
 				WRAPPER_EXTENSION = app;
@@ -740,7 +740,7 @@
 				INFOPLIST_FILE = "EyuLibrary-ios/EyuLibrary-ios-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = com.eyu.pianodream;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wonder.privatemoney;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "$(inherited)";
 				WRAPPER_EXTENSION = app;

@@ -26,14 +26,12 @@
     adConfig.maxTryLoadNativeAd = 7;
     adConfig.maxTryLoadRewardAd = 7;
     adConfig.maxTryLoadInterstitialAd = 7;
-    adConfig.unityClientId = @"2340038";
-    adConfig.vungleClientId = @"5bdbc67a6d9d2200139056f9";
-    adConfig.ironSourceAppKey = @"8c678c25";
-    adConfig.wmAppKey = @"5010261";
+    adConfig.wmAppKey = @"5015374";
     
 //    [EYAdManager sharedInstance].useIronSource = true;
     [[EYAdManager sharedInstance] setupWithConfig:adConfig];
     [[EYAdManager sharedInstance] setDelegate:self];
+    
     return YES;
 }
 

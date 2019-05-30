@@ -68,12 +68,12 @@
 
 - (void)showInterstitialAd:(UITapGestureRecognizer *)gesture {
     NSLog(@"showInterstitialAd");
-    [[EYAdManager sharedInstance] showInterstitialAd:@"play_song_inter_ad" withViewController:self];
+    [[EYAdManager sharedInstance] showInterstitialAd:@"inter_ad" withViewController:self];
 }
 
 - (void)showNativeAd:(UITapGestureRecognizer *)gesture {
     NSLog(@"A showNativeAd");
-    [[EYAdManager sharedInstance] showNativeAd:@"NATIVE_AD_1" withViewController:self viewGroup:self.nativeRootView];
+    [[EYAdManager sharedInstance] showNativeAd:@"native_ad" withViewController:self viewGroup:self.nativeRootView];
 }
 
 @end

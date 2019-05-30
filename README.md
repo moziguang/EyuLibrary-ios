@@ -17,7 +17,41 @@ EyuLibrary-ios is available through [CocoaPods](https://cocoapods.org). To insta
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod 'EyuLibrary-ios'
+
+#国内只包含穿山甲sdk
+pod 'EyuLibrary-ios',:subspecs => ['3rd','Core','gdt','BytedanceOnly'], :git => 'https://github.com/moziguang/EyuLibrary-ios.git',:tag =>'1.1.9'
+
+
+#国内国外一体版本
+pod 'EyuLibrary-ios',:subspecs => ['3rd','Core','gdt','mtg','ironsource','others_ads_sdk'], :git => 'https://github.com/moziguang/EyuLibrary-ios.git',:tag =>'1.1.9'
+
+//初始化FB， Firebase， UMMobSdk， AppFlyer， GDTActionSdk，及firebase 远程配置
+[EYSdkUtils initFacebookSdkWithApplication:application options:launchOptions];
+[EYSdkUtils initFirebaseSdk];
+[EYSdkUtils initUMMobSdk:@"XXXXXXXXXXXXXXXXXX"];
+[EYSdkUtils initAppFlyer:@"XXXXXXXXXXXXXXXXX" appId:@"XXXXXXXXXXXXX"];
+[EYSdkUtils initGDTActionSdk:@"XXXXXX" secretkey:@"XXXXXXXXX"];
+
+
+[[RemoteConfigHelperIOS sharedInstance] setup];
+
+//初始化广告sdk
+EYAdConfig* adConfig = [[EYAdConfig alloc] init];
+adConfig.adKeyData =  [EYRemoteConfigHelper readFileWithName:@"ios_ad_key_setting"];
+adConfig.adGroupData = [EYRemoteConfigHelper readFileWithName:@"ios_ad_cache_setting"];
+adConfig.adPlaceData = [EYRemoteConfigHelper readFileWithName:@"ios_ad_setting"];
+adConfig.maxTryLoadNativeAd = 7;
+adConfig.maxTryLoadRewardAd = 7;
+adConfig.maxTryLoadInterstitialAd = 7;
+adConfig.unityClientId = @"XXXXXX";
+adConfig.vungleClientId = @"XXXXXXXXXXXXXXX";
+adConfig.ironSourceAppKey = @"XXXXXXX";
+adConfig.wmAppKey = @"XXXXXX";
+
+[[EYAdManager sharedInstance] setupWithConfig:adConfig];
+[[EYAdManager sharedInstance] setDelegate:self];
+
+
 ```
 
 ## Author

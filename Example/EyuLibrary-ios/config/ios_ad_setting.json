@@ -1,1 +1,23 @@
-[{"isEnabled": "true", "desc": "激励视频", "id": "reward_ad", "nativeAdLayout": "", "cacheGroup": "reward_ad"}, {"isEnabled": "true", "desc": "首页原生广告", "id": "main_view_native_ad", "nativeAdLayout": "mainBarNative", "cacheGroup": "main_view_native_ad"}, {"isEnabled": "true", "desc": "结算页原生广告", "id": "play_result_native_ad", "nativeAdLayout": "playResultNative", "cacheGroup": "play_result_native_ad"}, {"isEnabled": "true", "desc": "PK结算原生", "id": "pk_result_native_ad", "nativeAdLayout": "pkResultNative", "cacheGroup": "play_result_native_ad"}, {"isEnabled": "true", "desc": "首页插屏", "id": "main_view_inter_ad", "nativeAdLayout": "", "cacheGroup": "play_song_inter_ad"}, {"isEnabled": "true", "desc": "结算插屏", "id": "play_song_inter_ad", "nativeAdLayout": "", "cacheGroup": "play_song_inter_ad"}, {"isEnabled": "true", "desc": "PK结算插屏", "id": "pk_song_inter_ad", "nativeAdLayout": "", "cacheGroup": "play_song_inter_ad"}]
+[
+    {
+        "isEnabled":"true",
+        "desc":"激励视频",
+        "id":"reward_ad",
+        "nativeAdLayout":"",
+        "cacheGroup":"reward_ad"
+    },
+    {
+        "isEnabled":"true",
+        "desc":"插屏",
+        "id":"inter_ad",
+        "nativeAdLayout":"",
+        "cacheGroup":"inter_ad"
+    },
+    {
+        "isEnabled":"true",
+        "desc":"原生广告",
+        "id":"native_ad",
+        "nativeAdLayout":"nativeAd",
+        "cacheGroup":"native_ad"
+    }
+]

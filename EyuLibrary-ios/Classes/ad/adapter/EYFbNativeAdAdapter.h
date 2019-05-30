@@ -25,3 +25,4 @@
 @end
 
 #endif /* FbNativeAdAdapter_h */
+#endif /*BYTE_DANCE_ONLY*/
