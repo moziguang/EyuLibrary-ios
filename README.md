@@ -25,6 +25,10 @@ pod 'EyuLibrary-ios',:subspecs => ['3rd','Core','gdt','BytedanceOnly'], :git => 
 #国内国外一体版本
 pod 'EyuLibrary-ios',:subspecs => ['3rd','Core','gdt','mtg','ironsource','others_ads_sdk'], :git => 'https://github.com/moziguang/EyuLibrary-ios.git',:tag =>'1.1.9'
 
+目标target的
+HEADER_SEARCH_PATHS 加上 $(inherited)
+GCC_PREPROCESSOR_DEFINITIONS 加上BYTE_DANCE_ONLY=1
+
 //初始化FB， Firebase， UMMobSdk， AppFlyer， GDTActionSdk，及firebase 远程配置
 [EYSdkUtils initFacebookSdkWithApplication:application options:launchOptions];
 [EYSdkUtils initFirebaseSdk];
@@ -51,6 +55,44 @@ adConfig.wmAppKey = @"XXXXXX";
 [[EYAdManager sharedInstance] setupWithConfig:adConfig];
 [[EYAdManager sharedInstance] setDelegate:self];
 
+//展示激励视频 reward_ad为广告位id，对应ios_ad_setting.json配置
+[[EYAdManager sharedInstance] showRewardVideoAd:@"reward_ad" withViewController:self];
+
+//展示插屏 inter_ad为广告位id，对应ios_ad_setting.json配置
+[[EYAdManager sharedInstance] showInterstitialAd:@"inter_ad" withViewController:self];
+
+//展示原生广告 native_ad为广告位id，对应ios_ad_setting.json配置
+[[EYAdManager sharedInstance] showNativeAd:@"native_ad" withViewController:self viewGroup:self.nativeRootView];
+
+//广告回掉EYAdDelegate
+-(void) onAdLoaded:(NSString*) adPlaceId type:(NSString*)type
+{
+NSLog(@"广告加载完成 onAdLoaded adPlaceId = %@, type = %@", adPlaceId, type);
+}
+-(void) onAdReward:(NSString*) adPlaceId  type:(NSString*)type
+{
+NSLog(@"激励视频观看完成 onAdReward adPlaceId = %@, type = %@", adPlaceId, type);
+
+}
+-(void) onAdShowed:(NSString*) adPlaceId  type:(NSString*)type
+{
+NSLog(@"广告展示 onAdShowed adPlaceId = %@, type = %@", adPlaceId, type);
+
+}
+-(void) onAdClosed:(NSString*) adPlaceId  type:(NSString*)type
+{
+NSLog(@"广告关闭 onAdClosed adPlaceId = %@, type = %@", adPlaceId, type);
+
+}
+-(void) onAdClicked:(NSString*) adPlaceId  type:(NSString*)type
+{
+NSLog(@"广告点击 onAdClicked adPlaceId = %@, type = %@", adPlaceId, type);
+
+}
+
+- (void)onDefaultNativeAdClicked {
+NSLog(@"默认原生广告点击 onDefaultNativeAdClicked");
+}
 
 ```
 
