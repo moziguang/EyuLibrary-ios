@@ -19,11 +19,11 @@ it, simply add the following line to your Podfile:
 ```ruby
 
 #国内只包含穿山甲sdk
-pod 'EyuLibrary-ios',:subspecs => ['3rd','Core','gdt','BytedanceOnly'], :git => 'https://github.com/moziguang/EyuLibrary-ios.git',:tag =>'1.1.9'
+pod 'EyuLibrary-ios',:subspecs => ['3rd','Core','gdt','BytedanceOnly'], :git => 'https://github.com/moziguang/EyuLibrary-ios.git',:tag =>'1.2.2'
 
 
 #国内国外一体版本
-pod 'EyuLibrary-ios',:subspecs => ['3rd','Core','gdt','mtg','ironsource','others_ads_sdk'], :git => 'https://github.com/moziguang/EyuLibrary-ios.git',:tag =>'1.1.9'
+pod 'EyuLibrary-ios',:subspecs => ['3rd','Core','gdt','mtg','ironsource','others_ads_sdk'], :git => 'https://github.com/moziguang/EyuLibrary-ios.git',:tag =>'1.2.2'
 
 目标target的
 HEADER_SEARCH_PATHS 加上 $(inherited)
@@ -32,7 +32,7 @@ GCC_PREPROCESSOR_DEFINITIONS 加上BYTE_DANCE_ONLY=1
 //初始化FB， Firebase， UMMobSdk， AppFlyer， GDTActionSdk，及firebase 远程配置
 [EYSdkUtils initFacebookSdkWithApplication:application options:launchOptions];
 [EYSdkUtils initFirebaseSdk];
-[EYSdkUtils initUMMobSdk:@"XXXXXXXXXXXXXXXXXX"];
+[EYSdkUtils initUMMobSdk:@"XXXXXXXXXXXXXXXXXX" channel:@"channel"];
 [EYSdkUtils initAppFlyer:@"XXXXXXXXXXXXXXXXX" appId:@"XXXXXXXXXXXXX"];
 [EYSdkUtils initGDTActionSdk:@"XXXXXX" secretkey:@"XXXXXXXXX"];
 
