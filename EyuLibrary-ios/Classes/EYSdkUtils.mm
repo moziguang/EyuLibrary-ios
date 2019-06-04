@@ -10,8 +10,8 @@
 #import "Firebase.h"
 #import <AppsFlyerLib/AppsFlyerTracker.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
-#import "UMMobClick/MobClick.h"
 #import <GDTActionSDK/GDTAction.h>
+#import <UMCommon/UMCommon.h>
 
 //#include "GAI.h"
 //#include "GAITracker.h"
@@ -59,15 +59,16 @@
     [[AppsFlyerTracker sharedTracker] trackAppLaunch];
 }
 
-+(void) initUMMobSdk:(NSString*) appKey
++(void) initUMMobSdk:(NSString*) appKey channel:(NSString*) channel
 {
-    UMConfigInstance.appKey =appKey;
-    //    UMConfigInstance.ChannelId = @"App Store";
-    UMConfigInstance.eSType = E_UM_GAME;
-    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
-    [MobClick setAppVersion:version];
-    NSLog(@"lwq, initUMMobSdk version = %@", version);
-    [MobClick startWithConfigure:UMConfigInstance];
+//    UMConfigInstance.appKey =appKey;
+//    //    UMConfigInstance.ChannelId = @"App Store";
+//    UMConfigInstance.eSType = E_UM_GAME;
+//    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+//    [MobClick setAppVersion:version];
+//    NSLog(@"lwq, initUMMobSdk version = %@", version);
+//    [MobClick startWithConfigure:UMConfigInstance];
+    [UMConfigure initWithAppkey:appKey channel:channel];
 }
 
 +(void) initGDTActionSdk:(NSString*) setid secretkey:(NSString*)secretkey

@@ -9,7 +9,7 @@
 #import "EYEventUtils.h"
 #import "Firebase.h"
 #import <AppsFlyerLib/AppsFlyerTracker.h>
-#import "UMMobClick/MobClick.h"
+#import <UMAnalytics/MobClick.h>
 #import <GDTActionSDK/GDTAction.h>
 
 

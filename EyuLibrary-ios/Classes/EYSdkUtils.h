@@ -21,7 +21,7 @@
 +(void) initFirebaseSdk;
 //+(void) initGaSdk:(NSString*) trackId;
 +(void) initAppFlyer:(NSString*) devKey appId:(NSString*)appId;
-+(void) initUMMobSdk:(NSString*) appKey;
++(void) initUMMobSdk:(NSString*) appKey channel:(NSString*) channel;
 +(void) initGDTActionSdk:(NSString*) setid secretkey:(NSString*)secretkey;
 +(void) doGDTSDKActionStartApp;
 
