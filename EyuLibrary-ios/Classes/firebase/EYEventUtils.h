@@ -13,7 +13,7 @@
     
 }
 
-+ (void)logEvent:(NSString *)event parameters:(NSMutableDictionary *)dict;
++ (void)logEvent:(NSString *)event parameters:(NSDictionary *)dict;
 
 @end
 #endif /* EventUtils_ios_h */

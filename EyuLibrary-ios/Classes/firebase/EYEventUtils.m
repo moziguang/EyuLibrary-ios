@@ -15,7 +15,7 @@
 
 @implementation EYEventUtils
 
-+ (void)logEvent:(NSString *)event parameters:(NSMutableDictionary *)dict
++ (void)logEvent:(NSString *)event parameters:(NSDictionary *)dict
 {
     NSMutableDictionary* strDict = nil;
     if(dict){
