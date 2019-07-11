@@ -22,6 +22,8 @@
 
 @implementation EYSdkUtils
 
+static bool sIsUMInited = false;
+static bool sIsGDTInited = false;
 /**
  *需要在info.plist里设置FacebookAppID
  **/
@@ -69,16 +71,28 @@
 //    NSLog(@"lwq, initUMMobSdk version = %@", version);
 //    [MobClick startWithConfigure:UMConfigInstance];
     [UMConfigure initWithAppkey:appKey channel:channel];
+    sIsUMInited = true;
 }
 
 +(void) initGDTActionSdk:(NSString*) setid secretkey:(NSString*)secretkey
 {
     [GDTAction init:setid secretKey:secretkey];
+    sIsGDTInited = true;
 }
 
 +(void) doGDTSDKActionStartApp
 {
     [GDTAction logAction:GDTSDKActionNameStartApp actionParam:@{@"value":@(123)}];
+}
+
++(bool) isUMInited
+{
+    return sIsUMInited;
+}
+
++(bool) isGDTInited
+{
+    return sIsGDTInited;
 }
 
 @end

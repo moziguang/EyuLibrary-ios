@@ -11,6 +11,8 @@
 #import <AppsFlyerLib/AppsFlyerTracker.h>
 #import <UMAnalytics/MobClick.h>
 #import <GDTActionSDK/GDTAction.h>
+#import "EYSdkUtils.h"
+
 
 
 @implementation EYEventUtils
@@ -27,9 +29,13 @@
         }
     }
     [FIRAnalytics logEventWithName:event parameters:strDict];
-    [MobClick event:event attributes:strDict];
+    if([EYSdkUtils isUMInited]){
+        [MobClick event:event attributes:strDict];
+    }
     [[AppsFlyerTracker sharedTracker] trackEvent:event withValues:strDict];
-    [GDTAction logAction:event actionParam:strDict];
+    if([EYSdkUtils isGDTInited]){
+        [GDTAction logAction:event actionParam:strDict];
+    }
 }
 
 @end

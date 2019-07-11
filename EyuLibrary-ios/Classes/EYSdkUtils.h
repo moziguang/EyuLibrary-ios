@@ -25,6 +25,9 @@
 +(void) initGDTActionSdk:(NSString*) setid secretkey:(NSString*)secretkey;
 +(void) doGDTSDKActionStartApp;
 
++(bool) isUMInited;
++(bool) isGDTInited;
+
 @end
 
 #endif /* EYSdkUtils_h */

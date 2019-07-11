@@ -5,18 +5,10 @@
 //  Created by apple on 2018/2/24.
 //
 
-#ifndef RemoteConfigHelper_ios_h
-#define RemoteConfigHelper_ios_h
+#ifndef EYRemoteConfigHelper_h
+#define EYRemoteConfigHelper_h
 #import<StoreKit/StoreKit.h>
 #import "Firebase.h"
-
-#define     RCKeyUnityClientId              @"ios_unity_game_id"
-#define     RCKeyAdmobClientId              @"ios_admob_game_id"
-#define     RCKeyIronSourceAppKey           @"ios_ironsource_app_key"
-#define     RCKeyAdSetting                  @"ios_ad_setting"
-#define     RCKeyAdKeySetting              @"ios_ad_key_setting"
-#define     RCKeyAdCacheSetting            @"ios_ad_cache_setting"
-#define     RCKeyAdCacheSettingChina           @"ios_ad_cache_setting_china"
 
 @interface EYRemoteConfigHelper : NSObject
 
@@ -34,4 +26,4 @@
 + (long)getLong:(NSDictionary*) dict;
 + (double)getDouble:(NSDictionary*) dict;
 @end
-#endif /* RemoteConfigHelper_ios_h */
+#endif /* EYRemoteConfigHelper_h */
