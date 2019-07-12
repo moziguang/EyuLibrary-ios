@@ -9,14 +9,12 @@
 #import "EYSdkUtils.h"
 #import "Firebase.h"
 #import <AppsFlyerLib/AppsFlyerTracker.h>
-#import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <GDTActionSDK/GDTAction.h>
 #import <UMCommon/UMCommon.h>
 
-//#include "GAI.h"
-//#include "GAITracker.h"
-//#include "GAIDictionaryBuilder.h"
-//#include "GAIFields.h"
+#ifdef FACEBOOK_ENABLED
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#endif
 
 
 
@@ -24,6 +22,10 @@
 
 static bool sIsUMInited = false;
 static bool sIsGDTInited = false;
+static bool sIsFBInited = false;
+
+    
+#ifdef FACEBOOK_ENABLED
 /**
  *需要在info.plist里设置FacebookAppID
  **/
@@ -31,28 +33,30 @@ static bool sIsGDTInited = false;
 {
     [[FBSDKApplicationDelegate sharedInstance] application:application
                              didFinishLaunchingWithOptions:launchOptions];
-    [FBSDKSettings setAutoLogAppEventsEnabled:@1];
+    [FBSDKSettings setAutoLogAppEventsEnabled:YES];
     
     [FBSDKAppEvents activateApp];
+    sIsFBInited = true;
 }
 
++ (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+            options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
+    
+    BOOL handled = [[FBSDKApplicationDelegate sharedInstance]
+        application:application openURL:url
+        sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey]
+        annotation:options[UIApplicationOpenURLOptionsAnnotationKey]
+                        ];
+        
+    return handled;
+}
+#endif
+    
 +(void) initFirebaseSdk
 {
     [FIRApp configure];
 }
-
-//+(void) initGaSdk:(NSString*) trackId
-//{
-//    // Optional: configure GAI options.
-//    GAI *gai = [GAI sharedInstance];
-//    gai.trackUncaughtExceptions = YES;  // report uncaught exceptions
-//    gai.logger.logLevel = kGAILogLevelVerbose;  // remove before app release
-//
-//    // Initialize a tracker using a Google Analytics property ID.
-//    id<GAITracker> tracker = [[GAI sharedInstance] trackerWithTrackingId:trackId];
-//    [tracker set:kGAIScreenName value:@"main"];
-//    [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
-//}
 
 +(void) initAppFlyer:(NSString*) devKey appId:(NSString*)appId
 {
@@ -93,6 +97,11 @@ static bool sIsGDTInited = false;
 +(bool) isGDTInited
 {
     return sIsGDTInited;
+}
+    
++(bool) isFBInited
+{
+    return sIsFBInited;
 }
 
 @end

@@ -13,10 +13,16 @@
     
 }
 
+#ifdef FACEBOOK_ENABLED
 /**
  *需要再info.plist里设置FacebookAppID
  **/
 +(void) initFacebookSdkWithApplication:(UIApplication *)application options:(NSDictionary *)launchOptions;
+    
++ (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+            options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options;
+#endif
 
 +(void) initFirebaseSdk;
 //+(void) initGaSdk:(NSString*) trackId;
@@ -27,7 +33,7 @@
 
 +(bool) isUMInited;
 +(bool) isGDTInited;
-
++(bool) isFBInited;
 @end
 
 #endif /* EYSdkUtils_h */

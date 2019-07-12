@@ -10,6 +10,7 @@
 #import "EYAdManager.h"
 #import "EYAdConfig.h"
 #import "EYRemoteConfigHelper.h"
+#import "EYSdkUtils.h"
 
 @implementation EYAppDelegate
 
@@ -26,12 +27,14 @@
     adConfig.maxTryLoadNativeAd = 7;
     adConfig.maxTryLoadRewardAd = 7;
     adConfig.maxTryLoadInterstitialAd = 7;
-    adConfig.wmAppKey = @"5015374";
+    adConfig.admobClientId = @"ca-app-pub-7585239226773233~5762787797";
+//    adConfig.wmAppKey = @"5015374";
     
 //    [EYAdManager sharedInstance].useIronSource = true;
     [[EYAdManager sharedInstance] setupWithConfig:adConfig];
     [[EYAdManager sharedInstance] setDelegate:self];
     
+//    [EYSdkUtils initFacebookSdkWithApplication:application options:launchOptions];
     return YES;
 }
 
@@ -91,5 +94,10 @@
 
 }
 
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options
+{
+//    return [EYSdkUtils application:app openURL:url options:options];
+    return false;
+}
 
 @end

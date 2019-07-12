@@ -47,6 +47,10 @@
     UITapGestureRecognizer *nativeAdGesture=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(showNativeAd:)];
     [self.nativeAdBtn addGestureRecognizer:nativeAdGesture];
     [nativeAdGesture setNumberOfTapsRequired:1];
+    
+    UITapGestureRecognizer *bannerGesture=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(showBanner:)];
+    [self.bannerBtn addGestureRecognizer:bannerGesture];
+    [bannerGesture setNumberOfTapsRequired:1];
 
 }
 
@@ -74,6 +78,11 @@
 - (void)showNativeAd:(UITapGestureRecognizer *)gesture {
     NSLog(@"A showNativeAd");
     [[EYAdManager sharedInstance] showNativeAd:@"native_ad" withViewController:self viewGroup:self.nativeRootView];
+}
+
+- (void)showBanner:(UITapGestureRecognizer *)gesture {
+    NSLog(@"A showBanner");
+//    [[EYAdManager sharedInstance] showNativeAd:@"banner_ad" withViewController:self viewGroup:self.nativeRootView];
 }
 
 @end

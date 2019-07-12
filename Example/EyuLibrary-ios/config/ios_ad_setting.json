@@ -19,5 +19,12 @@
         "id":"native_ad",
         "nativeAdLayout":"nativeAd",
         "cacheGroup":"native_ad"
+    },
+    {
+        "isEnabled":"true",
+        "desc":"banner广告",
+        "id":"banner_ad",
+        "nativeAdLayout":"",
+        "cacheGroup":"banner_group"
     }
 ]

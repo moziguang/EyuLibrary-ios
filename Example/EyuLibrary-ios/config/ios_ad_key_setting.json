@@ -13,5 +13,15 @@
         "id":"ios_wm_interstitial_ad",
         "key":"915374908",
         "network":"wm"
+    },
+    {
+        "id":"ios_fb_banner",
+        "key":"1857574940938393_2687041341325078",
+        "network":"fb"
+    },
+    {
+        "id":"ios_admob_banner",
+        "key":"ca-app-pub-7585239226773233/1357473071",
+        "network":"admob"
     }
 ]

@@ -13,6 +13,11 @@
 #import <GDTActionSDK/GDTAction.h>
 #import "EYSdkUtils.h"
 
+#ifdef FACEBOOK_ENABLED
+
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+
+#endif
 
 
 @implementation EYEventUtils
@@ -36,6 +41,12 @@
     if([EYSdkUtils isGDTInited]){
         [GDTAction logAction:event actionParam:strDict];
     }
+    
+#ifdef FACEBOOK_ENABLED
+    if([EYSdkUtils isFBInited]){
+        [FBSDKAppEvents logEvent:event parameters:strDict];
+    }
+#endif
 }
 
 @end

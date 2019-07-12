@@ -14,7 +14,10 @@
 @property(nonatomic,strong) IBOutlet UIButton* rewardAdBtn;
 @property(nonatomic,strong) IBOutlet UIButton* interstitialAdBtn;
 @property(nonatomic,strong) IBOutlet UIButton* nativeAdBtn;
+@property(nonatomic,strong) IBOutlet UIButton* bannerBtn;
 
 @property(nonatomic,strong) IBOutlet UIView* nativeRootView;
+@property(nonatomic,strong) IBOutlet UIView* bannerView;
+
 
 @end
