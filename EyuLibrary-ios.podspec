@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'EyuLibrary-ios'
-  s.version          = '1.2.5'
+  s.version          = '1.2.6'
   s.summary          = 'A short description of EyuLibrary-ios.'
 
 # This description is used to generate tags and improve search results.
@@ -81,7 +81,7 @@ Pod::Spec.new do |s|
  end
  
  s.subspec 'BytedanceOnly' do |bo|
-     bo.dependency 'Bytedance-UnionAD','2.0.1.1'
+     bo.dependency 'Bytedance-UnionAD','2.1.0.2'
      bo.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) BYTE_DANCE_ONLY=1'}
  end
  

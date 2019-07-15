@@ -21,6 +21,9 @@ it, simply add the following line to your Podfile:
 #国内国外一体版本
 pod 'EyuLibrary-ios',:subspecs => ['3rd','Core','gdt','mtg','ironsource','others_ads_sdk','fb_sdk'], :git => 'https://github.com/moziguang/EyuLibrary-ios.git',:tag =>'1.2.5'
 
+GCC_PREPROCESSOR_DEFINITIONS 加上 FACEBOOK_ENABLED
+
+
 Facebook配置请参考https://developers.facebook.com/docs/app-events/getting-started-app-events-ios
 [EYSdkUtils initFacebookSdkWithApplication:application options:launchOptions];
 [EYSdkUtils application:app openURL:url options:options];
