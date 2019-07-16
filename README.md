@@ -19,7 +19,7 @@ it, simply add the following line to your Podfile:
 ```ruby
 
 #国内国外一体版本
-pod 'EyuLibrary-ios',:subspecs => ['3rd','Core','gdt','mtg','ironsource','others_ads_sdk','fb_sdk'], :git => 'https://github.com/moziguang/EyuLibrary-ios.git',:tag =>'1.2.5'
+pod 'EyuLibrary-ios',:subspecs => ['3rd','Core','gdt','mtg','ironsource','others_ads_sdk','fb_sdk'], :git => 'https://github.com/moziguang/EyuLibrary-ios.git',:tag =>'1.2.6'
 
 GCC_PREPROCESSOR_DEFINITIONS 加上 FACEBOOK_ENABLED
 
@@ -29,11 +29,13 @@ Facebook配置请参考https://developers.facebook.com/docs/app-events/getting-s
 [EYSdkUtils application:app openURL:url options:options];
 
 #国内只包含穿山甲sdk
-pod 'EyuLibrary-ios',:subspecs => ['3rd','Core','gdt','BytedanceOnly'], :git => 'https://github.com/moziguang/EyuLibrary-ios.git',:tag =>'1.2.5'
+pod 'EyuLibrary-ios',:subspecs => ['3rd','Core','gdt','BytedanceOnly'], :git => 'https://github.com/moziguang/EyuLibrary-ios.git',:tag =>'1.2.6'
 
 
 目标target的
 HEADER_SEARCH_PATHS 加上 $(inherited)
+LIBRARY_SEARCH_PATHS 加上 $(inherited)
+OTHER_LDFLAGS 加上 $(inherited)
 GCC_PREPROCESSOR_DEFINITIONS 加上BYTE_DANCE_ONLY=1
 
 //初始化FB， Firebase， UMMobSdk， AppFlyer， GDTActionSdk，及firebase 远程配置
@@ -45,7 +47,7 @@ GCC_PREPROCESSOR_DEFINITIONS 加上BYTE_DANCE_ONLY=1
 
 
 firebase 远程配置初始化
-NSDictionary* dict = [NSDictionary alloc] init];
+NSDictionary* dict = [[NSDictionary alloc] init];
 [[EYRemoteConfigHelper sharedInstance] setupWithDefault:dict];
 
 //初始化广告sdk
