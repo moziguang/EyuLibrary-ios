@@ -45,6 +45,9 @@ GCC_PREPROCESSOR_DEFINITIONS 加上BYTE_DANCE_ONLY=1
 [EYSdkUtils initAppFlyer:@"XXXXXXXXXXXXXXXXX" appId:@"XXXXXXXXXXXXX"];
 [EYSdkUtils initGDTActionSdk:@"XXXXXX" secretkey:@"XXXXXXXXX"];
 
+firebase 配置和初始化
+https://firebase.google.com/docs/ios/setup?authuser=0
+下载 GoogleService-Info.plist 并放到xcode的根目录
 
 firebase 远程配置初始化
 NSDictionary* dict = [[NSDictionary alloc] init];
@@ -105,6 +108,11 @@ NSLog(@"广告点击 onAdClicked adPlaceId = %@, type = %@", adPlaceId, type);
 NSLog(@"默认原生广告点击 onDefaultNativeAdClicked");
 }
 
+事件上报
+#import "EYEventUtils.h"
+NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+[dic setObject:@"testValue" forKey:@"testKey"];
+[EYEventUtils logEvent:@"EVENT_NAME"  parameters:dic];
 ```
 
 ## Author
