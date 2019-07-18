@@ -8,6 +8,9 @@
 #ifndef EYSdkUtils_h
 #define EYSdkUtils_h
 
+#import <Foundation/Foundation.h>
+
+
 
 @interface EYSdkUtils : NSObject {
     

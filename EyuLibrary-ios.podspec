@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'EyuLibrary-ios'
-  s.version          = '1.2.6'
+  s.version          = '1.2.7'
   s.summary          = 'A short description of EyuLibrary-ios.'
 
 # This description is used to generate tags and improve search results.
@@ -62,19 +62,12 @@ Pod::Spec.new do |s|
      a.dependency 'Firebase/Firestore','5.6.0'
      a.dependency 'Firebase/Storage','5.6.0'
      a.dependency 'Firebase/DynamicLinks','5.6.0'
-     a.dependency 'Fabric','1.7.11'
-     a.dependency 'Crashlytics','3.10.7'
      a.dependency 'SVProgressHUD'
      a.dependency 'AppsFlyerFramework','4.8.8'
-     #a.dependency 'Bolts','1.9.0'
      
      a.dependency 'GDTMobSDK','4.8.4'
      a.dependency 'FFToast'
-     #a.dependency 'AppLovinSDK'
-     #a.dependency 'VungleSDK-iOS','6.2.0'
      a.dependency 'UMCAnalytics'
-     #a.dependency 'UnityAds','2.3.0'
-     #a.dependency 'Bytedance-UnionAD','2.0.1.1'
      #a.vendored_frameworks = ['EyuLibrary-ios/Classes/framework/UnityAds.framework','EyuLibrary-ios/Classes/framework/BUAdSDK.framework']
      a.frameworks = 'AdSupport','CoreData','SystemConfiguration','AVFoundation','CoreMedia'
      a.ios.libraries = 'c++','resolv.9'
@@ -106,7 +99,7 @@ Pod::Spec.new do |s|
      e.dependency 'FBAudienceNetwork','5.3.1'
      e.dependency 'UnityAds','3.0.0'
      e.dependency 'VungleSDK-iOS','6.2.0'
-     e.dependency 'Bytedance-UnionAD','2.0.1.1'
+     e.dependency 'Bytedance-UnionAD','2.1.0.2'
  end
  
  s.subspec 'fb_sdk' do |fb|
@@ -115,6 +108,11 @@ Pod::Spec.new do |s|
      fb.dependency 'FBSDKLoginKit','5.2.1'
      fb.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) FACEBOOK_ENABLED'}
  end
+ 
+ s.subspec 'Crashlytics_sdk' do |crash|
+     crash.dependency 'Fabric'
+     crash.dependency 'Crashlytics'
+end
  
  # s.subspec 'ironsource_config' do |f|
  #    f.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => 'ENABLE_IRON_SOURCE=1'}

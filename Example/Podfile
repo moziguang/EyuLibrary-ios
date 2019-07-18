@@ -10,8 +10,12 @@ target 'EyuLibrary-ios_Example' do
 #pod 'EyuLibrary-ios/Core', :path => '../'
 #pod 'EyuLibrary-ios/BytedanceOnly', :path => '../'
 #pod 'EyuLibrary-ios/gdt', :path => '../'
-pod 'EyuLibrary-ios',:subspecs => ['3rd','Core','gdt','BytedanceOnly'], :path => '../'
-#pod 'EyuLibrary-ios',:subspecs => ['3rd','Core','gdt','mtg','ironsource','others_ads_sdk'], :path => '../'
+#国内版本
+#pod 'EyuLibrary-ios',:subspecs => ['3rd','Core','gdt','BytedanceOnly', 'Crashlytics_sdk'], :path => '../'
+#国际版本非unity
+#pod 'EyuLibrary-ios',:subspecs => ['3rd','Core','gdt','mtg','ironsource','others_ads_sdk','Crashlytics_sdk'], :path => '../'
+#国际版本unity
+pod 'EyuLibrary-ios',:subspecs => ['3rd','Core','gdt','mtg','ironsource','others_ads_sdk'], :path => '../'
 #pod 'EyuLibrary-ios/ironsource', :path => '../'
 #pod 'EyuLibrary-ios/others_ads_sdk', :path => '../'
 
