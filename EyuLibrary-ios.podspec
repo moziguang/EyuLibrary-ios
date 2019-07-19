@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'EyuLibrary-ios'
-  s.version          = '1.2.7'
+  s.version          = '1.2.8'
   s.summary          = 'A short description of EyuLibrary-ios.'
 
 # This description is used to generate tags and improve search results.
@@ -52,16 +52,14 @@ Pod::Spec.new do |s|
  #end
  
  s.subspec '3rd' do |a|
-     a.dependency 'FirebaseAnalytics','5.1.1'
-     a.dependency 'GoogleUtilities/MethodSwizzler','5.2.2'
-     a.dependency 'Firebase/Analytics','5.6.0'
-     a.dependency 'Firebase/Core','5.6.0'
-     a.dependency 'Firebase/Messaging','5.6.0'
-     a.dependency 'Firebase/RemoteConfig','5.6.0'
-     a.dependency 'Firebase/Auth','5.6.0'
-     a.dependency 'Firebase/Firestore','5.6.0'
-     a.dependency 'Firebase/Storage','5.6.0'
-     a.dependency 'Firebase/DynamicLinks','5.6.0'
+     a.dependency 'Firebase/Analytics'
+     a.dependency 'Firebase/Core'
+     a.dependency 'Firebase/Messaging'
+     a.dependency 'Firebase/RemoteConfig'
+     a.dependency 'Firebase/Auth'
+     a.dependency 'Firebase/Firestore'
+     a.dependency 'Firebase/Storage'
+     a.dependency 'Firebase/DynamicLinks'
      a.dependency 'SVProgressHUD'
      a.dependency 'AppsFlyerFramework','4.8.8'
      
