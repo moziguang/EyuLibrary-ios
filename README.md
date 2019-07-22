@@ -19,9 +19,12 @@ it, simply add the following line to your Podfile:
 ```ruby
 
 #国内国外一体版本
-pod 'EyuLibrary-ios',:subspecs => ['3rd','Core','gdt','mtg','ironsource','others_ads_sdk','fb_sdk','Crashlytics_sdk'], :git => 'https://github.com/moziguang/EyuLibrary-ios.git',:tag =>'1.2.7'
+pod 'EyuLibrary-ios',:subspecs => ['3rd','Core','gdt','mtg','ironsource','others_ads_sdk','fb_sdk','Crashlytics_sdk'], :git => 'https://github.com/moziguang/EyuLibrary-ios.git',:tag =>'1.2.8'
 
 GCC_PREPROCESSOR_DEFINITIONS 加上 FACEBOOK_ENABLED
+Info.plist 加上（admob广告sdk）
+<key>GADIsAdManagerApp</key>
+<true/>
 
 
 Facebook配置请参考https://developers.facebook.com/docs/app-events/getting-started-app-events-ios
@@ -29,7 +32,7 @@ Facebook配置请参考https://developers.facebook.com/docs/app-events/getting-s
 [EYSdkUtils application:app openURL:url options:options];
 
 #国内只包含穿山甲sdk
-pod 'EyuLibrary-ios',:subspecs => ['3rd','Core','gdt','BytedanceOnly','Crashlytics_sdk'], :git => 'https://github.com/moziguang/EyuLibrary-ios.git',:tag =>'1.2.7'
+pod 'EyuLibrary-ios',:subspecs => ['3rd','Core','gdt','BytedanceOnly','Crashlytics_sdk'], :git => 'https://github.com/moziguang/EyuLibrary-ios.git',:tag =>'1.2.8'
 
 
 目标target的
