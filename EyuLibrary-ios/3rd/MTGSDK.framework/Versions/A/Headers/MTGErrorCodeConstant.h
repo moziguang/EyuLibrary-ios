@@ -13,6 +13,8 @@ extern NSString * const kMTGErrorDomain;
 
 typedef NS_ENUM (NSInteger, MTGErrorCode) {
 
+    kMTGErrorCodeUnknownError                                   = 129300060,
+
     kMTGErrorCodeRewardVideoFailedToLoadVideoData               = 129300061,
     kMTGErrorCodeRewardVideoFailedToLoadPlayable                = 129300062,
     kMTGErrorCodeRewardVideoFailedToLoadTemplateImage           = 129300063,
@@ -23,6 +25,7 @@ typedef NS_ENUM (NSInteger, MTGErrorCode) {
     kMTGErrorCodeRewardVideoFailedToLoadMd5Invalid              = 129300068,
     kMTGErrorCodeRewardVideoFailedToSettingInvalid              = 129300069,
     KMTGErrorCodeEmptyUnitId                                    = 129300001,
+    KMTGErrorCodeEmptyBidToken                                  = 129300002,
 
     kMTGErrorCodeNoAds                                          = 12930001,
     kMTGErrorCodeConnectionLost                                 = 12930002,
@@ -35,7 +38,8 @@ typedef NS_ENUM (NSInteger, MTGErrorCode) {
     kMTGErrorCodeDailyLimit                                     = 12930009,
     kMTGErrorCodeLoadAdsTimeOut                                 = 12930010,
     kMTGErrorCodeMaterialLoadFailed                             = 12930011,
-    
+    kMTGErrorCodeOfferExpired                                   = 12930012,
+
     
     kMTGErrorCodeNoSupportPopupWindow                           = 12940001,
 };

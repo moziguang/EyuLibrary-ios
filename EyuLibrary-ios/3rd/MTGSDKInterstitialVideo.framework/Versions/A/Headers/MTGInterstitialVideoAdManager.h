@@ -8,80 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-
-#define MTGInterstitialVideoSDKVersion @"5.3.1"
-
-
-@class MTGInterstitialVideoAdManager;
-/**
- *  This protocol defines a listener for ad video load events.
- */
-@protocol MTGInterstitialVideoDelegate <NSObject>
-@optional
-
-/**
- *  Called when the ad is loaded , but not ready to be displayed,need to wait load video
-    completely
- */
-- (void) onInterstitialAdLoadSuccess:(MTGInterstitialVideoAdManager *_Nonnull)adManager;
-
-/**
- *  Called when the ad is successfully load , and is ready to be displayed
- */
-- (void) onInterstitialVideoLoadSuccess:(MTGInterstitialVideoAdManager *_Nonnull)adManager;
-
-/**
- *  Called when there was an error loading the ad.
- *  @param error       - error object that describes the exact error encountered when loading the ad.
- */
-- (void) onInterstitialVideoLoadFail:(nonnull NSError *)error adManager:(MTGInterstitialVideoAdManager *_Nonnull)adManager;
-
-
-/**
- *  Called when the ad display success
- */
-- (void) onInterstitialVideoShowSuccess:(MTGInterstitialVideoAdManager *_Nonnull)adManager;
-
-/**
- *  Called when the ad failed to display for some reason
- *  @param error       - error object that describes the exact error encountered when showing the ad.
- */
-- (void) onInterstitialVideoShowFail:(nonnull NSError *)error adManager:(MTGInterstitialVideoAdManager *_Nonnull)adManager;
-
-/**
- *  Called only when the ad has a video content, and called when the video play completed
- */
-- (void) onInterstitialVideoPlayCompleted:(MTGInterstitialVideoAdManager *_Nonnull)adManager;
-
-/**
- *  Called only when the ad has a endcard content, and called when the endcard show
- */
-- (void) onInterstitialVideoEndCardShowSuccess:(MTGInterstitialVideoAdManager *_Nonnull)adManager;
-
-
-/**
- *  Called when the ad is clicked
- */
-- (void) onInterstitialVideoAdClick:(MTGInterstitialVideoAdManager *_Nonnull)adManager;
-
-/**
- *  Called when the ad has been dismissed from being displayed, and control will return to your app
- *  @param converted   - BOOL describing whether the ad has converted
- */
-- (void) onInterstitialVideoAdDismissedWithConverted:(BOOL)converted adManager:(MTGInterstitialVideoAdManager *_Nonnull)adManager;
-
-
-@end
-
-
+#import "MTGInterstitialVideoAd.h"
 
 @interface MTGInterstitialVideoAdManager :  NSObject
 
-
-
 @property (nonatomic, weak) id  <MTGInterstitialVideoDelegate> _Nullable delegate;
-
-
 
 @property (nonatomic, readonly)   NSString * _Nonnull currentUnitId;
 
@@ -91,7 +22,6 @@
  *
  */
 @property (nonatomic, assign) BOOL  playVideoMute;
-
 
 
 
@@ -130,9 +60,6 @@
  *  Clean all the video file cache from the disk.
  */
 - (void)cleanAllVideoFileCache;
-
-
-
 
 
 @end

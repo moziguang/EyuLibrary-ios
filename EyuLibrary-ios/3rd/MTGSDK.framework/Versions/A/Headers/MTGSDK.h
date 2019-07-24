@@ -6,11 +6,12 @@
 //
 
 
-#define MTGSDKVersion @"5.3.1"
+#define MTGSDKVersion @"5.5.2"
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import <MTGSDK/MTGNativeAdManager.h>
+#import <MTGSDK/MTGBidNativeAdManager.h>
 #import <MTGSDK/MTGCampaign.h>
 #import <MTGSDK/MTGTemplate.h>
 #import <MTGSDK/MTGFrame.h>
