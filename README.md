@@ -22,7 +22,7 @@ pod 'EyuLibrary-ios',:subspecs => ['3rd','Core','gdt','mtg','ironsource','others
 
 
 #国内国外一体版本(含firebase)
-pod 'EyuLibrary-ios',:subspecs => ['3rd','Core','gdt','mtg','ironsource','others_ads_sdk','fb_sdk','Crashlytics_sdk','firebase_sdk'], :git => 'https://github.com/moziguang/EyuLibrary-ios.git',:tag =>'1.2.10'
+pod 'EyuLibrary-ios',:subspecs => ['3rd','Core','gdt','mtg','ironsource','others_ads_sdk','fb_sdk','crashlytics_sdk','firebase_sdk'], :git => 'https://github.com/moziguang/EyuLibrary-ios.git',:tag =>'1.2.10'
 
 GCC_PREPROCESSOR_DEFINITIONS 加上 FACEBOOK_ENABLED及FIREBASE_ENABLED
 Info.plist 加上（admob广告sdk）

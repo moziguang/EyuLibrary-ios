@@ -22,7 +22,6 @@
 
 @implementation EYSdkUtils
 
-static bool sIsFirebaseInited = false;
 static bool sIsUMInited = false;
 static bool sIsGDTInited = false;
 static bool sIsFBInited = false;
@@ -60,7 +59,6 @@ static bool sIsFBInited = false;
 +(void) initFirebaseSdk
 {
     [FIRApp configure];
-    sIsFirebaseInited = false;
 }
 #endif
 +(void) initAppFlyer:(NSString*) devKey appId:(NSString*)appId
