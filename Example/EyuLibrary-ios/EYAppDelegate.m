@@ -11,28 +11,35 @@
 #import "EYAdConfig.h"
 #import "EYRemoteConfigHelper.h"
 #import "EYSdkUtils.h"
+//#import <FBSDKLoginKit/FBSDKLoginKit.h>
+
 
 @implementation EYAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [EYSdkUtils initFirebaseSdk];
     // Override point for customization after application launch.
 //    EYAdConfig* adConfig2 = [[EYAdConfig alloc] init];
     EYAdConfig* adConfig = [[EYAdConfig alloc] init];
     //[[EYRemoteConfigHelper sharedInstance] setDefaults:dict];
 //    [[EYRemoteConfigHelper sharedInstance] getString:@"ios_ad_key_setting"];
-    adConfig.adKeyData =  [EYRemoteConfigHelper readFileWithName:@"ios_ad_key_setting"];
-    adConfig.adGroupData = [EYRemoteConfigHelper readFileWithName:@"ios_ad_cache_setting"];
-    adConfig.adPlaceData = [EYRemoteConfigHelper readFileWithName:@"ios_ad_setting"];
+    adConfig.adKeyData =  [EYSdkUtils readFileWithName:@"ios_ad_key_setting"];
+    adConfig.adGroupData = [EYSdkUtils readFileWithName:@"ios_ad_cache_setting"];
+    adConfig.adPlaceData = [EYSdkUtils readFileWithName:@"ios_ad_setting"];
     adConfig.maxTryLoadNativeAd = 7;
     adConfig.maxTryLoadRewardAd = 7;
     adConfig.maxTryLoadInterstitialAd = 7;
-    adConfig.admobClientId = @"ca-app-pub-7585239226773233~5762787797";
-//    adConfig.wmAppKey = @"5015374";
+//    adConfig.mtgAppId = @"111418";
+//    adConfig.mtgAppKey = @"a339a16bbaca844012276afad6f59eaa";
+    adConfig.admobClientId = @"ca-app-pub-9624926763614741~7511510626";
+//    adConfig.wmAppKey = @"5010261";
     
 //    [EYAdManager sharedInstance].useIronSource = true;
     [[EYAdManager sharedInstance] setupWithConfig:adConfig];
     [[EYAdManager sharedInstance] setDelegate:self];
+    
+    
     
 //    [EYSdkUtils initFacebookSdkWithApplication:application options:launchOptions];
     return YES;
