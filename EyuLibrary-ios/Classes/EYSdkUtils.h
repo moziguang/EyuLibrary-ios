@@ -27,12 +27,16 @@
             options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options;
 #endif
 
+#ifdef FIREBASE_ENABLED
 +(void) initFirebaseSdk;
-//+(void) initGaSdk:(NSString*) trackId;
+#endif
 +(void) initAppFlyer:(NSString*) devKey appId:(NSString*)appId;
 +(void) initUMMobSdk:(NSString*) appKey channel:(NSString*) channel;
 +(void) initGDTActionSdk:(NSString*) setid secretkey:(NSString*)secretkey;
 +(void) doGDTSDKActionStartApp;
+
++ (NSData *)readFileWithName:(NSString *)name;
++ (NSDictionary *)readJsonFileWithName:(NSString *)name;
 
 +(bool) isUMInited;
 +(bool) isGDTInited;

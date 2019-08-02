@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'EyuLibrary-ios'
-  s.version          = '1.2.9'
+  s.version          = '1.2.10'
   s.summary          = 'A short description of EyuLibrary-ios.'
 
 # This description is used to generate tags and improve search results.
@@ -52,14 +52,6 @@ Pod::Spec.new do |s|
  #end
  
  s.subspec '3rd' do |a|
-     a.dependency 'Firebase/Analytics'
-     a.dependency 'Firebase/Core'
-     a.dependency 'Firebase/Messaging'
-     a.dependency 'Firebase/RemoteConfig'
-     a.dependency 'Firebase/Auth'
-     a.dependency 'Firebase/Firestore'
-     a.dependency 'Firebase/Storage'
-     a.dependency 'Firebase/DynamicLinks'
      a.dependency 'SVProgressHUD'
      a.dependency 'AppsFlyerFramework','4.8.8'
      
@@ -91,8 +83,12 @@ Pod::Spec.new do |s|
      d.frameworks = 'CoreGraphics','UIKit'
  end
  
+ s.subspec 'admob_sdk' do |admob|
+     admob.dependency 'Google-Mobile-Ads-SDK'
+ end
+ 
  s.subspec 'others_ads_sdk' do |e|
-     e.dependency 'Firebase/AdMob'#,'5.6.0'
+     #e.dependency 'Firebase/AdMob'#,'5.6.0'
      e.dependency 'AppLovinSDK','6.6.1'
      e.dependency 'FBAudienceNetwork','5.3.1'
      e.dependency 'UnityAds','3.0.0'
@@ -107,10 +103,23 @@ Pod::Spec.new do |s|
      fb.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) FACEBOOK_ENABLED'}
  end
  
- s.subspec 'Crashlytics_sdk' do |crash|
+ s.subspec 'crashlytics_sdk' do |crash|
      crash.dependency 'Fabric'
      crash.dependency 'Crashlytics'
 end
+ 
+ s.subspec 'firebase_sdk' do |firebase|
+     firebase.dependency 'Firebase/Analytics'
+     firebase.dependency 'Firebase/Core'
+     firebase.dependency 'Firebase/Messaging'
+     firebase.dependency 'Firebase/RemoteConfig'
+     firebase.dependency 'Firebase/Auth'
+     firebase.dependency 'Firebase/Firestore'
+     firebase.dependency 'Firebase/Storage'
+     firebase.dependency 'Firebase/DynamicLinks'
+     firebase.dependency 'Firebase/AdMob'#,'5.6.0'
+     firebase.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) FIREBASE_ENABLED'}
+ end
  
  # s.subspec 'ironsource_config' do |f|
  #    f.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => 'ENABLE_IRON_SOURCE=1'}

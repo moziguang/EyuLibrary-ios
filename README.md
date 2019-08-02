@@ -17,11 +17,14 @@ EyuLibrary-ios is available through [CocoaPods](https://cocoapods.org). To insta
 it, simply add the following line to your Podfile:
 
 ```ruby
+#国内国外一体版本(不含firebase及facebook)
+pod 'EyuLibrary-ios',:subspecs => ['3rd','Core','gdt','mtg','ironsource','others_ads_sdk','admob_sdk'], :git => 'https://github.com/moziguang/EyuLibrary-ios.git',:tag =>'1.2.10'
 
-#国内国外一体版本
-pod 'EyuLibrary-ios',:subspecs => ['3rd','Core','gdt','mtg','ironsource','others_ads_sdk','fb_sdk','Crashlytics_sdk'], :git => 'https://github.com/moziguang/EyuLibrary-ios.git',:tag =>'1.2.9'
 
-GCC_PREPROCESSOR_DEFINITIONS 加上 FACEBOOK_ENABLED
+#国内国外一体版本(含firebase)
+pod 'EyuLibrary-ios',:subspecs => ['3rd','Core','gdt','mtg','ironsource','others_ads_sdk','fb_sdk','Crashlytics_sdk','firebase_sdk'], :git => 'https://github.com/moziguang/EyuLibrary-ios.git',:tag =>'1.2.10'
+
+GCC_PREPROCESSOR_DEFINITIONS 加上 FACEBOOK_ENABLED及FIREBASE_ENABLED
 Info.plist 加上（admob广告sdk）
 <key>GADIsAdManagerApp</key>
 <true/>
@@ -58,9 +61,9 @@ NSDictionary* dict = [[NSDictionary alloc] init];
 
 //初始化广告sdk
 EYAdConfig* adConfig = [[EYAdConfig alloc] init];
-adConfig.adKeyData =  [EYRemoteConfigHelper readFileWithName:@"ios_ad_key_setting"];
-adConfig.adGroupData = [EYRemoteConfigHelper readFileWithName:@"ios_ad_cache_setting"];
-adConfig.adPlaceData = [EYRemoteConfigHelper readFileWithName:@"ios_ad_setting"];
+adConfig.adKeyData =  [EYSdkUtils readFileWithName:@"ios_ad_key_setting"];
+adConfig.adGroupData = [EYSdkUtils readFileWithName:@"ios_ad_cache_setting"];
+adConfig.adPlaceData = [EYSdkUtils readFileWithName:@"ios_ad_setting"];
 adConfig.maxTryLoadNativeAd = 7;
 adConfig.maxTryLoadRewardAd = 7;
 adConfig.maxTryLoadInterstitialAd = 7;

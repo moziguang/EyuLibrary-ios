@@ -7,16 +7,17 @@
 
 #import <Foundation/Foundation.h>
 #import "EYEventUtils.h"
-#import "Firebase.h"
 #import <AppsFlyerLib/AppsFlyerTracker.h>
 #import <UMAnalytics/MobClick.h>
 #import <GDTActionSDK/GDTAction.h>
 #import "EYSdkUtils.h"
 
+#ifdef FIREBASE_ENABLED
+#import "Firebase.h"
+#endif
+
 #ifdef FACEBOOK_ENABLED
-
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
-
 #endif
 
 
@@ -33,7 +34,9 @@
             [strDict setObject:value forKey:key];
         }
     }
+#ifdef FIREBASE_ENABLED
     [FIRAnalytics logEventWithName:event parameters:strDict];
+#endif
     if([EYSdkUtils isUMInited]){
         [MobClick event:event attributes:strDict];
     }

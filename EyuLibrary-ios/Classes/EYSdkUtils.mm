@@ -7,7 +7,9 @@
 
 #import <Foundation/Foundation.h>
 #import "EYSdkUtils.h"
+#ifdef FIREBASE_ENABLED
 #import "Firebase.h"
+#endif
 #import <AppsFlyerLib/AppsFlyerTracker.h>
 #import <GDTActionSDK/GDTAction.h>
 #import <UMCommon/UMCommon.h>
@@ -20,6 +22,7 @@
 
 @implementation EYSdkUtils
 
+static bool sIsFirebaseInited = false;
 static bool sIsUMInited = false;
 static bool sIsGDTInited = false;
 static bool sIsFBInited = false;
@@ -52,12 +55,14 @@ static bool sIsFBInited = false;
     return handled;
 }
 #endif
-    
+
+#ifdef FIREBASE_ENABLED
 +(void) initFirebaseSdk
 {
     [FIRApp configure];
+    sIsFirebaseInited = false;
 }
-
+#endif
 +(void) initAppFlyer:(NSString*) devKey appId:(NSString*)appId
 {
     [AppsFlyerTracker sharedTracker].appsFlyerDevKey = devKey;
@@ -67,13 +72,6 @@ static bool sIsFBInited = false;
 
 +(void) initUMMobSdk:(NSString*) appKey channel:(NSString*) channel
 {
-//    UMConfigInstance.appKey =appKey;
-//    //    UMConfigInstance.ChannelId = @"App Store";
-//    UMConfigInstance.eSType = E_UM_GAME;
-//    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
-//    [MobClick setAppVersion:version];
-//    NSLog(@"lwq, initUMMobSdk version = %@", version);
-//    [MobClick startWithConfigure:UMConfigInstance];
     [UMConfigure initWithAppkey:appKey channel:channel];
     sIsUMInited = true;
 }
@@ -102,6 +100,23 @@ static bool sIsFBInited = false;
 +(bool) isFBInited
 {
     return sIsFBInited;
+}
+
++ (NSData *)readFileWithName:(NSString *)name
+{
+    // 获取文件路径
+    NSString *path = [[NSBundle mainBundle] pathForResource:name ofType:@"json"];
+    // 将文件数据化
+    NSData *data = [[NSData alloc] initWithContentsOfFile:path];
+    return data;
+}
+
+// 读取本地JSON文件
++ (NSDictionary *)readJsonFileWithName:(NSString *)name
+{
+    NSData *data = [EYSdkUtils readFileWithName:name];
+    // 对数据进行JSON格式化并返回字典形式
+    return [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
 }
 
 @end

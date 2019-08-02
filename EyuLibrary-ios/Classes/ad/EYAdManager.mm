@@ -25,6 +25,7 @@
 #import <AppLovinSDK/AppLovinSDK.h>
 #import <MTGSDK/MTGSDK.h>
 #import "IronSource/IronSource.h"
+#import "GoogleMobileAds/GoogleMobileAds.h"
 #endif
 
 

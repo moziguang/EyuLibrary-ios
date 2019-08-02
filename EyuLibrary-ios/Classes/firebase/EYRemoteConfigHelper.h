@@ -8,6 +8,8 @@
 #ifndef EYRemoteConfigHelper_h
 #define EYRemoteConfigHelper_h
 #import<StoreKit/StoreKit.h>
+
+#ifdef FIREBASE_ENABLED
 #import "Firebase.h"
 
 @interface EYRemoteConfigHelper : NSObject
@@ -19,11 +21,10 @@
 - (long)getLong:(NSString*) key;
 - (double)getDouble:(NSString*) key;
 + (id) sharedInstance;
-+ (NSData *)readFileWithName:(NSString *)name;
-+ (NSDictionary *)readJsonFileWithName:(NSString *)name;
 + (bool)getBoolean:(NSDictionary*) dict;
 + (NSString*)getString:(NSDictionary*) dict;
 + (long)getLong:(NSDictionary*) dict;
 + (double)getDouble:(NSDictionary*) dict;
 @end
+#endif
 #endif /* EYRemoteConfigHelper_h */

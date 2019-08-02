@@ -8,6 +8,7 @@
 #include <stdio.h>
 #include "EYRemoteConfigHelper.h"
 
+#ifdef FIREBASE_ENABLED
 static id s_sharedRemoteConfigHelperIOS;
 
 @interface EYRemoteConfigHelper()
@@ -100,23 +101,6 @@ static id s_sharedRemoteConfigHelperIOS;
     }
 }
 
-+ (NSData *)readFileWithName:(NSString *)name
-{
-    // 获取文件路径
-    NSString *path = [[NSBundle mainBundle] pathForResource:name ofType:@"json"];
-    // 将文件数据化
-    NSData *data = [[NSData alloc] initWithContentsOfFile:path];
-    return data;
-}
-
-// 读取本地JSON文件
-+ (NSDictionary *)readJsonFileWithName:(NSString *)name
-{
-    NSData *data = [EYRemoteConfigHelper readFileWithName:name];
-    // 对数据进行JSON格式化并返回字典形式
-    return [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-}
-
 + (bool)getBoolean:(NSDictionary*) dict
 {
     NSString *key = [dict objectForKey:@"key"];
@@ -156,6 +140,6 @@ static id s_sharedRemoteConfigHelperIOS;
     }
     return [[EYRemoteConfigHelper sharedInstance] getDouble:key];
 }
-
 @end
 
+#endif
