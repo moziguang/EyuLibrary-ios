@@ -5,6 +5,7 @@
 //  Created by apple on 2018/3/9.
 //
 #ifndef BYTE_DANCE_ONLY
+#ifdef GDT_AD_ENABLED
 
 #include "EYGdtNativeAdAdapter.h"
 #import "GDTUnifiedNativeAd.h"
@@ -351,4 +352,6 @@
 }
 
 @end
+#endif /*GDT_AD_ENABLED*/
+
 #endif /*BYTE_DANCE_ONLY*/

@@ -25,7 +25,9 @@
 @property(nonatomic,copy)NSString *wmAppKey;
 @property(nonatomic,assign)bool isWmOnly;
 @property(nonatomic,assign)bool isPaidApp;
+#ifdef GDT_AD_ENABLED
 @property(nonatomic,copy)NSString *gdtAppId;
+#endif
 @property(nonatomic,copy)NSString *mtgAppId;
 @property(nonatomic,copy)NSString *mtgAppKey;
 @property(nonatomic,copy)NSString *ironSourceAppKey;

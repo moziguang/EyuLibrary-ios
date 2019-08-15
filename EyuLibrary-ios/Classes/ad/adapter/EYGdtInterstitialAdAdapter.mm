@@ -6,6 +6,7 @@
 //
 #ifndef BYTE_DANCE_ONLY
 
+#ifdef GDT_AD_ENABLED
 #include "EYGdtInterstitialAdAdapter.h"
 #import "GDTMobInterstitial.h"
 #import "EYAdManager.h"
@@ -151,4 +152,5 @@
 }
 
 @end
+#endif /*GDT_AD_ENABLED*/
 #endif /*BYTE_DANCE_ONLY*/

@@ -27,6 +27,9 @@
 @synthesize mtgAppKey = _mtgAppKey;
 @synthesize enableIronSource = _enableIronSource;
 @synthesize isWmOnly = _isWmOnly;
+#ifdef GDT_AD_ENABLED
+@synthesize gdtAppId = _gdtAppId;
+#endif
 
 -(instancetype) initWithPlace:(NSData*)adPlaceData  key: (NSData*) adKeyData group:(NSData*) adGroupData;
 {
@@ -47,6 +50,11 @@
         self.isPaidApp = false;
         self.ironSourceAppKey = nil;
         self.enableIronSource = false;
+#ifdef GDT_AD_ENABLED
+        self.gdtAppId = nil;
+#endif
+        self.mtgAppId = nil;
+        self.mtgAppKey = nil;
     }
     return self;
 }

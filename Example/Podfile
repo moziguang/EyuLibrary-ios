@@ -15,7 +15,7 @@ target 'EyuLibrary-ios_Example' do
 #国际版本非unity
 #pod 'EyuLibrary-ios',:subspecs => ['3rd','Core','gdt','mtg','ironsource','others_ads_sdk','Crashlytics_sdk'], :path => '../'
 #国际版本unity
-pod 'EyuLibrary-ios',:subspecs => ['3rd','Core','gdt','mtg','ironsource','others_ads_sdk','firebase_sdk'], :path => '../'
+pod 'EyuLibrary-ios',:subspecs => ['3rd','Core','gdt','mtg','ironsource','others_ads_sdk','gdt_ad_sdk', 'admob_sdk'], :path => '../'
 #pod 'EyuLibrary-ios/ironsource', :path => '../'
 #pod 'EyuLibrary-ios/others_ads_sdk', :path => '../'
 
