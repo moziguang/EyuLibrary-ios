@@ -38,7 +38,7 @@ Facebook配置请参考https://developers.facebook.com/docs/app-events/getting-s
 [EYSdkUtils application:app openURL:url options:options];
 
 #国内只包含穿山甲sdk
-pod 'EyuLibrary-ios',:subspecs => ['3rd','Core','gdt','BytedanceOnly','Crashlytics_sdk'], :git => 'https://github.com/moziguang/EyuLibrary-ios.git',:tag =>'1.2.12'
+pod 'EyuLibrary-ios',:subspecs => ['3rd','Core','gdt','BytedanceOnly'], :git => 'https://github.com/moziguang/EyuLibrary-ios.git',:tag =>'1.2.12'
 
 
 目标target的
