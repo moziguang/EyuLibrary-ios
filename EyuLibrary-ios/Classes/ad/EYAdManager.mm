@@ -639,6 +639,15 @@ static id s_sharedInstance;
     }
 }
 
+-(void) onAdLoadFailed:(NSString*) adPlaceId  key:(NSString*)key code:(int)code
+{
+    NSLog(@"AdPlayer onAdLoadFailed , adPlaceId = %@, key = %@, code = %d", adPlaceId, key, code);
+    if(self.delegate)
+    {
+        [self.delegate onAdLoadFailed:adPlaceId key:key code:code];
+    }
+}
+
 -(EYAdKey*) getAdKeyWithId:(NSString*) keyId
 {
      return self.adKeyDict[keyId];

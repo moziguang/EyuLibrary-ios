@@ -18,7 +18,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [EYSdkUtils initFirebaseSdk];
+//    [EYSdkUtils initFirebaseSdk];
     // Override point for customization after application launch.
 //    EYAdConfig* adConfig2 = [[EYAdConfig alloc] init];
     EYAdConfig* adConfig = [[EYAdConfig alloc] init];
@@ -32,9 +32,9 @@
     adConfig.maxTryLoadInterstitialAd = 7;
 //    adConfig.mtgAppId = @"111418";
 //    adConfig.mtgAppKey = @"a339a16bbaca844012276afad6f59eaa";
-    adConfig.admobClientId = @"ca-app-pub-9624926763614741~7511510626";
-//    adConfig.wmAppKey = @"5010261";
-    
+//    adConfig.admobClientId = @"ca-app-pub-9624926763614741~7511510626";
+    adConfig.wmAppKey = @"5010261";
+//    adConfig.gdtAppId = @"1108127036";
 //    [EYAdManager sharedInstance].useIronSource = true;
     [[EYAdManager sharedInstance] setupWithConfig:adConfig];
     [[EYAdManager sharedInstance] setDelegate:self];
@@ -100,6 +100,11 @@
 - (void)onDefaultNativeAdClicked {
 
 }
+
+- (void)onAdLoadFailed:(nonnull NSString *)adPlaceId key:(nonnull NSString *)key code:(int)code {
+    NSLog(@"lwq, onAdLoadFailed adPlaceId = %@, key = %@, code = %d", adPlaceId, key, code);
+}
+
 
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options
 {

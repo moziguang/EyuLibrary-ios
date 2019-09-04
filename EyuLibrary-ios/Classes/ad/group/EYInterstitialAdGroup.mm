@@ -221,6 +221,11 @@
             }
         }
     }
+    
+    if(self.delegate)
+    {
+        [self.delegate onAdLoadFailed:self.adPlaceId key:adKey.keyId code:errorCode];
+    }
 }
 
 -(void) onAdShowed:(EYInterstitialAdAdapter*)adapter
