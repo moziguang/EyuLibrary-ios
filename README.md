@@ -113,6 +113,12 @@ NSLog(@"广告点击 onAdClicked adPlaceId = %@, type = %@", adPlaceId, type);
 
 }
 
+- (void)onAdLoadFailed:(nonnull NSString *)adPlaceId key:(nonnull NSString *)key code:(int)code 
+{
+    NSLog(@"广告加载失败 onAdLoadFailed adPlaceId = %@, key = %@, code = %d", adPlaceId, key, code);
+}
+
+
 - (void)onDefaultNativeAdClicked {
 NSLog(@"默认原生广告点击 onDefaultNativeAdClicked");
 }
