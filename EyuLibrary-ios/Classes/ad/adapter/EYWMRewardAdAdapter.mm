@@ -36,7 +36,7 @@
         self.isLoading = true;
         BURewardedVideoModel *model = [[BURewardedVideoModel alloc] init];
         model.userId = @"123";
-        model.isShowDownloadBar = YES;
+//        model.isShowDownloadBar = YES;
         self.rewardAd = [[BURewardedVideoAd alloc] initWithSlotID:self.adKey.key rewardedVideoModel:model];
         self.rewardAd.delegate = self;
         [self startTimeoutTask];

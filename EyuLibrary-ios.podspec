@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'EyuLibrary-ios'
-  s.version          = '1.2.13'
+  s.version          = '1.2.14'
   s.summary          = 'A short description of EyuLibrary-ios.'
 
 # This description is used to generate tags and improve search results.
@@ -62,7 +62,7 @@ Pod::Spec.new do |s|
  end
  
  s.subspec 'BytedanceOnly' do |bo|
-     bo.dependency 'Bytedance-UnionAD','2.1.0.2'
+     bo.dependency 'Bytedance-UnionAD','2.3.1.0'
      bo.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) BYTE_DANCE_ONLY=1'}
  end
  
@@ -93,16 +93,16 @@ Pod::Spec.new do |s|
  s.subspec 'others_ads_sdk' do |e|
      #e.dependency 'Firebase/AdMob'#,'5.6.0'
      e.dependency 'AppLovinSDK','6.6.1'
-     e.dependency 'FBAudienceNetwork','5.3.1'
+     e.dependency 'FBAudienceNetwork','5.5.0'
      e.dependency 'UnityAds','3.0.0'
      e.dependency 'VungleSDK-iOS','6.2.0'
-     e.dependency 'Bytedance-UnionAD','2.1.0.2'
+     e.dependency 'Bytedance-UnionAD','2.3.1.0'
  end
  
  s.subspec 'fb_sdk' do |fb|
-     fb.dependency 'FBSDKCoreKit','5.2.1'
-     fb.dependency 'FBSDKShareKit','5.2.1'
-     fb.dependency 'FBSDKLoginKit','5.2.1'
+     fb.dependency 'FBSDKCoreKit','5.4.1'
+     fb.dependency 'FBSDKShareKit','5.4.1'
+     fb.dependency 'FBSDKLoginKit','5.4.1'
      fb.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) FACEBOOK_ENABLED'}
  end
  
