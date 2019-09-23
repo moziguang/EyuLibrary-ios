@@ -225,7 +225,9 @@ static id s_sharedInstance;
         NSLog(@"lwq, setup admobClientId ==  NULL");
     }else{
         NSLog(@"lwq, setup admobClientId =  %@", admobClientId);
-        [GADMobileAds configureWithApplicationID:admobClientId];
+        [[GADMobileAds sharedInstance] startWithCompletionHandler:^(GADInitializationStatus * _Nonnull status) {
+            NSLog(@"lwq, setup admobClient status = %@", status);
+        }];
     }
     
     //init Applovin SDK

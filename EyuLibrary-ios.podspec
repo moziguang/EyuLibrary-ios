@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'EyuLibrary-ios'
-  s.version          = '1.2.14'
+  s.version          = '1.2.15'
   s.summary          = 'A short description of EyuLibrary-ios.'
 
 # This description is used to generate tags and improve search results.
@@ -75,7 +75,7 @@ Pod::Spec.new do |s|
  end
  
  s.subspec 'gdt_ad_sdk' do |gdt_ad|
-     gdt_ad.dependency 'GDTMobSDK','4.8.4'
+     gdt_ad.dependency 'GDTMobSDK','4.10.11'
      gdt_ad.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) GDT_AD_ENABLED'}
  end
  
