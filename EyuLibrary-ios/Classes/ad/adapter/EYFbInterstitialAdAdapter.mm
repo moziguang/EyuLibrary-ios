@@ -55,6 +55,7 @@
     NSLog(@"lwq,The user sees the add");
     // Use this function as indication for a user's impression on the ad.
     [self notifyOnAdShowed];
+    [self notifyOnAdImpression];
 }
 
 - (void)interstitialAdDidClick:(FBInterstitialAd *)interstitialAd

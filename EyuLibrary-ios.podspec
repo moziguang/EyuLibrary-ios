@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'EyuLibrary-ios'
-  s.version          = '1.2.15'
+  s.version          = '1.2.16'
   s.summary          = 'A short description of EyuLibrary-ios.'
 
 # This description is used to generate tags and improve search results.
@@ -75,7 +75,7 @@ Pod::Spec.new do |s|
  end
  
  s.subspec 'gdt_ad_sdk' do |gdt_ad|
-     gdt_ad.dependency 'GDTMobSDK','4.10.11'
+     gdt_ad.dependency 'GDTMobSDK','4.10.13'
      gdt_ad.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) GDT_AD_ENABLED'}
  end
  
@@ -92,7 +92,7 @@ Pod::Spec.new do |s|
  
  s.subspec 'others_ads_sdk' do |e|
      #e.dependency 'Firebase/AdMob'#,'5.6.0'
-     e.dependency 'AppLovinSDK','6.6.1'
+     e.dependency 'AppLovinSDK','6.9.4'
      e.dependency 'FBAudienceNetwork','5.5.0'
      e.dependency 'UnityAds','3.0.0'
      e.dependency 'VungleSDK-iOS','6.2.0'

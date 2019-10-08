@@ -95,6 +95,7 @@
 {
     NSLog(@"lwq, gdt interstitialDidPresentScreen");
     [self notifyOnAdShowed];
+    [self notifyOnAdImpression];
 }
 
 // 插屏广告展示结束回调

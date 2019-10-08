@@ -650,6 +650,15 @@ static id s_sharedInstance;
     }
 }
 
+-(void) onAdImpression:(NSString*) adPlaceId  type:(NSString*)type
+{
+    NSLog(@"AdPlayer onAdImpression , adPlaceId = %@, type = %@", adPlaceId, type);
+    if(self.delegate)
+    {
+        [self.delegate onAdImpression:adPlaceId type:type];
+    }
+}
+
 -(EYAdKey*) getAdKeyWithId:(NSString*) keyId
 {
      return self.adKeyDict[keyId];

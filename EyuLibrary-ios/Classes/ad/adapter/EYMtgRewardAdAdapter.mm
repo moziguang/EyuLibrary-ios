@@ -103,6 +103,7 @@
 {
     NSLog(@"lwq, mtg rewarded video will visible, unitId = %@", unitId);
     [self notifyOnAdShowed];
+    [self notifyOnAdImpression];
 }
 
 /**

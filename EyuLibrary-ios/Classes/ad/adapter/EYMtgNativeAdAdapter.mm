@@ -181,6 +181,7 @@
 {
     NSLog(@"lwq,mtg nativeAdImpressionWithType");
     [self notifyOnAdShowed];
+    [self notifyOnAdImpression];
 }
 
 - (void)dealloc

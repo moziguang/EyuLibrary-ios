@@ -34,6 +34,8 @@
 -(void) notifyOnAdShowed;
 -(void) notifyOnAdClicked;
 -(void) notifyOnAdClosed;
+-(void) notifyOnAdImpression;
+
 
 -(void) startTimeoutTask;
 -(void) cancelTimeoutTask;
@@ -48,4 +50,6 @@
 -(void) onAdShowed:(EYInterstitialAdAdapter*)adapter;
 -(void) onAdClicked:(EYInterstitialAdAdapter*)adapter;
 -(void) onAdClosed:(EYInterstitialAdAdapter*)adapter;
+-(void) onAdImpression:(EYInterstitialAdAdapter *)adapter;
+
 @end

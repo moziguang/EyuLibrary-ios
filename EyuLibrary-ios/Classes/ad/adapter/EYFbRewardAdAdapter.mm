@@ -124,5 +124,14 @@
     self.isRewarded = true;
 }
 
+/**
+  Sent immediately before the impression of an FBRewardedVideoAd object will be logged.
+
+ @param rewardedVideoAd An FBRewardedVideoAd object sending the message.
+ */
+- (void)rewardedVideoAdWillLogImpression:(FBRewardedVideoAd *)rewardedVideoAd
+{
+    [self notifyOnAdImpression];
+}
 @end
 #endif /*BYTE_DANCE_ONLY*/

@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 -(void) onAdClosed:(NSString*) adPlaceId  type:(NSString*)type;
 -(void) onAdClicked:(NSString*) adPlaceId  type:(NSString*)type;
 -(void) onAdLoadFailed:(NSString*) adPlaceId key:(NSString*)key code:(int)code;
+-(void) onAdImpression:(NSString*) adPlaceId  type:(NSString*)type;
 
 
 -(void) onDefaultNativeAdClicked;

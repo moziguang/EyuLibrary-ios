@@ -37,6 +37,7 @@
 -(void) notifyOnAdClicked;
 -(void) notifyOnAdRewarded;
 -(void) notifyOnAdClosed;
+-(void) notifyOnAdImpression;
 
 -(void) startTimeoutTask;
 -(void) cancelTimeoutTask;
@@ -52,4 +53,6 @@
 -(void) onAdClicked:(EYRewardAdAdapter *)adapter;
 -(void) onAdClosed:(EYRewardAdAdapter *)adapter;
 -(void) onAdRewarded:(EYRewardAdAdapter *)adapter;
+-(void) onAdImpression:(EYRewardAdAdapter *)adapter;
+
 @end

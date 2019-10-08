@@ -202,6 +202,7 @@
 
 - (void)nativeAdDidRecordImpression:(GADUnifiedNativeAd *)nativeAd {
     NSLog(@"lwq,%s", __PRETTY_FUNCTION__);
+    [self notifyOnAdImpression];
 }
 
 - (void)nativeAdWillPresentScreen:(GADUnifiedNativeAd *)nativeAd {

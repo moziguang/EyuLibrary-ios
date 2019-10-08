@@ -82,6 +82,7 @@
 - (void)rewardedVideoAdWillVisible:(BURewardedVideoAd *)rewardedVideoAd {
     NSLog(@"lwq, wm rewarded video will visible");
     [self notifyOnAdShowed];
+    [self notifyOnAdImpression];
 }
 
 - (void)rewardedVideoAdDidClose:(BURewardedVideoAd *)rewardedVideoAd {

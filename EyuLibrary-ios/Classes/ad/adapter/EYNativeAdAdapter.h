@@ -36,6 +36,8 @@
 -(void) notifyOnAdLoadFailedWithError:(int)errorCode;
 -(void) notifyOnAdShowed;
 -(void) notifyOnAdClicked;
+-(void) notifyOnAdImpression;
+
 
 -(void) startTimeoutTask;
 -(void) cancelTimeoutTask;
@@ -50,4 +52,6 @@
 -(void) onAdLoadFailed:(EYNativeAdAdapter *)adapter withError:(int)errorCode;
 -(void) onAdShowed:(EYNativeAdAdapter *)adapter;
 -(void) onAdClicked:(EYNativeAdAdapter *)adapter;
+-(void) onAdImpression:(EYNativeAdAdapter *)adapter;
+
 @end

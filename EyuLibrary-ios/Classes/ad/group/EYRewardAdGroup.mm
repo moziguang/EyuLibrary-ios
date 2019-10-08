@@ -329,4 +329,21 @@
         [EYEventUtils logEvent:[self.adGroup.groupId stringByAppendingString:EVENT_REWARDED]  parameters:dic];
 //    }
 }
+
+-(void) onAdImpression:(EYRewardAdAdapter*)adapter
+{
+    if(self.delegate)
+    {
+        [self.delegate onAdImpression:self.adPlaceId type:ADTypeReward];
+    }
+    EYAdKey *adKey = adapter.adKey;
+    if(adKey){
+        NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+        [dic setObject:adKey.network forKey:@"type"];
+        [dic setObject:adKey.key forKey:@"unit"];
+        [dic setObject:ADTypeReward forKey:@"type"];
+        [dic setObject:adKey.keyId forKey:@"keyId"];
+        [EYEventUtils logEvent:EVENT_AD_IMPRESSION  parameters:dic];
+    }
+}
 @end

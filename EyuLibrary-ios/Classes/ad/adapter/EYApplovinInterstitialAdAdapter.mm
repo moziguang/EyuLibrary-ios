@@ -88,6 +88,7 @@
     if(self.ad == ad){
         NSLog(@"lwq, applovin interstitial ad wasDisplayedIn");
         [self notifyOnAdShowed];
+        [self notifyOnAdImpression];
     }
 }
 

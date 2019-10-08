@@ -76,6 +76,7 @@ didFailToReceiveAdWithError:(GADRequestError *)error {
 - (void)interstitialWillPresentScreen:(GADInterstitial *)ad {
     NSLog(@"lwq, admob interstitialWillPresentScreen");
     [self notifyOnAdShowed];
+    [self notifyOnAdImpression];
 }
 
 /// Tells the delegate the interstitial is to be animated off the screen.

@@ -220,4 +220,20 @@
     }
 }
 
+-(void) onAdImpression:(EYNativeAdAdapter*)adapter
+{
+    if(self.delegate)
+    {
+        [self.delegate onAdImpression:self.adPlaceId type:ADTypeNative];
+    }
+    EYAdKey *adKey = adapter.adKey;
+    if(adKey){
+        NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+        [dic setObject:adKey.network forKey:@"type"];
+        [dic setObject:adKey.key forKey:@"unit"];
+        [dic setObject:ADTypeNative forKey:@"type"];
+        [dic setObject:adKey.keyId forKey:@"keyId"];
+        [EYEventUtils logEvent:EVENT_AD_IMPRESSION  parameters:dic];
+    }
+}
 @end

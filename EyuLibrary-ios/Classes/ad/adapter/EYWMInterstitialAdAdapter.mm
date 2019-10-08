@@ -88,6 +88,7 @@
 {
     NSLog(@"lwq, wm interstitialAd fullscreenVideoAdDidVisible");
     [self notifyOnAdShowed];
+    [self notifyOnAdImpression];
 }
 
 /**

@@ -95,6 +95,7 @@
 - (void) onInterstitialVideoShowSuccess:(MTGInterstitialVideoAdManager *_Nonnull)adManager{
     NSLog(@"lwq, mtg onInterstitialVideoShowSuccess");
     [self notifyOnAdShowed];
+    [self notifyOnAdImpression];
 }
 
 - (void) onInterstitialVideoShowFail:(nonnull NSError *)error adManager:(MTGInterstitialVideoAdManager *_Nonnull)adManager{

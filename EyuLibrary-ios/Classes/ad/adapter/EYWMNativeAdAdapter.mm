@@ -208,6 +208,7 @@
 - (void)nativeAdDidBecomeVisible:(BUNativeAd *)nativeAd
 {
     [self notifyOnAdShowed];
+    [self notifyOnAdImpression];
 }
 
 - (void)dealloc

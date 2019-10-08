@@ -93,6 +93,7 @@
 //    if(self.ad == ad){
         NSLog(@"lwq, applovin reward ad wasDisplayedIn");
         [self notifyOnAdShowed];
+        [self notifyOnAdImpression];
 //    }
 }
 
@@ -149,6 +150,7 @@
     if ( responseCode == kALErrorCodeIncentivizedValidationNetworkTimeout )
     {
         // The SDK was unable to reach AppLovin over the network. The user's device is likely experiencing poor connectivity.
+        self.isRewarded = true;
     }
     else if ( responseCode == kALErrorCodeIncentivizedUserClosedVideo )
     {
@@ -158,6 +160,7 @@
     else
     {
         /* Something else went wrong. Wait a bit before showing another rewarded video. */
+        self.isRewarded = true;
     }
 }
 

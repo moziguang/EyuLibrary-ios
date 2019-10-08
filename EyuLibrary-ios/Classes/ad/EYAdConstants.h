@@ -31,6 +31,8 @@
 #define     EVENT_LOAD_SUCCESS  @"_LOAD_SUCCESS"
 #define     EVENT_REWARDED  @"_REWARDED"
 #define     EVENT_CLICKED  @"_CLICKED"
+#define     EVENT_AD_IMPRESSION  @"eyu_ad_impression"
+
 
 #define     ERROR_SDK_UNINITED                          -10001
 #define     ERROR_OTHER_ADMOB_REWARD_AD_LOADED          -11001

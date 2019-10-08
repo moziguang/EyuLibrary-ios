@@ -141,9 +141,32 @@
 - (void)nativeAdDidLoad:(FBNativeAd *)nativeAd
 {
     NSLog(@"lwq, nativeAdDidLoad");
+//    self.isLoading = false;
+//    [self cancelTimeoutTask];
+//    [self notifyOnAdLoaded];
+}
+
+/**
+ Sent when an FBNativeAd has succesfully downloaded all media
+ */
+- (void)nativeAdDidDownloadMedia:(FBNativeAd *)nativeAd
+{
+    NSLog(@"lwq, nativeAdDidDownloadMedia");
     self.isLoading = false;
     [self cancelTimeoutTask];
     [self notifyOnAdLoaded];
+}
+
+/**
+  Sent immediately before the impression of an FBNativeAd object will be logged.
+
+ @param nativeAd An FBNativeAd object sending the message.
+ */
+- (void)nativeAdWillLogImpression:(FBNativeAd *)nativeAd
+{
+    NSLog(@"lwq, fb nativeAdWillLogImpression");
+    [self notifyOnAdShowed];
+    [self notifyOnAdImpression];
 }
 
 - (void)mediaViewDidLoad:(FBMediaView *)mediaView

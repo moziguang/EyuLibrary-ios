@@ -105,6 +105,10 @@
     NSLog(@"lwq, onAdLoadFailed adPlaceId = %@, key = %@, code = %d", adPlaceId, key, code);
 }
 
+-(void) onAdImpression:(NSString*) adPlaceId  type:(NSString*)type
+{
+    NSLog(@"lwq, onAdImpression adPlaceId = %@, type = %@", adPlaceId, type);
+}
 
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options
 {

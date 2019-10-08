@@ -122,6 +122,7 @@
     if([self.adKey.key isEqualToString:placementID] )
     {
         [self notifyOnAdShowed];
+        [self notifyOnAdImpression];
     }
 }
 

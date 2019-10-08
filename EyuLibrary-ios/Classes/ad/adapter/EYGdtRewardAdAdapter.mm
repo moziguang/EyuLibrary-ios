@@ -85,6 +85,7 @@
 {
     NSLog(@"lwq, gdt 广告已曝光");
     [self notifyOnAdShowed];
+    [self notifyOnAdImpression];
 }
 
 - (void)gdt_rewardVideoAdDidClose:(GDTRewardVideoAd *)rewardedVideoAd
@@ -145,6 +146,7 @@
 - (void)gdt_rewardVideoAdDidPlayFinish:(GDTRewardVideoAd *)rewardedVideoAd
 {
     NSLog(@"lwq, gdt 视频播放结束");
+    self.isRewarded = true;
 }
 
 @end

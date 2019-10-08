@@ -265,4 +265,21 @@
     }
 }
 
+-(void) onAdImpression:(EYInterstitialAdAdapter*)adapter
+{
+    if(self.delegate)
+    {
+        [self.delegate onAdImpression:self.adPlaceId type:ADTypeInterstitial];
+    }
+    EYAdKey *adKey = adapter.adKey;
+    if(adKey){
+        NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+        [dic setObject:adKey.network forKey:@"type"];
+        [dic setObject:adKey.key forKey:@"unit"];
+        [dic setObject:ADTypeInterstitial forKey:@"type"];
+        [dic setObject:adKey.keyId forKey:@"keyId"];
+        [EYEventUtils logEvent:EVENT_AD_IMPRESSION  parameters:dic];
+    }
+}
+
 @end

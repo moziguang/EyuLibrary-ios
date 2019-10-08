@@ -235,6 +235,10 @@
 {
     // Callbacks may not happen on main queue
     [ad trackImpressionAndNotify: self];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        // Impression tracked!
+        [self notifyOnAdShowed];
+    });
 }
 
 - (void)postbackService:(ALPostbackService *)postbackService didExecutePostback:(NSURL *)postbackURL
@@ -242,7 +246,7 @@
     // Callbacks may not happen on main queue
     dispatch_async(dispatch_get_main_queue(), ^{
         // Impression tracked!
-        [self notifyOnAdShowed];
+        [self notifyOnAdImpression];
     });
 }
 

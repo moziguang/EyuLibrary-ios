@@ -80,6 +80,7 @@
 - (void)rewardBasedVideoAdDidOpen:(GADRewardBasedVideoAd *)rewardBasedVideoAd {
     NSLog(@"lwq, AdmobRewardAdAdapter Opened reward based video ad.");
     [self notifyOnAdShowed];
+    [self notifyOnAdImpression];
 }
 
 - (void)rewardBasedVideoAdDidStartPlaying:(GADRewardBasedVideoAd *)rewardBasedVideoAd {

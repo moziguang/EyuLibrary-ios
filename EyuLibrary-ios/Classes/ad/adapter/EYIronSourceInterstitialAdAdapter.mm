@@ -99,6 +99,7 @@
 {
     NSLog(@"EYIronSourceInterstitialAdAdapter interstitialDidShow");
     [self notifyOnAdShowed];
+    [self notifyOnAdImpression];
 }
 
 /**

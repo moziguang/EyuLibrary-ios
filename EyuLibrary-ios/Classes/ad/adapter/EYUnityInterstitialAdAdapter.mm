@@ -67,6 +67,7 @@
 
 - (void)unityAdsDidStart:(NSString *)placementId{
     [self notifyOnAdShowed];
+    [self notifyOnAdImpression];
 }
 
 - (void)unityAdsDidFinish:(NSString *)placementId withFinishState:(UnityAdsFinishState)state{

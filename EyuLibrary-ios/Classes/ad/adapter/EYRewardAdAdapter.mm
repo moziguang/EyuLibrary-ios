@@ -96,6 +96,14 @@
     }
 }
 
+-(void) notifyOnAdImpression
+{
+    if(self.delegate!=NULL)
+    {
+        [self.delegate onAdImpression:self];
+    }
+}
+
 -(void) startTimeoutTask
 {
     [self cancelTimeoutTask];

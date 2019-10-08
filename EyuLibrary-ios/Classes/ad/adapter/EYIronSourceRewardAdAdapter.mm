@@ -102,6 +102,7 @@
 {
     NSLog(@"EYIronSourceRewardAdAdapter rewardedVideoDidOpen");
     [self notifyOnAdShowed];
+    [self notifyOnAdImpression];
 }
 
 /**
