@@ -101,7 +101,7 @@
 
 -(void) loadAd:(NSString*) placeId
 {
-    NSLog(@"loadAd placeId = %@, self.curLoadingIndex = %d", placeId, self.curLoadingIndex);
+    NSLog(@"EYRewardAdGroup loadAd placeId = %@, self.curLoadingIndex = %d", placeId, self.curLoadingIndex);
     self.adPlaceId = placeId;
     if(self.adapterArray.count == 0) return;
     self.curLoadingIndex = 0;

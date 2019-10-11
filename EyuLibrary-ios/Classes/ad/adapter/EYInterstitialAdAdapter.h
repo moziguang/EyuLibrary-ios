@@ -22,6 +22,7 @@
 @property(nonatomic,strong)EYAdGroup *adGroup;
 @property(nonatomic,assign)bool isLoading;
 @property(nonatomic,strong)NSTimer *loadingTimer;
+@property(nonatomic,assign)bool isShowing;
 
 
 -(instancetype) initWithAdKey:(EYAdKey*)adKey adGroup:(EYAdGroup*) group;

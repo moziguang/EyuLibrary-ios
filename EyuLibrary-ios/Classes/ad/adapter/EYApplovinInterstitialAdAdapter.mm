@@ -20,7 +20,9 @@
 -(void) loadAd
 {
     NSLog(@"lwq, applovin loadAd ad = %@", self.ad);
-    if([self isAdLoaded]){
+    if([self isShowing ]){
+        [self notifyOnAdLoadFailedWithError:ERROR_AD_IS_SHOWING];
+    }else if([self isAdLoaded]){
         [self notifyOnAdLoaded];
     }else if(!self.isLoading){
         self.isLoading = true;
@@ -39,6 +41,7 @@
     NSLog(@"lwq, Applovin showAd [self isAdLoaded] = %d", [self isAdLoaded]);
     if([self isAdLoaded])
     {
+        self.isShowing = YES;
         [ALInterstitialAd shared].adDisplayDelegate = self;
 //        [ALInterstitialAd shared].adVideoPlaybackDelegate = self;
         
@@ -105,6 +108,7 @@
 {
     if(self.ad == ad){
         NSLog(@"lwq, applovin interstitial ad wasHiddenIn");
+        self.isShowing = NO;
         if(self.ad!= NULL)
         {
             self.ad = NULL;

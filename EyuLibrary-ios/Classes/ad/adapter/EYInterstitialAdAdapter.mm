@@ -15,6 +15,7 @@
 @synthesize adGroup = _adGroup;
 @synthesize isLoading = _isLoading;
 @synthesize loadingTimer = _loadingTimer;
+@synthesize isShowing = _isShowing;
 
 
 -(instancetype) initWithAdKey:(EYAdKey*)adKey adGroup:(EYAdGroup*) group
@@ -24,6 +25,8 @@
     {
         self.adKey = adKey;
         self.adGroup = group;
+        self.isShowing = false;
+        self.isLoading = false;
     }
     return self;
 }

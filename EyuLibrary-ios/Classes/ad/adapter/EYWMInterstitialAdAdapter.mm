@@ -23,7 +23,9 @@
 -(void) loadAd
 {
     NSLog(@" lwq, wm interstitialAd loadAd ");
-    if(self.interstitialAd == NULL)
+    if([self isShowing ]){
+        [self notifyOnAdLoadFailedWithError:ERROR_AD_IS_SHOWING];
+    }else if(self.interstitialAd == NULL)
     {
         self.interstitialAd = [[BUFullscreenVideoAd alloc] initWithSlotID:self.adKey.key];
         self.interstitialAd.delegate = self;
@@ -45,6 +47,7 @@
     NSLog(@" lwq, wm interstitialAd showAd ");
     if([self isAdLoaded])
     {
+        self.isShowing = YES;
         return [self.interstitialAd showAdFromRootViewController:controller];
     }
     return false;
@@ -97,6 +100,7 @@
 - (void)fullscreenVideoAdDidClose:(BUFullscreenVideoAd *)fullscreenVideoAd
 {
     NSLog(@"lwq, wm interstitialAd fullscreenVideoAdDidClose");
+    self.isShowing = NO;
     if(self.interstitialAd != NULL)
     {
         self.interstitialAd.delegate = NULL;

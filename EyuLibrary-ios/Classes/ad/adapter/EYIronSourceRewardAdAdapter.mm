@@ -23,7 +23,9 @@
 {
     NSLog(@"EYIronSourceRewardAdAdapter loadAd #############. adId = #%@#", self.adKey.key);
     [EYAdManager sharedInstance].ISRVAdapter = self;
-    if([self isAdLoaded]) {
+    if([self isShowing ]){
+        [self notifyOnAdLoadFailedWithError:ERROR_AD_IS_SHOWING];
+    }else if([self isAdLoaded]) {
         [self notifyOnAdLoaded];
     }
     else {
@@ -37,6 +39,7 @@
     [EYAdManager sharedInstance].ISRVAdapter = self;
     if([self isAdLoaded])
     {
+        self.isShowing = YES;
         self.isRewarded = false;
         self.isClosed = false;
         [IronSource showRewardedVideoWithViewController:controller placement:self.adKey.key];
@@ -112,6 +115,7 @@
 {
     NSLog(@"EYIronSourceRewardAdAdapter rewardedVideoDidClose. self->isRewarded = %d", self.isRewarded);
     self.isClosed = true;
+    self.isShowing = NO;
     if(self.isRewarded){
         [self notifyOnAdRewarded];
     }

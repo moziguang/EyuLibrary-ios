@@ -13,6 +13,7 @@
 @synthesize adKey = _adKey;
 @synthesize adGroup = _adGroup;
 @synthesize isLoading = _isLoading;
+@synthesize isShowing = _isShowing;
 @synthesize loadingTimer = _loadingTimer;
 
 
@@ -24,6 +25,7 @@
         self.adKey = adKey;
         self.adGroup = group;
         self.isLoading = false;
+        self.isShowing = false;
     }
     return self;
 }

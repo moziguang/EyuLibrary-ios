@@ -16,7 +16,9 @@
 -(void) loadAd
 {
     NSLog(@"lwq, admob loadAd interstitialAd = %@", self.interstitialAd);
-    if(self.interstitialAd == NULL)
+    if([self isShowing ]){
+        [self notifyOnAdLoadFailedWithError:ERROR_AD_IS_SHOWING];
+    }else if(self.interstitialAd == NULL)
     {
         self.interstitialAd = [[GADInterstitial alloc] initWithAdUnitID:self.adKey.key];
         self.interstitialAd.delegate = self;
@@ -39,6 +41,7 @@
     NSLog(@"lwq, admob showAd [self isAdLoaded] = %d", [self isAdLoaded]);
     if([self isAdLoaded])
     {
+        self.isShowing = true;
         [self.interstitialAd presentFromRootViewController:controller];
         return true;
     }
@@ -92,6 +95,7 @@ didFailToReceiveAdWithError:(GADRequestError *)error {
         self.interstitialAd.delegate = NULL;
         self.interstitialAd = NULL;
     }
+    self.isShowing = false;
     [self notifyOnAdClosed];
 }
 

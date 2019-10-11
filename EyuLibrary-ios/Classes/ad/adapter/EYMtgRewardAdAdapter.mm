@@ -19,7 +19,9 @@
 -(void) loadAd
 {
     NSLog(@" lwq, mtg loadAd isAdLoaded = %d", [self isAdLoaded]);
-    if([self isAdLoaded])
+    if([self isShowing ]){
+        [self notifyOnAdLoadFailedWithError:ERROR_AD_IS_SHOWING];
+    }else if([self isAdLoaded])
     {
         [self notifyOnAdLoaded];
     }else if(![self isLoading] )
@@ -40,6 +42,7 @@
     NSLog(@" lwq, mtg showAd ");
     if([self isAdLoaded])
     {
+        self.isShowing = YES;
         [[MTGRewardAdManager sharedInstance] showVideo:self.adKey.key withRewardId:@"1" userId:@"1" delegate:self viewController:controller];
         return true;
     }
@@ -141,6 +144,7 @@
     if(rewardInfo){
         [self notifyOnAdRewarded];
     }
+    self.isShowing = NO;
     [self notifyOnAdClosed];
 }
 

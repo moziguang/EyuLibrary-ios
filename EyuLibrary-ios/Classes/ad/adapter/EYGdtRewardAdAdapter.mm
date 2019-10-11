@@ -27,7 +27,9 @@
 -(void) loadAd
 {
     NSLog(@" lwq, gdt EYGdtRewardAdAdapter loadAd isAdLoaded = %d", [self isAdLoaded]);
-    if([self isAdLoaded])
+    if([self isShowing ]){
+        [self notifyOnAdLoadFailedWithError:ERROR_AD_IS_SHOWING];
+    }else if([self isAdLoaded])
     {
         [self notifyOnAdLoaded];
     }else if(![self isLoading] )
@@ -55,6 +57,7 @@
     NSLog(@" lwq, gdt show reward Ad ");
     if([self isAdLoaded])
     {
+        self.isShowing = true;
         return [self.rewardAd showAdFromRootViewController:controller];
     }
     return false;
@@ -100,6 +103,7 @@
         [self notifyOnAdRewarded];
     }
     self.isRewarded = false;
+    self.isShowing = false;
     [self notifyOnAdClosed];
 }
 

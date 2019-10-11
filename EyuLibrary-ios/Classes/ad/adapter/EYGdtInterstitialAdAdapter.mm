@@ -25,7 +25,9 @@
 -(void) loadAd
 {
     NSLog(@" lwq, gdt interstitialAd loadAd ");
-    if(self.interstitialAd == NULL)
+    if([self isShowing ]){
+        [self notifyOnAdLoadFailedWithError:ERROR_AD_IS_SHOWING];
+    }else if(self.interstitialAd == NULL)
     {
         EYAdManager* manager = [EYAdManager sharedInstance];
         NSString* appId = manager.adConfig.gdtAppId;
@@ -50,6 +52,7 @@
     if([self isAdLoaded])
     {
         [self.interstitialAd presentFromRootViewController:controller];
+        self.isShowing = YES;
         return true;
     }
     return false;
@@ -103,12 +106,13 @@
 - (void)interstitialDidDismissScreen:(GDTMobInterstitial *)interstitial
 {
     NSLog(@"lwq, gdt interstitialDidDismissScreen");
-    if(self.interstitialAd != NULL)
-    {
-        self.interstitialAd.delegate = NULL;
-        self.interstitialAd = NULL;
-    }
-    [self notifyOnAdClosed];
+//    self.isShowing = NO;
+//    if(self.interstitialAd != NULL)
+//    {
+//        self.interstitialAd.delegate = NULL;
+//        self.interstitialAd = NULL;
+//    }
+//    [self notifyOnAdClosed];
 }
 
 /**
@@ -135,6 +139,7 @@
 - (void)interstitialAdDidDismissFullScreenModal:(GDTMobInterstitial *)interstitial
 {
     NSLog(@"lwq, gdt interstitialAdDidDismissFullScreenModal");
+    self.isShowing = NO;
     if(self.interstitialAd != NULL)
     {
         self.interstitialAd.delegate = NULL;

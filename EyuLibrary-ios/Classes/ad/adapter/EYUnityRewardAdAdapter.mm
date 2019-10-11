@@ -31,7 +31,9 @@
 -(void) loadAd
 {
     NSLog(@" lwq, unity loadAd isAdLoaded = %d", [self isAdLoaded]);
-    if([UnityAds isReady:self.adKey.key])
+    if([self isShowing ]){
+        [self notifyOnAdLoadFailedWithError:ERROR_AD_IS_SHOWING];
+    }else if([UnityAds isReady:self.adKey.key])
     {
         [self notifyOnAdLoaded];
     }else{
@@ -44,6 +46,7 @@
     NSLog(@" lwq, unity showAd ");
     if([self isAdLoaded])
     {
+        self.isShowing = YES;
         [UnityAds show:controller placementId:self.adKey.key];
         return true;
     }
@@ -74,6 +77,7 @@
     if(state == UnityAdsFinishState::kUnityAdsFinishStateCompleted){
         [self notifyOnAdRewarded];
     }
+    self.isShowing = NO;
     [self notifyOnAdClosed];
 }
 

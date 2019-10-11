@@ -17,7 +17,9 @@
 -(void) loadAd
 {
     NSLog(@" lwq, fb loadAd isAdLoaded = %d", [self isAdLoaded]);
-    if([self isAdLoaded])
+    if([self isShowing ]){
+        [self notifyOnAdLoadFailedWithError:ERROR_AD_IS_SHOWING];
+    }else if([self isAdLoaded])
     {
         [self notifyOnAdLoaded];
     }else if(![self isLoading] )
@@ -46,6 +48,7 @@
         bool result = [self.rewardAd showAdFromRootViewController:controller];
         if(result)
         {
+            self.isShowing = YES;
             [self notifyOnAdShowed];
         }
         return result;
@@ -90,7 +93,8 @@
     if(self.isRewarded){
         [self notifyOnAdRewarded];
     }
-    self.isRewarded = false;
+    self.isShowing = NO;
+    self.isRewarded = NO;
     [self notifyOnAdClosed];
 }
 

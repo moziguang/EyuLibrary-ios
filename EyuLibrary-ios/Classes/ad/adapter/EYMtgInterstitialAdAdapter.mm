@@ -29,7 +29,9 @@
 -(void) loadAd
 {
     NSLog(@" lwq, mtg interstitialAd loadAd ");
-    if(self.interstitialAd == NULL)
+    if([self isShowing ]){
+        [self notifyOnAdLoadFailedWithError:ERROR_AD_IS_SHOWING];
+    }else if(self.interstitialAd == NULL)
     {
         self.interstitialAd = [[MTGInterstitialVideoAdManager alloc] initWithUnitID:self.adKey.key delegate:self];
 
@@ -52,7 +54,8 @@
     NSLog(@" lwq, mtg interstitialAd showAd ");
     if([self isAdLoaded])
     {
-        self.isLoaded = false;
+        self.isLoaded = NO;
+        self.isShowing = YES;
         [self.interstitialAd showFromViewController:controller];
         return true;
     }
@@ -110,6 +113,7 @@
 
 - (void)onInterstitialVideoAdDismissedWithConverted:(BOOL)converted adManager:(MTGInterstitialVideoAdManager *_Nonnull)adManager{
     NSLog(@"lwq, mtg ionInterstitialVideoAdDismissedWithConverted converted = %d", converted);
+    self.isShowing = NO;
     if(self.interstitialAd != NULL)
     {
         self.interstitialAd.delegate = NULL;

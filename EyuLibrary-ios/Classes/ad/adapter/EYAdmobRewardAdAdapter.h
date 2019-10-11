@@ -16,6 +16,8 @@
 
 }
 @property(nonatomic,assign)bool isRewarded;
+@property(nonatomic,assign)bool isLoaded;
+
 @end
 #endif /*BYTE_DANCE_ONLY*/
 

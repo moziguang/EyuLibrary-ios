@@ -20,7 +20,9 @@
 {
     NSLog(@"EYIronSourceInterstitialAdAdapter loadAd");
     [EYAdManager sharedInstance].ISInterstitialAdapter = self;
-    if([self isAdLoaded]) {
+    if([self isShowing ]){
+        [self notifyOnAdLoadFailedWithError:ERROR_AD_IS_SHOWING];
+    }else if([self isAdLoaded]) {
         [self notifyOnAdLoaded];
     }
     else if(!self.isLoading) {
@@ -35,6 +37,7 @@
     [EYAdManager sharedInstance].ISInterstitialAdapter = self;
     if([self isAdLoaded])
     {
+        self.isShowing = YES;
         [IronSource showInterstitialWithViewController:controller placement:self.adKey.key];
         return true;
     }
@@ -89,6 +92,7 @@
 - (void)interstitialDidClose
 {
     NSLog(@"EYIronSourceInterstitialAdAdapter interstitialDidClose");
+    self.isShowing = NO;
     [self notifyOnAdClosed];
 }
 

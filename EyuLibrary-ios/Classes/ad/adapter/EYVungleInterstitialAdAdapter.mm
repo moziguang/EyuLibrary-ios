@@ -39,7 +39,9 @@
         [self notifyOnAdLoadFailedWithError:ERROR_SDK_UNINITED];
         return;
     }
-    if([self isAdLoaded]){
+    if([self isShowing ]){
+        [self notifyOnAdLoadFailedWithError:ERROR_AD_IS_SHOWING];
+    }else if([self isAdLoaded]){
         [self notifyOnAdLoaded];
     }else if(!self.isLoading){
         self.isLoading = true;
@@ -74,6 +76,7 @@
             NSLog(@"lwq,vungle Error encountered playing ad: %@", error);
             return false;
         }else{
+            self.isShowing = YES;
             return true;
         }
     }
@@ -139,6 +142,7 @@
         {
             [self notifyOnAdClicked];
         }
+        self.isShowing = NO;
         [self notifyOnAdClosed];
     }
 }

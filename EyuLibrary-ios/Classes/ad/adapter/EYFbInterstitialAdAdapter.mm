@@ -17,7 +17,9 @@
 -(void) loadAd
 {
     NSLog(@" lwq, fb interstitialAd loadAd ");
-    if(self.interstitialAd == NULL)
+    if([self isShowing ]){
+        [self notifyOnAdLoadFailedWithError:ERROR_AD_IS_SHOWING];
+    }else if(self.interstitialAd == NULL)
     {
         self.interstitialAd = [[FBInterstitialAd alloc] initWithPlacementID:self.adKey.key];
         self.interstitialAd.delegate = self;
@@ -39,6 +41,7 @@
     NSLog(@" lwq, fb interstitialAd showAd ");
     if([self isAdLoaded])
     {
+        self.isShowing = YES;
         return [self.interstitialAd showAdFromRootViewController:controller];
     }
     return false;
@@ -76,7 +79,7 @@
 {
     NSLog(@"lwq,Interstitial had been closed, %@", [NSThread currentThread]);
     // Consider to add code here to resume your app's flow
-    
+    self.isShowing = NO;
     if(self.interstitialAd != NULL)
     {
         self.interstitialAd.delegate = NULL;

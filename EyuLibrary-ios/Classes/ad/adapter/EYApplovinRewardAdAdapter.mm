@@ -21,7 +21,9 @@
 -(void) loadAd
 {
     NSLog(@"lwq, EYApplovinRewardAdAdapter loadAd #############. adId = #%@#", self.adKey.key);
-    if([self isAdLoaded])
+    if([self isShowing ]){
+        [self notifyOnAdLoadFailedWithError:ERROR_AD_IS_SHOWING];
+    }else if([self isAdLoaded])
     {
         [self notifyOnAdLoaded];
     }else if(!self.isLoading)
@@ -46,7 +48,8 @@
     NSLog(@"lwq, EYApplovinRewardAdAdapter showAd #############.");
     if([self isAdLoaded])
     {
-        self.isRewarded = false;
+        self.isShowing = YES;
+        self.isRewarded = NO;
         self.ad.adDisplayDelegate = self;
         [self.ad showAndNotify:self];
         return true;
@@ -109,6 +112,7 @@
 - (void)ad:(ALAd *)ad wasHiddenIn:(UIView *)view
 {
     NSLog(@"lwq, applovin reward ad wasHiddenIn isRewarded = %d", self.isRewarded);
+    self.isShowing = NO;
     if(self.isRewarded){
         [self notifyOnAdRewarded];
         self.isRewarded = false;

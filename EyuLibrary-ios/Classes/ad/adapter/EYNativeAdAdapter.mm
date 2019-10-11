@@ -23,6 +23,7 @@
     {
         self.adKey = adKey;
         self.adGroup = group;
+        self.isLoading = false;
     }
     return self;
 }

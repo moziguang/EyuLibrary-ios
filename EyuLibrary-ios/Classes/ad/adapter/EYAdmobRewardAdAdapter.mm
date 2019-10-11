@@ -13,12 +13,15 @@
 @implementation EYAdmobRewardAdAdapter
 
 @synthesize isRewarded = _isRewarded;
+@synthesize isLoaded = _isLoaded;
 
 
 -(void) loadAd
 {
     NSLog(@"lwq, AdmobRewardAdAdapter loadAd #############. adId = #%@#", self.adKey.key);
-    if([self isAdLoaded])
+    if([self isShowing ]){
+        [self notifyOnAdLoadFailedWithError:ERROR_AD_IS_SHOWING];
+    }else if([self isAdLoaded])
     {
         [self notifyOnAdLoaded];
     }else if([[EYAdManager sharedInstance] isAdmobRewardAdLoaded]){
@@ -35,7 +38,8 @@
         }
     }else if(!self.isLoading)
     {
-        self.isLoading = true;
+        self.isLoading = YES;
+        [[EYAdManager sharedInstance] setIsAdmobRewardAdLoading:YES];
         [GADRewardBasedVideoAd sharedInstance].delegate = self;
         GADRequest* request = [GADRequest request];
         //request.testDevices = @[ @"9b80927958fbfef89ca335966239ca9a",@"46fd4577df207ecb050bffa2948d5e52" ];
@@ -53,7 +57,9 @@
     NSLog(@"lwq, AdmobRewardAdAdapter showAd #############.");
     if([self isAdLoaded])
     {
-        self.isRewarded = false;
+        self.isLoaded = NO;
+        self.isRewarded = NO;
+        self.isShowing = YES;
         [[GADRewardBasedVideoAd sharedInstance] presentFromRootViewController:controller];
         return true;
     }
@@ -62,7 +68,7 @@
 
 -(bool) isAdLoaded
 {
-    return [[GADRewardBasedVideoAd sharedInstance] isReady];
+    return self.isLoaded && [[GADRewardBasedVideoAd sharedInstance] isReady];
 }
 
 - (void)rewardBasedVideoAd:(GADRewardBasedVideoAd *)rewardBasedVideoAd didRewardUserWithReward:(GADAdReward *)reward {
@@ -73,6 +79,9 @@
 
 - (void)rewardBasedVideoAdDidReceiveAd:(GADRewardBasedVideoAd *)rewardBasedVideoAd {
     NSLog(@"lwq, AdmobRewardAdAdapter Reward based video ad is received.");
+    [[EYAdManager sharedInstance] setIsAdmobRewardAdLoaded:YES];
+    [[EYAdManager sharedInstance] setIsAdmobRewardAdLoading:NO];
+    self.isLoaded = YES;
     [self cancelTimeoutTask];
     [self notifyOnAdLoaded];
 }
@@ -89,11 +98,13 @@
 
 - (void)rewardBasedVideoAdDidClose:(GADRewardBasedVideoAd *)rewardBasedVideoAd {
     NSLog(@"lwq, AdmobRewardAdAdapter Reward based video ad is closed. self->isRewarded = %d", self.isRewarded);
-    
+    [[EYAdManager sharedInstance] setIsAdmobRewardAdLoaded:NO];
     if(self.isRewarded){
         [self notifyOnAdRewarded];
     }
-    self.isRewarded = false;
+    self.isLoaded = NO;
+    self.isShowing = NO;
+    self.isRewarded = NO;
     [self notifyOnAdClosed];
 }
 
@@ -104,6 +115,7 @@
 
 - (void)rewardBasedVideoAd:(GADRewardBasedVideoAd *)rewardBasedVideoAd didFailToLoadWithError:(NSError *)error {
     NSLog(@"lwq, AdmobRewardAdAdapter Reward based video ad failed to load. error = %@", error);
+    [[EYAdManager sharedInstance] setIsAdmobRewardAdLoading:NO];
     [self cancelTimeoutTask];
     [self notifyOnAdLoadFailedWithError:(int)error.code];
 }
