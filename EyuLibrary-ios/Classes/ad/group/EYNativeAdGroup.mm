@@ -229,7 +229,7 @@
     EYAdKey *adKey = adapter.adKey;
     if(adKey){
         NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-        [dic setObject:adKey.network forKey:@"type"];
+        [dic setObject:adKey.network forKey:@"network"];
         [dic setObject:adKey.key forKey:@"unit"];
         [dic setObject:ADTypeNative forKey:@"type"];
         [dic setObject:adKey.keyId forKey:@"keyId"];
