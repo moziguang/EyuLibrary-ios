@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'EyuLibrary-ios'
-  s.version          = '1.2.18'
+  s.version          = '1.2.19'
   s.summary          = 'A short description of EyuLibrary-ios.'
 
 # This description is used to generate tags and improve search results.
@@ -53,7 +53,7 @@ Pod::Spec.new do |s|
  
  s.subspec '3rd' do |a|
      a.dependency 'SVProgressHUD'
-     a.dependency 'AppsFlyerFramework','4.8.8'
+     a.dependency 'AppsFlyerFramework','4.10.4'
      a.dependency 'FFToast'
      a.dependency 'UMCAnalytics'
      #a.vendored_frameworks = ['EyuLibrary-ios/Classes/framework/UnityAds.framework','EyuLibrary-ios/Classes/framework/BUAdSDK.framework']
@@ -62,7 +62,7 @@ Pod::Spec.new do |s|
  end
  
  s.subspec 'BytedanceOnly' do |bo|
-     bo.dependency 'Bytedance-UnionAD','2.3.1.0'
+     bo.dependency 'Bytedance-UnionAD','2.4.6.7'
      bo.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) BYTE_DANCE_ONLY=1'}
  end
  
@@ -75,7 +75,7 @@ Pod::Spec.new do |s|
  end
  
  s.subspec 'gdt_ad_sdk' do |gdt_ad|
-     gdt_ad.dependency 'GDTMobSDK','4.10.13'
+     gdt_ad.dependency 'GDTMobSDK','4.10.14'
      gdt_ad.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) GDT_AD_ENABLED'}
  end
  
@@ -92,17 +92,17 @@ Pod::Spec.new do |s|
  
  s.subspec 'others_ads_sdk' do |e|
      #e.dependency 'Firebase/AdMob'#,'5.6.0'
-     e.dependency 'AppLovinSDK','6.9.4'
-     e.dependency 'FBAudienceNetwork','5.5.0'
-     e.dependency 'UnityAds','3.0.0'
-     e.dependency 'VungleSDK-iOS','6.2.0'
-     e.dependency 'Bytedance-UnionAD','2.3.1.0'
+     e.dependency 'AppLovinSDK','6.9.5'
+     e.dependency 'FBAudienceNetwork','5.5.1'
+     e.dependency 'UnityAds','3.3.0'
+     e.dependency 'VungleSDK-iOS','6.4.5'
+     e.dependency 'Bytedance-UnionAD','2.4.6.7'
  end
  
  s.subspec 'fb_sdk' do |fb|
-     fb.dependency 'FBSDKCoreKit','5.4.1'
-     fb.dependency 'FBSDKShareKit','5.4.1'
-     fb.dependency 'FBSDKLoginKit','5.4.1'
+     fb.dependency 'FBSDKCoreKit','5.8.0'
+     fb.dependency 'FBSDKShareKit','5.8.0'
+     fb.dependency 'FBSDKLoginKit','5.8.0'
      fb.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) FACEBOOK_ENABLED'}
  end
  

@@ -34,7 +34,7 @@
     adConfig.mtgAppKey = @"a339a16bbaca844012276afad6f59eaa";
     adConfig.admobClientId = @"ca-app-pub-9624926763614741~7511510626";
     adConfig.wmAppKey = @"5010261";
-//    adConfig.gdtAppId = @"1108127036";
+    adConfig.gdtAppId = @"1108127036";
 //    [EYAdManager sharedInstance].useIronSource = true;
     [[EYAdManager sharedInstance] setupWithConfig:adConfig];
     [[EYAdManager sharedInstance] setDelegate:self];
