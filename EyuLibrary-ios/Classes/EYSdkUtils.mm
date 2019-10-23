@@ -33,9 +33,14 @@ static bool sIsFBInited = false;
  **/
 +(void) initFacebookSdkWithApplication:(UIApplication *)application options:(NSDictionary *)launchOptions
 {
+    
+    [FBSDKSettings setAutoLogAppEventsEnabled:YES];
+    [FBSDKSettings setAutoInitEnabled: YES ];
+    [FBSDKSettings setAdvertiserIDCollectionEnabled:YES];
+    [FBSDKApplicationDelegate initializeSDK:nil];
+    
     [[FBSDKApplicationDelegate sharedInstance] application:application
                              didFinishLaunchingWithOptions:launchOptions];
-    [FBSDKSettings setAutoLogAppEventsEnabled:YES];
     
     [FBSDKAppEvents activateApp];
     sIsFBInited = true;
