@@ -125,6 +125,11 @@ NSLog(@"广告点击 onAdClicked adPlaceId = %@, type = %@", adPlaceId, type);
 NSLog(@"默认原生广告点击 onDefaultNativeAdClicked");
 }
 
+-(void) onAdImpression:(NSString*) adPlaceId  type:(NSString*)type
+{
+NSLog(@"lwq, onAdImpression adPlaceId = %@, type = %@", adPlaceId, type);
+}
+
 事件上报
 #import "EYEventUtils.h"
 NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
