@@ -50,7 +50,7 @@
             self.adapterClassDict = [[NSDictionary alloc] initWithObjectsAndKeys:
                                      NSClassFromString(@"EYWMRewardAdAdapter"), ADNetworkWM,
                                      nil];
-        }else if(!adConfig.enableIronSource) {
+        }else {
             self.adapterClassDict = [[NSDictionary alloc] initWithObjectsAndKeys:
                                      NSClassFromString(@"EYFbRewardAdAdapter"), ADNetworkFacebook,
                                      NSClassFromString(@"EYAdmobRewardAdAdapter"), ADNetworkAdmob,
@@ -62,20 +62,10 @@
                                      NSClassFromString(@"EYGdtRewardAdAdapter"), ADNetworkGdt,
 #endif /*GDT_AD_ENABLED*/
                                      NSClassFromString(@"EYMtgRewardAdAdapter"), ADNetworkMtg,
-                                     nil];
-        }
-        else {
-            self.adapterClassDict = [[NSDictionary alloc] initWithObjectsAndKeys:
-                                     NSClassFromString(@"EYWMRewardAdAdapter"), ADNetworkWM,
-#ifdef GDT_AD_ENABLED
-
-                                     NSClassFromString(@"EYGdtRewardAdAdapter"), ADNetworkGdt,
-#endif /*GDT_AD_ENABLED*/
-
-                                     NSClassFromString(@"EYMtgRewardAdAdapter"), ADNetworkMtg,
                                      NSClassFromString(@"EYIronSourceRewardAdAdapter"), ADNetworkIronSource,
                                      nil];
         }
+        
         self.adGroup = group;
         self.adapterArray = [[NSMutableArray alloc] init];
         

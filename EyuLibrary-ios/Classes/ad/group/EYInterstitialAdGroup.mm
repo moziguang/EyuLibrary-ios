@@ -47,7 +47,7 @@
             self.adapterClassDict = [[NSDictionary alloc] initWithObjectsAndKeys:
                                      NSClassFromString(@"EYWMInterstitialAdAdapter"), ADNetworkWM,
                                      nil];
-        }else if(!adConfig.enableIronSource) {
+        }else {
             self.adapterClassDict = [[NSDictionary alloc] initWithObjectsAndKeys:
                                      NSClassFromString(@"EYFbInterstitialAdAdapter"), ADNetworkFacebook,
                                      NSClassFromString(@"EYAdmobInterstitialAdAdapter"), ADNetworkAdmob,
@@ -56,15 +56,10 @@
                                      NSClassFromString(@"EYApplovinInterstitialAdAdapter"), ADNetworkApplovin,
                                      NSClassFromString(@"EYWMInterstitialAdAdapter"), ADNetworkWM,
                                      NSClassFromString(@"EYMtgInterstitialAdAdapter"), ADNetworkMtg,
-                                     nil];
-        }
-        else {
-            self.adapterClassDict = [[NSDictionary alloc] initWithObjectsAndKeys:
-                                     NSClassFromString(@"EYWMInterstitialAdAdapter"), ADNetworkWM,
-                                     NSClassFromString(@"EYMtgInterstitialAdAdapter"), ADNetworkMtg,
                                      NSClassFromString(@"EYIronSourceInterstitialAdAdapter"), ADNetworkIronSource,
                                      nil];
         }
+
         self.adGroup = adGroup;
         self.adapterArray = [[NSMutableArray alloc] init];
         self.maxTryLoadAd = adConfig.maxTryLoadInterstitialAd > 0 ? adConfig.maxTryLoadInterstitialAd : 7;

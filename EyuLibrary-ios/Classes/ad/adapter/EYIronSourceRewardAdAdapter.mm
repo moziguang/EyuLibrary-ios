@@ -70,6 +70,8 @@
     NSLog(@"EYIronSourceRewardAdAdapter rewardedVideoHasChangedAvailability");
     if(available == YES) {
         [self notifyOnAdLoaded];
+    }else{
+        [self notifyOnAdLoadFailedWithError:ERROR_IS_AD_LOAD_ERROR];
     }
 }
 

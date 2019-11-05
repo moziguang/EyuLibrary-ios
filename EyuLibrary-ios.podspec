@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'EyuLibrary-ios'
-  s.version          = '1.2.20'
+  s.version          = '1.2.21'
   s.summary          = 'A short description of EyuLibrary-ios.'
 
 # This description is used to generate tags and improve search results.
@@ -80,10 +80,7 @@ Pod::Spec.new do |s|
  end
  
  s.subspec 'ironsource' do |d|
-     d.dependency 'IronSourceSDK','6.8.1.0'
-     d.vendored_frameworks = ['EyuLibrary-ios/3rd/ISAdMobAdapter.framework','EyuLibrary-ios/3rd/ISAppLovinAdapter.framework',
-     'EyuLibrary-ios/3rd/ISFacebookAdapter.framework','EyuLibrary-ios/3rd/ISUnityAdsAdapter.framework','EyuLibrary-ios/3rd/ISVungleAdapter.framework']
-     d.frameworks = 'CoreGraphics','UIKit'
+     d.dependency 'IronSourceSDK','6.8.7.0'
  end
  
  s.subspec 'admob_sdk' do |admob|

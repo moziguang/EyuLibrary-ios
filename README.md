@@ -18,14 +18,14 @@ it, simply add the following line to your Podfile:
 
 ```ruby
 #国内国外一体版本(不含firebase及facebook)
-pod 'EyuLibrary-ios',:subspecs => ['3rd','Core','gdt','mtg','ironsource','others_ads_sdk','admob_sdk','gdt_ad_sdk'], :git => 'https://github.com/moziguang/EyuLibrary-ios.git',:tag =>'1.2.19'
+pod 'EyuLibrary-ios',:subspecs => ['3rd','Core','gdt','mtg','ironsource','others_ads_sdk','admob_sdk','gdt_ad_sdk'], :git => 'https://github.com/moziguang/EyuLibrary-ios.git',:tag =>'1.2.21'
 
 用到广点通变现的需要在GCC_PREPROCESSOR_DEFINITIONS 加上GDT_AD_ENABLED
 
 使用广点通投放需要集成'gdt'，然后调用EYSdkUtils initGDTActionSdk初始化 gdt导量跟踪SDK，并在- (void)applicationDidBecomeActive:(UIApplication *)application中调用[EYSdkUtils doGDTSDKActionStartApp];
 
 #国内国外一体版本(含firebase)
-pod 'EyuLibrary-ios',:subspecs => ['3rd','Core','gdt','mtg','ironsource','others_ads_sdk','fb_sdk','crashlytics_sdk','firebase_sdk','gdt_ad_sdk'], :git => 'https://github.com/moziguang/EyuLibrary-ios.git',:tag =>'1.2.19'
+pod 'EyuLibrary-ios',:subspecs => ['3rd','Core','gdt','mtg','ironsource','others_ads_sdk','fb_sdk','crashlytics_sdk','firebase_sdk','gdt_ad_sdk'], :git => 'https://github.com/moziguang/EyuLibrary-ios.git',:tag =>'1.2.21'
 
 GCC_PREPROCESSOR_DEFINITIONS 加上 FACEBOOK_ENABLED及FIREBASE_ENABLED
 Info.plist 加上（admob广告sdk）
@@ -38,7 +38,7 @@ Facebook配置请参考https://developers.facebook.com/docs/app-events/getting-s
 [EYSdkUtils application:app openURL:url options:options];
 
 #国内只包含穿山甲sdk
-pod 'EyuLibrary-ios',:subspecs => ['3rd','Core','gdt','BytedanceOnly'], :git => 'https://github.com/moziguang/EyuLibrary-ios.git',:tag =>'1.2.19'
+pod 'EyuLibrary-ios',:subspecs => ['3rd','Core','gdt','BytedanceOnly'], :git => 'https://github.com/moziguang/EyuLibrary-ios.git',:tag =>'1.2.21'
 
 
 目标target的

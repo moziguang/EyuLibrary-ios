@@ -31,7 +31,7 @@
 @property(nonatomic,copy)NSString *mtgAppId;
 @property(nonatomic,copy)NSString *mtgAppKey;
 @property(nonatomic,copy)NSString *ironSourceAppKey;
-@property(nonatomic,assign) bool enableIronSource;
+//@property(nonatomic,assign) bool enableIronSource;
 
 
 

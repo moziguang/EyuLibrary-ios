@@ -41,6 +41,7 @@
 #define     ERROR_IRON_SOURCE_AD_NOT_LOADED             -12002
 #define     ERROR_TIMEOUT                               -13001
 #define     ERROR_AD_IS_SHOWING                         -13002
+#define     ERROR_IS_AD_LOAD_ERROR                      -13003
 
 #define     TIMEOUT_TIME                                16
 

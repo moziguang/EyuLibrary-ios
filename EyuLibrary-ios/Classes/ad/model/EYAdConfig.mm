@@ -25,7 +25,7 @@
 @synthesize isPaidApp = _isPaidApp;
 @synthesize mtgAppId = _mtgAppId;
 @synthesize mtgAppKey = _mtgAppKey;
-@synthesize enableIronSource = _enableIronSource;
+//@synthesize enableIronSource = _enableIronSource;
 @synthesize isWmOnly = _isWmOnly;
 #ifdef GDT_AD_ENABLED
 @synthesize gdtAppId = _gdtAppId;
@@ -49,7 +49,6 @@
         self.vungleClientId = nil;
         self.isPaidApp = false;
         self.ironSourceAppKey = nil;
-        self.enableIronSource = false;
 #ifdef GDT_AD_ENABLED
         self.gdtAppId = nil;
 #endif

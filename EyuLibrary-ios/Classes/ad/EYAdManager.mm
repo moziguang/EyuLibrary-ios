@@ -236,7 +236,6 @@ static id s_sharedInstance;
      **/
     [ALSdk initializeSdk];
     
-    if(!config.enableIronSource) {
         NSString* unityClientId = config.unityClientId;
         if(unityClientId == NULL || [unityClientId isEqualToString:@""])
         {
@@ -261,8 +260,6 @@ static id s_sharedInstance;
                 NSLog(@"lwq, setup VungleSDK error =  %@", error);
             }
         }
-    }
-    else {
         NSString *ironSourceAppKey = config.ironSourceAppKey;
         if(ironSourceAppKey == NULL || [ironSourceAppKey isEqualToString:@""]) {
             NSLog(@"lwq, setup ironSourceAppKey ==  NULL");
@@ -276,7 +273,6 @@ static id s_sharedInstance;
             [IronSource setAdaptersDebug:YES];
             [ISIntegrationHelper validateIntegration];
         }
-    }
 #endif
 }
 
