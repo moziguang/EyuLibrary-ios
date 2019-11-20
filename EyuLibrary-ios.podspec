@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'EyuLibrary-ios'
-  s.version          = '1.2.21'
+  s.version          = '1.2.22'
   s.summary          = 'A short description of EyuLibrary-ios.'
 
 # This description is used to generate tags and improve search results.
@@ -94,6 +94,14 @@ Pod::Spec.new do |s|
      e.dependency 'UnityAds','3.3.0'
      e.dependency 'VungleSDK-iOS','6.4.5'
      e.dependency 'Bytedance-UnionAD','2.4.6.7'
+ end
+ 
+ s.subspec 'others_ads_sdk_5_4_0' do |other|
+     other.dependency 'AppLovinSDK','6.9.5'
+     other.dependency 'FBAudienceNetwork','5.4.0'
+     other.dependency 'UnityAds','3.3.0'
+     other.dependency 'VungleSDK-iOS','6.4.5'
+     other.dependency 'Bytedance-UnionAD','2.4.6.7'
  end
  
  s.subspec 'fb_sdk' do |fb|
