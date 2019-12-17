@@ -109,7 +109,7 @@
 }
 
 - (void)rewardedVideoAd:(BURewardedVideoAd *)rewardedVideoAd didFailWithError:(NSError *)error {
-    NSLog(@"lwq, wm rewarded video material load fail");
+    NSLog(@"lwq, wm rewarded video material load fail, %@", error);
     self.isLoading = false;
     if(self.rewardAd != NULL ){
         self.rewardAd.delegate = NULL;

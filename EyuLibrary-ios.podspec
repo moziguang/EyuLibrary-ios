@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'EyuLibrary-ios'
-  s.version          = '1.2.22'
+  s.version          = '1.2.23'
   s.summary          = 'A short description of EyuLibrary-ios.'
 
 # This description is used to generate tags and improve search results.
@@ -62,7 +62,7 @@ Pod::Spec.new do |s|
  end
  
  s.subspec 'BytedanceOnly' do |bo|
-     bo.dependency 'Bytedance-UnionAD','2.4.6.7'
+     bo.dependency 'Bytedance-UnionAD','2.5.1.5'
      bo.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) BYTE_DANCE_ONLY=1'}
  end
  
@@ -93,7 +93,7 @@ Pod::Spec.new do |s|
      e.dependency 'FBAudienceNetwork','5.5.1'
      e.dependency 'UnityAds','3.3.0'
      e.dependency 'VungleSDK-iOS','6.4.5'
-     e.dependency 'Bytedance-UnionAD','2.4.6.7'
+     e.dependency 'Bytedance-UnionAD','2.5.1.5'
  end
  
  s.subspec 'others_ads_sdk_5_4_0' do |other|

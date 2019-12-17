@@ -1,24 +1,24 @@
 [
     {
-        "keys":"[]",
+        "keys":"[\"ios_wm_reward_ad\"]",
         "type":"rewardAd",
         "id":"reward_ad",
         "isAutoLoad":"true"
     },
     {
-        "keys":"[]",
+        "keys":"[\"ios_wm_native_ad\"]",
         "type":"nativeAd",
-        "id":"inter_ad",
+        "id":"native_ad",
         "isAutoLoad":"true"
     },
     {
-        "keys":"[]",
+        "keys":"[\"ios_wm_interstitial_ad\"]",
         "type":"interstitialAd",
         "id":"inter_ad",
         "isAutoLoad":"true"
     },
     {
-        "keys":"[\"ios_fb_banner\",\"ios_admob_banner\"]",
+        "keys":"[]",
         "type":"banner",
         "id":"banner_group",
         "isAutoLoad":"true"
