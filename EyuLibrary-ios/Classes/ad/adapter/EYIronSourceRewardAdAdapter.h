@@ -13,7 +13,7 @@
 
 
 @interface EYIronSourceRewardAdAdapter : EYRewardAdAdapter
-
+-(instancetype) initWithAdKey:(EYAdKey*)adKey adGroup:(EYAdGroup*) group;
 @end
 
 #endif

@@ -13,6 +13,7 @@
 
 @interface EYIronSourceInterstitialAdAdapter : EYInterstitialAdAdapter
 
+-(instancetype) initWithAdKey:(EYAdKey*)adKey adGroup:(EYAdGroup*) group;
 @end
 
 #endif

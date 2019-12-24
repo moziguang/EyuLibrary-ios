@@ -30,7 +30,7 @@
 
 
 #ifndef BYTE_DANCE_ONLY
-@interface EYAdManager()<UnityAdsDelegate, VungleSDKDelegate, ISInterstitialDelegate, ISRewardedVideoDelegate>
+@interface EYAdManager()<UnityAdsDelegate, VungleSDKDelegate, ISDemandOnlyInterstitialDelegate, ISDemandOnlyRewardedVideoDelegate>
 #else
 @interface EYAdManager()
 #endif
@@ -53,6 +53,8 @@
 
 @property(nonatomic,strong) NSMutableDictionary<NSString*, id<UnityAdsDelegate>>* unityAdsDelegateDict;
 @property(nonatomic,strong) NSMutableDictionary<NSString*, id<VungleSDKDelegate>>* vungleAdsDelegateDict;
+@property(nonatomic,strong) NSMutableDictionary<NSString*, id<ISDemandOnlyRewardedVideoDelegate>>* ironRewardDelegateDict;
+@property(nonatomic,strong) NSMutableDictionary<NSString*, id<ISDemandOnlyInterstitialDelegate>>* ironInterDelegateDict;
 #endif
 @property(nonatomic,strong) CTCellularData* cellularData;
 
@@ -77,6 +79,8 @@ static id s_sharedInstance;
 
 @synthesize unityAdsDelegateDict = _unityAdsDelegateDict;
 @synthesize vungleAdsDelegateDict = _vungleAdsDelegateDict;
+@synthesize ironRewardDelegateDict = _ironRewardDelegateDict;
+@synthesize ironInterDelegateDict = _ironInterDelegateDict;
 #endif
 @synthesize isAdmobRewardAdLoaded = _isAdmobRewardAdLoaded;
 @synthesize isAdmobRewardAdLoading = _isAdmobRewardAdLoading;
@@ -266,11 +270,16 @@ static id s_sharedInstance;
         }
         else {
             NSLog(@"lwq, setup ironSourceAppKey ==  %@", ironSourceAppKey);
-            [IronSource setInterstitialDelegate:self];
-            [IronSource setRewardedVideoDelegate:self];
+//            [IronSource setInterstitialDelegate:self];
+//            [IronSource setRewardedVideoDelegate:self];
+            [IronSource initISDemandOnly:ironSourceAppKey adUnits:@[IS_INTERSTITIAL]];
+            [IronSource initISDemandOnly:ironSourceAppKey adUnits:@[IS_REWARDED_VIDEO]];
+
+            [IronSource setISDemandOnlyInterstitialDelegate:self];
+            [IronSource setISDemandOnlyRewardedVideoDelegate:self];
             [IronSource shouldTrackReachability:YES];
-            [IronSource initWithAppKey:ironSourceAppKey];
-            [IronSource setAdaptersDebug:YES];
+//            [IronSource initWithAppKey:ironSourceAppKey];
+            [IronSource setAdaptersDebug:NO];
             [ISIntegrationHelper validateIntegration];
         }
 #endif
@@ -304,11 +313,10 @@ static id s_sharedInstance;
     self.nativeAdViewNibDict = [[NSMutableDictionary alloc] init];
     self.nativeAdController = nil;
 #ifndef BYTE_DANCE_ONLY
-    self.ISRVAdapter = nil;
-    self.ISInterstitialAdapter = nil;
-    
     self.unityAdsDelegateDict = [[NSMutableDictionary alloc] init];
     self.vungleAdsDelegateDict = [[NSMutableDictionary alloc] init];
+    self.ironInterDelegateDict = [[NSMutableDictionary alloc] init];
+    self.ironRewardDelegateDict = [[NSMutableDictionary alloc] init];
 #endif
     [self loadAdConfig:config];
     [self initAdGroup];
@@ -575,7 +583,7 @@ static id s_sharedInstance;
 
 -(void) onNativeAdLoaded:(NSString*) adPlaceId
 {
-    NSLog(@"AdPlayer onNativeAdLoaded , adPlaceId = %@", adPlaceId);
+    NSLog(@"lwq, AdPlayer onNativeAdLoaded , adPlaceId = %@", adPlaceId);
     EYNativeAdView* view = [self getNativeAdViewFromCache:adPlaceId withViewController:self.nativeAdController];
     if(view && view.isCanShow && view.isNeedUpdate)
     {
@@ -589,7 +597,7 @@ static id s_sharedInstance;
 
 -(void) onAdLoaded:(NSString*) adPlaceId type:(NSString*)type
 {
-    NSLog(@"AdPlayer onAdLoaded , adPlaceId = %@, type = %@", adPlaceId, type);
+    NSLog(@"lwq, AdPlayer onAdLoaded , adPlaceId = %@, type = %@", adPlaceId, type);
     if(self.delegate)
     {
         [self.delegate onAdLoaded:adPlaceId type:type];
@@ -603,7 +611,7 @@ static id s_sharedInstance;
 
 -(void) onAdReward:(NSString*) adPlaceId  type:(NSString*)type
 {
-    NSLog(@"AdPlayer onAdReward , adPlaceId = %@, type = %@", adPlaceId, type);
+    NSLog(@"lwq, AdPlayer onAdReward , adPlaceId = %@, type = %@", adPlaceId, type);
     if(self.delegate)
     {
         [self.delegate onAdReward:adPlaceId type:type];
@@ -612,7 +620,7 @@ static id s_sharedInstance;
 
 -(void) onAdShowed:(NSString*) adPlaceId  type:(NSString*)type
 {
-    NSLog(@"AdPlayer onAdShowed , adPlaceId = %@, type = %@", adPlaceId, type);
+    NSLog(@"lwq, AdPlayer onAdShowed , adPlaceId = %@, type = %@", adPlaceId, type);
     if(self.delegate)
     {
         [self.delegate onAdShowed:adPlaceId type:type];
@@ -621,7 +629,7 @@ static id s_sharedInstance;
 
 -(void) onAdClosed:(NSString*) adPlaceId  type:(NSString*)type
 {
-    NSLog(@"AdPlayer onAdClosed , adPlaceId = %@, type = %@", adPlaceId, type);
+    NSLog(@"lwq, AdPlayer onAdClosed , adPlaceId = %@, type = %@", adPlaceId, type);
     if(self.delegate)
     {
         [self.delegate onAdClosed:adPlaceId type:type];
@@ -630,7 +638,7 @@ static id s_sharedInstance;
 
 -(void) onAdClicked:(NSString*) adPlaceId  type:(NSString*)type
 {
-    NSLog(@"AdPlayer onAdClicked , adPlaceId = %@, type = %@", adPlaceId, type);
+    NSLog(@"lwq, AdPlayer onAdClicked , adPlaceId = %@, type = %@", adPlaceId, type);
     if(self.delegate)
     {
         [self.delegate onAdClicked:adPlaceId type:type];
@@ -639,7 +647,7 @@ static id s_sharedInstance;
 
 -(void) onAdLoadFailed:(NSString*) adPlaceId  key:(NSString*)key code:(int)code
 {
-    NSLog(@"AdPlayer onAdLoadFailed , adPlaceId = %@, key = %@, code = %d", adPlaceId, key, code);
+    NSLog(@"lwq, AdPlayer onAdLoadFailed , adPlaceId = %@, key = %@, code = %d", adPlaceId, key, code);
     if(self.delegate)
     {
         [self.delegate onAdLoadFailed:adPlaceId key:key code:code];
@@ -648,7 +656,7 @@ static id s_sharedInstance;
 
 -(void) onAdImpression:(NSString*) adPlaceId  type:(NSString*)type
 {
-    NSLog(@"AdPlayer onAdImpression , adPlaceId = %@, type = %@", adPlaceId, type);
+    NSLog(@"lwq, AdPlayer onAdImpression , adPlaceId = %@, type = %@", adPlaceId, type);
     if(self.delegate)
     {
         [self.delegate onAdImpression:adPlaceId type:type];
@@ -784,173 +792,99 @@ static id s_sharedInstance;
     NSLog(@"vungleSDKFailedToInitializeWithError , error = %@", error);
 }
 
-#pragma mark - IronSource Interstitial Delegate Functions
-/**
- Called after an interstitial has been loaded
- */
-- (void)interstitialDidLoad
-{
-    if(self.ISInterstitialAdapter != nil) {
-        [self.ISInterstitialAdapter interstitialDidLoad];
+#pragma mark - ISDemandOnlyInterstitialDelegate
+//Invoked when Interstitial Ad is ready to be shown after the load function was called.
+- (void)interstitialDidLoad:(NSString *)instanceId {
+    if(self.ironInterDelegateDict[instanceId])
+    {
+        [self.ironInterDelegateDict[instanceId] interstitialDidLoad:instanceId];
+    }
+}
+//Called if showing the Interstitial for the user has failed.
+//You can learn about the reason by examining the ‘error’ value
+- (void)interstitialDidFailToShowWithError:(NSError *)error instanceId:(NSString *)instanceId {
+    if(self.ironInterDelegateDict[instanceId])
+    {
+        [self.ironInterDelegateDict[instanceId] interstitialDidFailToShowWithError:error instanceId:instanceId];
+    }
+}
+//Called each time the end user has clicked on the Interstitial ad.
+- (void)didClickInterstitial:(NSString *)instanceId {
+    if(self.ironInterDelegateDict[instanceId])
+    {
+        [self.ironInterDelegateDict[instanceId] didClickInterstitial:instanceId];
+    }
+}
+//Called each time the Interstitial window is about to close
+- (void)interstitialDidClose:(NSString *)instanceId {
+    if(self.ironInterDelegateDict[instanceId])
+    {
+        [self.ironInterDelegateDict[instanceId] interstitialDidClose:instanceId];
+    }
+}
+//Called each time the Interstitial window is about to open
+- (void)interstitialDidOpen:(NSString *)instanceId {
+    if(self.ironInterDelegateDict[instanceId])
+    {
+        [self.ironInterDelegateDict[instanceId] interstitialDidOpen:instanceId];
+    }
+}
+//Invoked when there is no Interstitial Ad available after calling the load function.
+//@param error - will contain the failure code and description.
+- (void)interstitialDidFailToLoadWithError:(NSError *)error instanceId:(NSString *)instanceId {
+    if(self.ironInterDelegateDict[instanceId])
+    {
+        [self.ironInterDelegateDict[instanceId] interstitialDidFailToLoadWithError:error instanceId:instanceId];
     }
 }
 
-/**
- Called after an interstitial has attempted to load but failed.
-  
- @param error The reason for the error
- */
-- (void)interstitialDidFailToLoadWithError:(NSError *)error
+#pragma mark - ISDemandOnlyRewardedVideoDelegate
+//Called after a rewarded video has been requested and load succeed.
+- (void)rewardedVideoDidLoad:(NSString *)instanceId{
+    if(self.ironRewardDelegateDict[instanceId]){
+        [self.ironRewardDelegateDict[instanceId] rewardedVideoDidLoad:instanceId];
+    }
+}
+//Called after a rewarded video has attempted to load but failed.
+//@param error The reason for the error
+- (void)rewardedVideoDidFailToLoadWithError:(NSError *)error instanceId:(NSString* )instanceId{
+    if(self.ironRewardDelegateDict[instanceId]){
+        [self.ironRewardDelegateDict[instanceId] rewardedVideoDidFailToLoadWithError:error instanceId:instanceId];
+    }
+}
+//Called after a rewarded video has been viewed completely and the user is //eligible for reward.
+- (void)rewardedVideoAdRewarded:(NSString *)instanceId{
+    if(self.ironRewardDelegateDict[instanceId]){
+        [self.ironRewardDelegateDict[instanceId] rewardedVideoAdRewarded:instanceId];
+    }
+}
+//Called after a rewarded video has attempted to show but failed.
+//@param error The reason for the error
+- (void)rewardedVideoDidFailToShowWithError:(NSError *)error instanceId:(NSString *)instanceId {
+    if(self.ironRewardDelegateDict[instanceId]){
+        [self.ironRewardDelegateDict[instanceId] rewardedVideoDidFailToShowWithError:error instanceId:instanceId];
+    }
+}
+//Called after a rewarded video has been opened.
+- (void)rewardedVideoDidOpen:(NSString *)instanceId {
+    if(self.ironRewardDelegateDict[instanceId]){
+        [self.ironRewardDelegateDict[instanceId] rewardedVideoDidOpen:instanceId];
+    }
+}
+//Called after a rewarded video has been dismissed.
+- (void)rewardedVideoDidClose:(NSString *)instanceId {
+    if(self.ironRewardDelegateDict[instanceId]){
+        [self.ironRewardDelegateDict[instanceId] rewardedVideoDidClose:instanceId];
+    }
+}
+//Invoked when the end user clicked on the RewardedVideo ad
+- (void)rewardedVideoDidClick:(NSString *)instanceId
 {
-    if(self.ISInterstitialAdapter != nil) {
-        [self.ISInterstitialAdapter interstitialDidFailToLoadWithError:error];
+    if(self.ironRewardDelegateDict[instanceId]){
+        [self.ironRewardDelegateDict[instanceId] rewardedVideoDidClick:instanceId];
     }
 }
 
-/**
- Called after an interstitial has been opened.
- */
-- (void)interstitialDidOpen
-{
-    if(self.ISInterstitialAdapter != nil) {
-        [self.ISInterstitialAdapter interstitialDidOpen];
-    }
-}
-
-/**
- Called after an interstitial has been dismissed.
- */
-- (void)interstitialDidClose
-{
-    if(self.ISInterstitialAdapter != nil) {
-        [self.ISInterstitialAdapter interstitialDidClose];
-    }
-}
-
-/**
- Called after an interstitial has been displayed on the screen.
- */
-- (void)interstitialDidShow
-{
-    if(self.ISInterstitialAdapter != nil) {
-        [self.ISInterstitialAdapter interstitialDidShow];
-    }
-}
-
-/**
- Called after an interstitial has attempted to show but failed.
- 
- @param error The reason for the error
- */
-- (void)interstitialDidFailToShowWithError:(NSError *)error
-{
-    if(self.ISInterstitialAdapter != nil) {
-        [self.ISInterstitialAdapter interstitialDidFailToShowWithError:error];
-    }
-}
-
-/**
- Called after an interstitial has been clicked.
- */
-- (void)didClickInterstitial
-{
-    if(self.ISInterstitialAdapter != nil) {
-        [self.ISInterstitialAdapter didClickInterstitial];
-    }
-}
-    
-#pragma mark - IronSource Rewarded Video Delegate Functions
-/**
- Called after a rewarded video has changed its availability.
- 
- @param available The new rewarded video availability. YES if available and ready to be shown, NO otherwise.
- */
-- (void)rewardedVideoHasChangedAvailability:(BOOL)available
-{
-    if(self.ISRVAdapter != nil) {
-        [self.ISRVAdapter rewardedVideoHasChangedAvailability:available];
-    }
-}
-
-/**
- Called after a rewarded video has been viewed completely and the user is eligible for reward.
- 
- @param placementInfo An object that contains the placement's reward name and amount.
- */
-- (void)didReceiveRewardForPlacement:(ISPlacementInfo *)placementInfo
-{
-    if(self.ISRVAdapter != nil) {
-        [self.ISRVAdapter didReceiveRewardForPlacement:placementInfo];
-    }
-}
-
-/**
- Called after a rewarded video has attempted to show but failed.
- 
- @param error The reason for the error
- */
-- (void)rewardedVideoDidFailToShowWithError:(NSError *)error
-{
-    if(self.ISRVAdapter) {
-        [self.ISRVAdapter rewardedVideoDidFailToShowWithError:error];
-    }
-}
-
-/**
- Called after a rewarded video has been opened.
- */
-- (void)rewardedVideoDidOpen
-{
-    if(self.ISRVAdapter != nil) {
-        [self.ISRVAdapter rewardedVideoDidOpen];
-    }
-}
-
-/**
- Called after a rewarded video has been dismissed.
- */
-- (void)rewardedVideoDidClose
-{
-    if(self.ISRVAdapter != nil) {
-        [self.ISRVAdapter rewardedVideoDidClose];
-    }
-}
-
-/**
- * Note: the events below are not available for all supported rewarded video ad networks.
- * Check which events are available per ad network you choose to include in your build.
- * We recommend only using events which register to ALL ad networks you include in your build.
- */
-
-/**
- Called after a rewarded video has started playing.
- */
-- (void)rewardedVideoDidStart
-{
-    if(self.ISRVAdapter != nil) {
-        [self.ISRVAdapter rewardedVideoDidStart];
-    }
-}
-
-/**
- Called after a rewarded video has finished playing.
- */
-- (void)rewardedVideoDidEnd
-{
-    if(self.ISRVAdapter != nil) {
-        [self.ISRVAdapter rewardedVideoDidEnd];
-    }
-}
-
-/**
- Called after a video has been clicked.
- */
-- (void)didClickRewardedVideo:(ISPlacementInfo *)placementInfo
-{
-    if(self.ISRVAdapter != nil) {
-        [self.ISRVAdapter didClickRewardedVideo:placementInfo];
-    }
-}
 #endif
 -(void) onDefaultNativeAdClicked
 {
@@ -1034,5 +968,29 @@ static id s_sharedInstance;
 
     }
     
+}
+
+-(void) addIronInterDelegate:(id<ISDemandOnlyInterstitialDelegate>) delegate withKey:(NSString*) adKey
+{
+    self.ironInterDelegateDict[adKey] = delegate;
+}
+
+-(void) removeIronInterDelegate:(id<ISDemandOnlyInterstitialDelegate>) delegate  forKey:(NSString *)adKey
+{
+    if(self.ironInterDelegateDict[adKey] == delegate){
+        self.ironInterDelegateDict[adKey] = nil;
+    }
+}
+
+-(void) addIronRewardDelegate:(id<ISDemandOnlyRewardedVideoDelegate>) delegate withKey:(NSString*) adKey
+{
+    self.ironRewardDelegateDict[adKey] = delegate;
+}
+
+-(void) removeIronRewardDelegate:(id<ISDemandOnlyRewardedVideoDelegate>) delegate  forKey:(NSString *)adKey
+{
+    if(self.ironRewardDelegateDict[adKey] == delegate){
+        self.ironRewardDelegateDict[adKey] = nil;
+    }
 }
 @end

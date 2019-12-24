@@ -34,11 +34,7 @@
 @property(nonatomic,strong) EYAdConfig* adConfig;
 @property(nonatomic,assign) bool isAdmobRewardAdLoaded;
 @property(nonatomic,assign) bool isAdmobRewardAdLoading;
-#ifndef BYTE_DANCE_ONLY
 
-@property(nonatomic,weak) id<ISRewardedVideoDelegate> ISRVAdapter;
-@property(nonatomic,weak) id<ISInterstitialDelegate> ISInterstitialAdapter;
-#endif
 -(void) loadRewardVideoAd:(NSString*) placeId;
 -(void) showRewardVideoAd:(NSString*) placeId withViewController:(UIViewController*)controller;
 
@@ -64,6 +60,11 @@
 -(void) removeUnityAdsDelegate:(id<UnityAdsDelegate>) delegate forKey:(NSString *)adKey;
 -(void) addVungleAdsDelegate:(id<VungleSDKDelegate>) delegate withKey:(NSString*) adKey;
 -(void) removeVungleAdsDelegate:(id<VungleSDKDelegate>) delegate  forKey:(NSString *)adKey;
+-(void) addIronInterDelegate:(id<ISDemandOnlyInterstitialDelegate>) delegate withKey:(NSString*) adKey;
+-(void) removeIronInterDelegate:(id<ISDemandOnlyInterstitialDelegate>) delegate  forKey:(NSString *)adKey;
+
+-(void) addIronRewardDelegate:(id<ISDemandOnlyRewardedVideoDelegate>) delegate withKey:(NSString*) adKey;
+-(void) removeIronRewardDelegate:(id<ISDemandOnlyRewardedVideoDelegate>) delegate  forKey:(NSString *)adKey;
 #endif
 -(void) onDefaultNativeAdClicked;
 
