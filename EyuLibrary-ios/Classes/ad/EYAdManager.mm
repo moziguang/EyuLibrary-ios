@@ -885,6 +885,31 @@ static id s_sharedInstance;
     }
 }
 
+
+-(void) addIronInterDelegate:(id<ISDemandOnlyInterstitialDelegate>) delegate withKey:(NSString*) adKey
+{
+    self.ironInterDelegateDict[adKey] = delegate;
+}
+
+-(void) removeIronInterDelegate:(id<ISDemandOnlyInterstitialDelegate>) delegate  forKey:(NSString *)adKey
+{
+    if(self.ironInterDelegateDict[adKey] == delegate){
+        self.ironInterDelegateDict[adKey] = nil;
+    }
+}
+
+-(void) addIronRewardDelegate:(id<ISDemandOnlyRewardedVideoDelegate>) delegate withKey:(NSString*) adKey
+{
+    self.ironRewardDelegateDict[adKey] = delegate;
+}
+
+-(void) removeIronRewardDelegate:(id<ISDemandOnlyRewardedVideoDelegate>) delegate  forKey:(NSString *)adKey
+{
+    if(self.ironRewardDelegateDict[adKey] == delegate){
+        self.ironRewardDelegateDict[adKey] = nil;
+    }
+}
+
 #endif
 -(void) onDefaultNativeAdClicked
 {
@@ -970,27 +995,4 @@ static id s_sharedInstance;
     
 }
 
--(void) addIronInterDelegate:(id<ISDemandOnlyInterstitialDelegate>) delegate withKey:(NSString*) adKey
-{
-    self.ironInterDelegateDict[adKey] = delegate;
-}
-
--(void) removeIronInterDelegate:(id<ISDemandOnlyInterstitialDelegate>) delegate  forKey:(NSString *)adKey
-{
-    if(self.ironInterDelegateDict[adKey] == delegate){
-        self.ironInterDelegateDict[adKey] = nil;
-    }
-}
-
--(void) addIronRewardDelegate:(id<ISDemandOnlyRewardedVideoDelegate>) delegate withKey:(NSString*) adKey
-{
-    self.ironRewardDelegateDict[adKey] = delegate;
-}
-
--(void) removeIronRewardDelegate:(id<ISDemandOnlyRewardedVideoDelegate>) delegate  forKey:(NSString *)adKey
-{
-    if(self.ironRewardDelegateDict[adKey] == delegate){
-        self.ironRewardDelegateDict[adKey] = nil;
-    }
-}
 @end
