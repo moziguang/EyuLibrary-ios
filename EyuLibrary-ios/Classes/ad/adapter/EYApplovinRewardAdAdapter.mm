@@ -4,7 +4,7 @@
 //
 //  Created by apple on 2018/3/9.
 //
-#ifndef BYTE_DANCE_ONLY
+#ifdef APPLOVIN_ADS_ENABLED
 
 #include "EYApplovinRewardAdAdapter.h"
 #import <AppLovinSDK/AppLovinSDK.h>
@@ -171,4 +171,4 @@
 - (void)rewardValidationRequestForAd:(ALAd *)ad didExceedQuotaWithResponse:(NSDictionary *)response { /* No longer used */ }
 @end
 
-#endif /*BYTE_DANCE_ONLY*/
+#endif /*APPLOVIN_ADS_ENABLED*/

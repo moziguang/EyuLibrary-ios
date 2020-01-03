@@ -4,10 +4,9 @@
 //
 //  Created by apple on 2018/3/9.
 //
-
+#ifdef APPLOVIN_ADS_ENABLED
 #ifndef EYApplovinNativeAdAdapter_h
 #define EYApplovinNativeAdAdapter_h
-#ifndef BYTE_DANCE_ONLY
 
 #import "EYNativeAdAdapter.h"
 
@@ -17,6 +16,7 @@
 
 
 @end
-#endif /*BYTE_DANCE_ONLY*/
 
 #endif /* EYApplovinNativeAdAdapter_h */
+
+#endif /**APPLOVIN_ADS_ENABLED*/

@@ -4,7 +4,7 @@
 //
 //  Created by apple on 2018/3/9.
 //
-
+#ifdef BYTE_DANCE_ADS_ENABLED
 #include "EYWMInterstitialAdAdapter.h"
 #import <BUAdSDK/BUFullscreenVideoAd.h>
 
@@ -128,3 +128,5 @@
 }
 
 @end
+
+#endif /*BYTE_DANCE_ADS_ENABLED*/

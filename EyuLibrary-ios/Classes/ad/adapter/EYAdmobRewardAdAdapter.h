@@ -4,10 +4,10 @@
 //
 //  Created by apple on 2018/3/9.
 //
+#ifdef ADMOB_ADS_ENABLED
 
 #ifndef AdmobRewardAdAdapter_h
 #define AdmobRewardAdAdapter_h
-#ifndef BYTE_DANCE_ONLY
 
 #import "EYRewardAdAdapter.h"
 #import "GoogleMobileAds/GoogleMobileAds.h"
@@ -19,6 +19,7 @@
 @property(nonatomic,assign)bool isLoaded;
 
 @end
-#endif /*BYTE_DANCE_ONLY*/
 
 #endif /* FbRewardAdAdapter_h */
+
+#endif /*ADMOB_ADS_ENABLED*/

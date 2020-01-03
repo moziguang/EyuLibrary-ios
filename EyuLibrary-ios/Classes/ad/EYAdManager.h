@@ -16,15 +16,21 @@
 #import "EYAdDelegate.h"
 #import "EYAdConstants.h"
 
-#if BYTE_DANCE_ONLY != 1
+#ifdef IRON_ADS_ENABLED
 #import "IronSource/IronSource.h"
+#endif
+
+#ifdef UNITY_ADS_ENABLED
 #import "UnityAds/UnityAds.h"
+#endif
+
+#ifdef VUNGLE_ADS_ENABLED
 #import "VungleSDK/VungleSDK.h"
-#endif /*BYTE_DANCE_ONLY*/
+#endif /*VUNGLE_ADS_ENABLED*/
 
 
 
-@interface EYAdManager : NSObject <EYAdDelegate>{
+@interface EYAdManager : NSObject {
     
 }
 
@@ -54,18 +60,24 @@
 -(void) setupWithConfig:(EYAdConfig*) config;
 -(EYAdKey*) getAdKeyWithId:(NSString*) keyId;
 
-#ifndef BYTE_DANCE_ONLY
-
+#ifdef UNITY_ADS_ENABLED
 -(void) addUnityAdsDelegate:(id<UnityAdsDelegate>) delegate withKey:(NSString*) adKey;
 -(void) removeUnityAdsDelegate:(id<UnityAdsDelegate>) delegate forKey:(NSString *)adKey;
+#endif
+
+#ifdef VUNGLE_ADS_ENABLED
 -(void) addVungleAdsDelegate:(id<VungleSDKDelegate>) delegate withKey:(NSString*) adKey;
 -(void) removeVungleAdsDelegate:(id<VungleSDKDelegate>) delegate  forKey:(NSString *)adKey;
+#endif
+
+#ifdef IRON_ADS_ENABLED
 -(void) addIronInterDelegate:(id<ISDemandOnlyInterstitialDelegate>) delegate withKey:(NSString*) adKey;
 -(void) removeIronInterDelegate:(id<ISDemandOnlyInterstitialDelegate>) delegate  forKey:(NSString *)adKey;
 
 -(void) addIronRewardDelegate:(id<ISDemandOnlyRewardedVideoDelegate>) delegate withKey:(NSString*) adKey;
 -(void) removeIronRewardDelegate:(id<ISDemandOnlyRewardedVideoDelegate>) delegate  forKey:(NSString *)adKey;
 #endif
+
 -(void) onDefaultNativeAdClicked;
 
 -(void) reset;

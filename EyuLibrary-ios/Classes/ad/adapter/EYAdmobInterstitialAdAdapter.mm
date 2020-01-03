@@ -4,7 +4,7 @@
 //
 //  Created by apple on 2018/3/9.
 //
-#ifndef BYTE_DANCE_ONLY
+#ifdef ADMOB_ADS_ENABLED
 
 #include "EYAdmobInterstitialAdAdapter.h"
 
@@ -117,4 +117,4 @@ didFailToReceiveAdWithError:(GADRequestError *)error {
 
 @end
 
-#endif /*BYTE_DANCE_ONLY*/
+#endif /*ADMOB_ADS_ENABLED*/

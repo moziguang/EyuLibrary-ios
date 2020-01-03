@@ -4,7 +4,7 @@
 //
 //  Created by apple on 2018/3/9.
 //
-#ifndef BYTE_DANCE_ONLY
+#ifdef MTG_ADS_ENABLED
 
 #ifndef EYMtgInterstitialAdAdapter_h
 #define EYMtgInterstitialAdAdapter_h
@@ -18,4 +18,4 @@
 @end
 
 #endif /* EYMtgInterstitialAdAdapter_h */
-#endif /*BYTE_DANCE_ONLY*/
+#endif /*MTG_ADS_ENABLED*/

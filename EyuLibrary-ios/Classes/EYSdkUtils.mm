@@ -7,12 +7,22 @@
 
 #import <Foundation/Foundation.h>
 #import "EYSdkUtils.h"
+
 #ifdef FIREBASE_ENABLED
 #import "Firebase.h"
 #endif
+
+#ifdef AF_ENABLED
 #import <AppsFlyerLib/AppsFlyerTracker.h>
+#endif
+
+#ifdef GDT_ACTION_ENABLED
 #import <GDTActionSDK/GDTAction.h>
+#endif
+
+#ifdef UM_ENABLED
 #import <UMCommon/UMCommon.h>
+#endif
 
 #ifdef FACEBOOK_ENABLED
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
@@ -63,22 +73,34 @@ static bool sIsFBInited = false;
 #ifdef FIREBASE_ENABLED
 +(void) initFirebaseSdk
 {
+    NSLog(@"initFirebaseSdk");
     [FIRApp configure];
 }
 #endif
+
+#ifdef AF_ENABLED
 +(void) initAppFlyer:(NSString*) devKey appId:(NSString*)appId
 {
     [AppsFlyerTracker sharedTracker].appsFlyerDevKey = devKey;
     [AppsFlyerTracker sharedTracker].appleAppID = appId;
     [[AppsFlyerTracker sharedTracker] trackAppLaunch];
 }
+#endif
 
+#ifdef UM_ENABLED
 +(void) initUMMobSdk:(NSString*) appKey channel:(NSString*) channel
 {
     [UMConfigure initWithAppkey:appKey channel:channel];
     sIsUMInited = true;
 }
 
++(bool) isUMInited
+{
+    return sIsUMInited;
+}
+#endif
+
+#ifdef GDT_ACTION_ENABLED
 +(void) initGDTActionSdk:(NSString*) setid secretkey:(NSString*)secretkey
 {
     [GDTAction init:setid secretKey:secretkey];
@@ -90,15 +112,12 @@ static bool sIsFBInited = false;
     [GDTAction logAction:GDTSDKActionNameStartApp actionParam:@{@"value":@(123)}];
 }
 
-+(bool) isUMInited
-{
-    return sIsUMInited;
-}
-
 +(bool) isGDTInited
 {
     return sIsGDTInited;
 }
+
+#endif
     
 +(bool) isFBInited
 {

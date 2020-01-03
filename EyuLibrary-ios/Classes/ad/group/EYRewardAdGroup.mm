@@ -46,30 +46,47 @@
     self = [super init];
     if(self)
     {
-        if(adConfig.isWmOnly){
-            self.adapterClassDict = [[NSDictionary alloc] initWithObjectsAndKeys:
-                                     NSClassFromString(@"EYWMRewardAdAdapter"), ADNetworkWM,
-                                     nil];
-        }else {
-            self.adapterClassDict = [[NSDictionary alloc] initWithObjectsAndKeys:
-                                     NSClassFromString(@"EYFbRewardAdAdapter"), ADNetworkFacebook,
-                                     NSClassFromString(@"EYAdmobRewardAdAdapter"), ADNetworkAdmob,
-                                     NSClassFromString(@"EYUnityRewardAdAdapter"), ADNetworkUnity,
-                                     NSClassFromString(@"EYVungleRewardAdAdapter"), ADNetworkVungle,
-                                     NSClassFromString(@"EYApplovinRewardAdAdapter"), ADNetworkApplovin,
-                                     NSClassFromString(@"EYWMRewardAdAdapter"), ADNetworkWM,
-#ifdef GDT_AD_ENABLED
-                                     NSClassFromString(@"EYGdtRewardAdAdapter"), ADNetworkGdt,
-#endif /*GDT_AD_ENABLED*/
-                                     NSClassFromString(@"EYMtgRewardAdAdapter"), ADNetworkMtg,
-                                     NSClassFromString(@"EYIronSourceRewardAdAdapter"), ADNetworkIronSource,
-                                     nil];
-        }
+        self.adapterClassDict = [[NSDictionary alloc] initWithObjectsAndKeys:
+#ifdef FB_ADS_ENABLED
+            NSClassFromString(@"EYFbRewardAdAdapter"), ADNetworkFacebook,
+#endif
+                                 
+#ifdef ADMOB_ADS_ENABLED
+            NSClassFromString(@"EYAdmobRewardAdAdapter"), ADNetworkAdmob,
+#endif
+                                 
+#ifdef UNITY_ADS_ENABLED
+            NSClassFromString(@"EYUnityRewardAdAdapter"), ADNetworkUnity,
+#endif
+                                 
+#ifdef VUNGLE_ADS_ENABLED
+            NSClassFromString(@"EYVungleRewardAdAdapter"), ADNetworkVungle,
+#endif
+                                 
+#ifdef APPLOVIN_ADS_ENABLED
+            NSClassFromString(@"EYApplovinRewardAdAdapter"), ADNetworkApplovin,
+#endif
+                                 
+//#ifdef BYTE_DANCE_ADS_ENABLED
+            NSClassFromString(@"EYWMRewardAdAdapter"), ADNetworkWM,
+//#endif
         
+//#ifdef GDT_ADS_ENABLED
+            NSClassFromString(@"EYGdtRewardAdAdapter"), ADNetworkGdt,
+//#endif
+                                 
+//#ifdef MTG_ADS_ENABLED
+            NSClassFromString(@"EYMtgRewardAdAdapter"), ADNetworkMtg,
+//#endif
+
+#ifdef IRON_ADS_ENABLED
+            NSClassFromString(@"EYIronSourceRewardAdAdapter"), ADNetworkIronSource,
+#endif
+                                             nil];
+
         self.adGroup = group;
         self.adapterArray = [[NSMutableArray alloc] init];
         
-        self.maxTryLoadAd = adConfig.maxTryLoadRewardAd > 0 ? adConfig.maxTryLoadRewardAd : 7;
         self.curLoadingIndex = -1;
         self.tryLoadAdCounter = 0;
         self.reportEvent = adConfig.reportEvent;
@@ -85,6 +102,9 @@
                 }
             }
         }
+        
+        self.maxTryLoadAd = ((int)self.adapterArray.count) * 2;
+
     }
     return self;
 }

@@ -4,53 +4,14 @@ platform :ios, '9.0'
 
 target 'EyuLibrary-ios_Example' do
     
-#pod 'EyuLibrary-ios/UnityAds', :path => '../'
-#pod 'EyuLibrary-ios/3rd', :path => '../'
-##pod 'EyuLibrary-ios/mtg', :path => '../'
-#pod 'EyuLibrary-ios/Core', :path => '../'
-#pod 'EyuLibrary-ios/BytedanceOnly', :path => '../'
-#pod 'EyuLibrary-ios/gdt', :path => '../'
-#国内版本
-#pod 'EyuLibrary-ios',:subspecs => ['3rd','Core','gdt','BytedanceOnly', 'Crashlytics_sdk'], :path => '../'
-#国际版本非unity
-#pod 'EyuLibrary-ios',:subspecs => ['3rd','Core','gdt','mtg','ironsource','others_ads_sdk','crashlytics_sdk'], :path => '../'
-#国际版本unity
-pod 'EyuLibrary-ios',:subspecs => ['3rd','Core','gdt','BytedanceOnly'], :path => '../'
-#pod 'EyuLibrary-ios',:subspecs => ['3rd','Core','gdt','mtg','ironsource','others_ads_sdk','admob_sdk','gdt_ad_sdk'], :path => '../'
-#pod 'EyuLibrary-ios',:subspecs => ['3rd','Core','gdt','mtg','ironsource','others_ads_sdk','fb_sdk','crashlytics_sdk','firebase_sdk','gdt_ad_sdk'], :path => '../'
+  #国内纯穿山甲变现（含友盟，AF及广点通投放）
+  #pod 'EyuLibrary-ios',:subspecs => ['Core','byte_dance_ads_sdk','um_sdk', 'af_sdk', 'gdt_action'], :path => '../'
 
-#pod 'EyuLibrary-ios',:subspecs => ['3rd','Core','gdt','BytedanceOnly'], :git => 'https://github.com/moziguang/EyuLibrary-ios.git',:tag =>'1.2.21'
-#pod 'EyuLibrary-ios/ironsource', :path => '../'
-#pod 'EyuLibrary-ios/others_ads_sdk', :path => '../'
-
-#  pod 'Firebase/Analytics'
-#  pod 'Firebase/AdMob'
-#  pod 'Firebase/Core'
-#  pod 'Firebase/Messaging'
-#  pod 'Firebase/RemoteConfig'
-#  pod 'Firebase/Auth'
-#  pod 'Firebase/Firestore'
-#  pod 'Firebase/Storage'
-#  pod 'Fabric'
-#  pod 'Crashlytics'
-#  pod 'SVProgressHUD'
-#  pod 'AppsFlyerFramework'
-#  pod 'Bolts'
-#  pod 'FBSDKCoreKit'
-#  pod 'FBSDKShareKit'
-#  pod 'FBSDKLoginKit'
-#  pod 'FBAudienceNetwork','<4.99.0'
-#  pod 'FFToast'
-
-  #plugin 'pod_spec_repo', :sources => [
-  #'svn://192.168.10.72:3699/piano/client/pod_spec_repo'
-  #]
-#  pod 'EyuLibrary-ios/3rd',:svn => 'svn://192.168.10.72:3699/piano/client/EyuLibrary-ios',:tag =>'1.1.0'
-#  pod 'EyuLibrary-ios/mtg',:svn => 'svn://192.168.10.72:3699/piano/client/EyuLibrary-ios',:tag =>'1.1.0'
-#  pod 'EyuLibrary-ios/Core',:svn => 'svn://192.168.10.72:3699/piano/client/EyuLibrary-ios',:tag =>'1.1.0'
-#pod 'EyuLibrary-ios/gdt',:svn => 'svn://192.168.10.72:3699/piano/client/EyuLibrary-ios',:tag =>'1.1.0'
-#pod 'EyuLibrary-ios/ironsource',:svn => 'svn://192.168.10.72:3699/piano/client/EyuLibrary-ios',:tag =>'1.1.0'
-#pod 'EyuLibrary-ios/others_ads_sdk',:svn => 'svn://192.168.10.72:3699/piano/client/EyuLibrary-ios',:tag =>'1.1.0'
+  #国内聚合变现：穿山甲、广点通、mtg、（含友盟，AF及广点通投放）
+#  pod 'EyuLibrary-ios',:subspecs => ['Core','byte_dance_ads_sdk','um_sdk', 'af_sdk', 'gdt_action','gdt_ads_sdk', 'mtg_ads_sdk'], :path => '../'
+  
+  #国内外聚合变现：FB、Admob、穿山甲、广点通、mtg、unity、vungle、iron source、Applovin（含友盟，AF及广点通投放，firebase）
+  pod 'EyuLibrary-ios',:subspecs => ['Core','byte_dance_ads_sdk','um_sdk', 'af_sdk', 'gdt_action','gdt_ads_sdk', 'mtg_ads_sdk', 'fb_ads_sdk', 'unity_ads_sdk', 'vungle_ads_sdk', 'applovin_ads_sdk', 'iron_ads_sdk', 'firebase_sdk', 'crashlytics_sdk'], :path => '../'
   target 'EyuLibrary-ios_Tests' do
     inherit! :search_paths
 

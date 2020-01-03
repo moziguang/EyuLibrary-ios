@@ -4,7 +4,7 @@
 //
 //  Created by caochao on 2019/3/19.
 //
-#ifndef BYTE_DANCE_ONLY
+#ifdef IRON_ADS_ENABLED
 
 #import "EYIronSourceRewardAdAdapter.h"
 #import "IronSource/IronSource.h"
@@ -118,4 +118,4 @@
 }
     
 @end
-#endif /*BYTE_DANCE_ONLY*/
+#endif /*IRON_ADS_ENABLED*/

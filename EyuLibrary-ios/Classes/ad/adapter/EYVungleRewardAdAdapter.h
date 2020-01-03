@@ -4,7 +4,7 @@
 //
 //  Created by apple on 2018/3/9.
 //
-#ifndef BYTE_DANCE_ONLY
+#ifdef VUNGLE_ADS_ENABLED
 
 #ifndef EYVungleRewardAdAdapter_h
 #define EYVungleRewardAdAdapter_h
@@ -18,4 +18,4 @@
 @end
 
 #endif /* EYVungleRewardAdAdapter_h */
-#endif /*BYTE_DANCE_ONLY*/
+#endif /*VUNGLE_ADS_ENABLED*/

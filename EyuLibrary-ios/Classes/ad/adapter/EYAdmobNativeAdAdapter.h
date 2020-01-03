@@ -4,10 +4,10 @@
 //
 //  Created by apple on 2018/3/9.
 //
+#ifdef ADMOB_ADS_ENABLED
 
 #ifndef AdmobNativeAdAdapter_h
 #define AdmobNativeAdAdapter_h
-#ifndef BYTE_DANCE_ONLY
 
 
 #import "EYNativeAdAdapter.h"
@@ -26,6 +26,7 @@ GADUnifiedNativeAdDelegate> {
 
 
 @end
-#endif /*BYTE_DANCE_ONLY*/
 
 #endif /* AdmobNativeAdAdapter_h */
+
+#endif /*ADMOB_ADS_ENABLED*/

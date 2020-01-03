@@ -30,18 +30,25 @@
 #ifdef FIREBASE_ENABLED
 +(void) initFirebaseSdk;
 #endif
+
+#ifdef AF_ENABLED
 +(void) initAppFlyer:(NSString*) devKey appId:(NSString*)appId;
+#endif
+#ifdef UM_ENABLED
 +(void) initUMMobSdk:(NSString*) appKey channel:(NSString*) channel;
++(bool) isUMInited;
+#endif
+#ifdef GDT_ACTION_ENABLED
 +(void) initGDTActionSdk:(NSString*) setid secretkey:(NSString*)secretkey;
 +(void) doGDTSDKActionStartApp;
-
++(bool) isGDTInited;
+#endif
 + (NSData *)readFileWithName:(NSString *)name;
 + (NSDictionary *)readJsonFileWithName:(NSString *)name;
 
-+(bool) isUMInited;
-+(bool) isGDTInited;
 +(bool) isFBInited;
 @end
+
 
 #endif /* EYSdkUtils_h */
 

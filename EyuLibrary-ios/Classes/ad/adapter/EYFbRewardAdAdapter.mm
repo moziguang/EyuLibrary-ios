@@ -4,7 +4,7 @@
 //
 //  Created by apple on 2018/3/9.
 //
-#ifndef BYTE_DANCE_ONLY
+#ifdef FB_ADS_ENABLED
 
 #include "EYFbRewardAdAdapter.h"
 
@@ -138,4 +138,4 @@
     [self notifyOnAdImpression];
 }
 @end
-#endif /*BYTE_DANCE_ONLY*/
+#endif /*FB_ADS_ENABLED*/

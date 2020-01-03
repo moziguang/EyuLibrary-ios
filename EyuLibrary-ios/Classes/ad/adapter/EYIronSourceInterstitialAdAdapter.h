@@ -4,7 +4,7 @@
 //
 //  Created by caochao on 2019/3/19.
 //
-#ifndef BYTE_DANCE_ONLY
+#ifdef IRON_ADS_ENABLED
 
 #ifndef EYIronSourceInterstitialAdAdapter_h
 #define EYIronSourceInterstitialAdAdapter_h
@@ -17,4 +17,4 @@
 @end
 
 #endif
-#endif /*BYTE_DANCE_ONLY*/
+#endif /*IRON_ADS_ENABLED*/

@@ -4,11 +4,11 @@
 //
 //  Created by apple on 2018/3/9.
 //
+#ifdef FB_ADS_ENABLED
 
 #ifndef FbInterstitialAdAdapter_h
 #define FbInterstitialAdAdapter_h
 
-#ifndef BYTE_DANCE_ONLY
 
 #import "EYInterstitialAdAdapter.h"
 #import "FBAudienceNetwork/FBAudienceNetwork.h"
@@ -21,6 +21,7 @@
 
 @end
 
-#endif /*BYTE_DANCE_ONLY*/
 
 #endif /* FbInterstitialAdAdapter_h */
+
+#endif /**FB_ADS_ENABLED*/

@@ -4,9 +4,8 @@
 //
 //  Created by apple on 2018/3/9.
 //
-#ifndef BYTE_DANCE_ONLY
 
-#ifdef GDT_AD_ENABLED
+#ifdef GDT_ADS_ENABLED
 #include "EYGdtInterstitialAdAdapter.h"
 #import "GDTMobInterstitial.h"
 #import "EYAdManager.h"
@@ -158,5 +157,4 @@
 }
 
 @end
-#endif /*GDT_AD_ENABLED*/
-#endif /*BYTE_DANCE_ONLY*/
+#endif /*GDT_ADS_ENABLED*/

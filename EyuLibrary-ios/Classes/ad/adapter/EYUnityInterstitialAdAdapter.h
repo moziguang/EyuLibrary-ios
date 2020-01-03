@@ -4,7 +4,7 @@
 //
 //  Created by apple on 2018/3/9.
 //
-#ifndef BYTE_DANCE_ONLY
+#ifdef UNITY_ADS_ENABLED
 
 #ifndef UnityInterstitialAdAdapter_h
 #define UnityInterstitialAdAdapter_h
@@ -19,4 +19,4 @@
 @end
 
 #endif /* UnityInterstitialAdAdapter_h */
-#endif /*BYTE_DANCE_ONLY*/
+#endif /*UNITY_ADS_ENABLED*/

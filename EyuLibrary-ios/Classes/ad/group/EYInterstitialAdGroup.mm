@@ -43,26 +43,37 @@
     self = [super init];
     if(self)
     {
-        if(adConfig.isWmOnly){
-            self.adapterClassDict = [[NSDictionary alloc] initWithObjectsAndKeys:
-                                     NSClassFromString(@"EYWMInterstitialAdAdapter"), ADNetworkWM,
-                                     nil];
-        }else {
-            self.adapterClassDict = [[NSDictionary alloc] initWithObjectsAndKeys:
-                                     NSClassFromString(@"EYFbInterstitialAdAdapter"), ADNetworkFacebook,
-                                     NSClassFromString(@"EYAdmobInterstitialAdAdapter"), ADNetworkAdmob,
-                                     NSClassFromString(@"EYUnityInterstitialAdAdapter"), ADNetworkUnity,
-                                     NSClassFromString(@"EYVungleInterstitialAdAdapter"), ADNetworkVungle,
-                                     NSClassFromString(@"EYApplovinInterstitialAdAdapter"), ADNetworkApplovin,
-                                     NSClassFromString(@"EYWMInterstitialAdAdapter"), ADNetworkWM,
-                                     NSClassFromString(@"EYMtgInterstitialAdAdapter"), ADNetworkMtg,
-                                     NSClassFromString(@"EYIronSourceInterstitialAdAdapter"), ADNetworkIronSource,
-                                     nil];
-        }
+
+        self.adapterClassDict = [[NSDictionary alloc] initWithObjectsAndKeys:
+#ifdef FB_ADS_ENABLED
+        NSClassFromString(@"EYFbInterstitialAdAdapter"), ADNetworkFacebook,
+#endif
+#ifdef ADMOB_ADS_ENABLED
+        NSClassFromString(@"EYAdmobInterstitialAdAdapter"), ADNetworkAdmob,
+#endif
+#ifdef UNITY_ADS_ENABLED
+        NSClassFromString(@"EYUnityInterstitialAdAdapter"), ADNetworkUnity,
+#endif
+#ifdef VUNGLE_ADS_ENABLED
+        NSClassFromString(@"EYVungleInterstitialAdAdapter"), ADNetworkVungle,
+#endif
+#ifdef APPLOVIN_ADS_ENABLED
+        NSClassFromString(@"EYApplovinInterstitialAdAdapter"), ADNetworkApplovin,
+#endif
+#ifdef BYTE_DANCE_ADS_ENABLED
+        NSClassFromString(@"EYWMInterstitialAdAdapter"), ADNetworkWM,
+#endif
+#ifdef MTG_ADS_ENABLED
+        NSClassFromString(@"EYMtgInterstitialAdAdapter"), ADNetworkMtg,
+#endif
+#ifdef IRON_ADS_ENABLED
+        NSClassFromString(@"EYIronSourceInterstitialAdAdapter"), ADNetworkIronSource,
+#endif
+        nil];
 
         self.adGroup = adGroup;
         self.adapterArray = [[NSMutableArray alloc] init];
-        self.maxTryLoadAd = adConfig.maxTryLoadInterstitialAd > 0 ? adConfig.maxTryLoadInterstitialAd : 7;
+//        self.maxTryLoadAd = adConfig.maxTryLoadInterstitialAd > 0 ? adConfig.maxTryLoadInterstitialAd : 7;
         self.curLoadingIndex = -1;
         self.tryLoadAdCounter = 0;
         self.reportEvent = adConfig.reportEvent;
@@ -78,6 +89,8 @@
                 }
             }
         }
+        
+        self.maxTryLoadAd = ((int)self.adapterArray.count) * 2;
         
     }
     return self;

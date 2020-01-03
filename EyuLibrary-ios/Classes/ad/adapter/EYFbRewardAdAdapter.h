@@ -4,7 +4,7 @@
 //
 //  Created by apple on 2018/3/9.
 //
-#ifndef BYTE_DANCE_ONLY
+#ifdef FB_ADS_ENABLED
 
 #ifndef FbRewardAdAdapter_h
 #define FbRewardAdAdapter_h
@@ -21,4 +21,4 @@
 @end
 
 #endif /* FbRewardAdAdapter_h */
-#endif /*BYTE_DANCE_ONLY*/
+#endif /*FB_ADS_ENABLED*/

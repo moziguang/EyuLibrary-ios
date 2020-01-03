@@ -4,7 +4,7 @@
 //
 //  Created by apple on 2018/3/9.
 //
-
+#ifdef BYTE_DANCE_ADS_ENABLED
 #include "EYWMNativeAdAdapter.h"
 #import <BUAdSDK/BUNativeAd.h>
 #import <BUAdSDK/BUNativeAdRelatedView.h>
@@ -218,3 +218,5 @@
 }
 
 @end
+
+#endif /*BYTE_DANCE_ADS_ENABLED*/

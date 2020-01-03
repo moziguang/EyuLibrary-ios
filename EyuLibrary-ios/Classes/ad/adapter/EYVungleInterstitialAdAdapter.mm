@@ -4,7 +4,7 @@
 //
 //  Created by apple on 2018/3/9.
 //
-#ifndef BYTE_DANCE_ONLY
+#ifdef VUNGLE_ADS_ENABLED
 
 #include "EYVungleInterstitialAdAdapter.h"
 //#import <VungleSDK/VungleSDK.h>
@@ -153,4 +153,4 @@
 }
 
 @end
-#endif /*BYTE_DANCE_ONLY*/
+#endif /*VUNGLE_ADS_ENABLED*/

@@ -8,7 +8,7 @@
 #include "EYAdmobRewardAdAdapter.h"
 #include "EYAdManager.h"
 
-#ifndef BYTE_DANCE_ONLY
+#ifdef ADMOB_ADS_ENABLED
 
 @implementation EYAdmobRewardAdAdapter
 
@@ -121,4 +121,4 @@
 }
 
 @end
-#endif /*BYTE_DANCE_ONLY*/
+#endif /*ADMOB_ADS_ENABLED*/

@@ -5,9 +5,10 @@
 //  Created by apple on 2018/3/9.
 //
 
+#ifdef APPLOVIN_ADS_ENABLED
+
 #ifndef EYApplovinRewardAdAdapter_h
 #define EYApplovinRewardAdAdapter_h
-#ifndef BYTE_DANCE_ONLY
 
 #import "EYRewardAdAdapter.h"
 
@@ -16,6 +17,7 @@
 }
 @property(nonatomic,assign)bool isRewarded;
 @end
-#endif /*BYTE_DANCE_ONLY*/
 
 #endif /* EYApplovinRewardAdAdapter_h */
+
+#endif

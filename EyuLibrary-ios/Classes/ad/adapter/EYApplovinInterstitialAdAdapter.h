@@ -4,11 +4,9 @@
 //
 //  Created by apple on 2018/3/9.
 //
-
+#ifdef APPLOVIN_ADS_ENABLED
 #ifndef EYApplovinInterstitialAdAdapter_h
 #define EYApplovinInterstitialAdAdapter_h
-
-#ifndef BYTE_DANCE_ONLY
 
 #import "EYInterstitialAdAdapter.h"
 
@@ -17,6 +15,6 @@
 }
 @end
 
-#endif /*BYTE_DANCE_ONLY*/
-
 #endif /* EYApplovinInterstitialAdAdapter_h */
+
+#endif /* APPLOVIN_ADS_ENABLED*/

@@ -4,11 +4,11 @@
 //
 //  Created by apple on 2018/3/9.
 //
+#ifdef ADMOB_ADS_ENABLED
 
 #ifndef AdmobInterstitialAdAdapter_h
 #define AdmobInterstitialAdAdapter_h
 
-#ifndef BYTE_DANCE_ONLY
 
 #import "EYInterstitialAdAdapter.h"
 #import "GoogleMobileAds/GoogleMobileAds.h"
@@ -19,5 +19,5 @@
 @property(nonatomic,strong)GADInterstitial *interstitialAd;
 @end
 
-#endif /*BYTE_DANCE_ONLY*/
 #endif /* AdmobInterstitialAdAdapter_h */
+#endif /*ADMOB_ADS_ENABLED*/

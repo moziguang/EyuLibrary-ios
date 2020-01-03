@@ -17,35 +17,85 @@ EyuLibrary-ios is available through [CocoaPods](https://cocoapods.org). To insta
 it, simply add the following line to your Podfile:
 
 ```ruby
-#国内国外一体版本(不含firebase及facebook)
-pod 'EyuLibrary-ios',:subspecs => ['3rd','Core','gdt','mtg','ironsource','others_ads_sdk','admob_sdk','gdt_ad_sdk'], :git => 'https://github.com/moziguang/EyuLibrary-ios.git',:tag =>'1.2.24'
+本SDK所有第三方模块均可单独集成
+模块：易娱 sdk          :'Core'
+    穿山甲SDK          :'byte_dance_ads_sdk'    BYTE_DANCE_ADS_ENABLED
+    广点通广告          :'gdt_ads_sdk'           GDT_ADS_ENABLED
+    mtg广告            :'mtg_ads_sdk'           MTG_ADS_ENABLED
+    FB广告             :'fb_ads_sdk'            FB_ADS_ENABLED
+    unity广告          :'unity_ads_sdk'         UNITY_ADS_ENABLED
+    Vungle广告         :'vungle_ads_sdk'        VUNGLE_ADS_ENABLED
+    applovin广告       :'applovin_ads_sdk'      APPLOVIN_ADS_ENABLED
+    ironsource广告     :'iron_ads_sdk'          IRON_ADS_ENABLED
+    firebase          :'firebase_sdk'          FIREBASE_ENABLED
+    crashlytics       :'crashlytics_sdk'
+    友盟               :'um_sdk'                UM_ENABLED
+    AppsFlyer         :'af_sdk'                 AF_ENABLED
+    广点通买量          :'gdt_action'             GDT_ACTION_ENABLED
+    FB登录             :'fb_login_sdk'          FACEBOOK_LOGIN_ENABLED 
 
-用到广点通变现的需要在GCC_PREPROCESSOR_DEFINITIONS 加上GDT_AD_ENABLED
+1、修改项目的Podfile文件，例如
+pod 'EyuLibrary-ios',:subspecs => ['Core','byte_dance_ads_sdk','um_sdk', 'af_sdk', 'gdt_action','gdt_ads_sdk', 'mtg_ads_sdk', 'fb_ads_sdk', 'unity_ads_sdk', 'vungle_ads_sdk', 'applovin_ads_sdk', 'iron_ads_sdk', 'firebase_sdk', 'crashlytics_sdk','fb_login_sdk'], :git => 'https://github.com/moziguang/EyuLibrary-ios.git',:tag =>'1.3.0'
+    （以上模块可以根据项目需要进行删减）
 
-使用广点通投放需要集成'gdt'，然后调用EYSdkUtils initGDTActionSdk初始化 gdt导量跟踪SDK，并在- (void)applicationDidBecomeActive:(UIApplication *)application中调用[EYSdkUtils doGDTSDKActionStartApp];
+2、在终端里运行 pod install或者pod update，并留意执行是否有警告或者报错
 
-#国内国外一体版本(含firebase)
-pod 'EyuLibrary-ios',:subspecs => ['3rd','Core','gdt','mtg','ironsource','others_ads_sdk','fb_sdk','crashlytics_sdk','firebase_sdk','gdt_ad_sdk'], :git => 'https://github.com/moziguang/EyuLibrary-ios.git',:tag =>'1.2.24'
+3、执行成功后，用xcode打开当前项目目录下的$YOUR_PROJECT_NAME.xcworkspace文件
 
-GCC_PREPROCESSOR_DEFINITIONS 加上 FACEBOOK_ENABLED及FIREBASE_ENABLED
-Info.plist 加上（admob广告sdk）
-<key>GADIsAdManagerApp</key>
-<true/>
-
-
-Facebook配置请参考https://developers.facebook.com/docs/app-events/getting-started-app-events-ios
-[EYSdkUtils initFacebookSdkWithApplication:application options:launchOptions];
-[EYSdkUtils application:app openURL:url options:options];
-
-#国内只包含穿山甲sdk
-pod 'EyuLibrary-ios',:subspecs => ['3rd','Core','gdt','BytedanceOnly'], :git => 'https://github.com/moziguang/EyuLibrary-ios.git',:tag =>'1.2.24'
-
-
-目标target的
+4、根据项目需要修改编译配置，及编写初始化代码
 HEADER_SEARCH_PATHS 加上 $(inherited)
 LIBRARY_SEARCH_PATHS 加上 $(inherited)
 OTHER_LDFLAGS 加上 $(inherited)
-GCC_PREPROCESSOR_DEFINITIONS 加上BYTE_DANCE_ONLY=1
+
+穿山甲SDK 需要在GCC_PREPROCESSOR_DEFINITIONS 加上 BYTE_DANCE_ADS_ENABLED
+adConfig.wmAppKey = @"XXXXXX";//代码里设置穿山甲sdk app key
+
+广点通广告 需要在GCC_PREPROCESSOR_DEFINITIONS 加上 GDT_ADS_ENABLED
+adConfig.gdtAppId = @"xxxxxxxxxx";//代码里设置广点通广告sdk app id
+
+mtg广告 需要在GCC_PREPROCESSOR_DEFINITIONS 加上 MTG_ADS_ENABLED
+adConfig.mtgAppId = @"xxxxxx";//代码里设置mtg广告sdk app id 及app key
+adConfig.mtgAppKey = @"xxxxxxxxxxxxxxxxx";
+
+FB广告 需要在GCC_PREPROCESSOR_DEFINITIONS 加上 FB_ADS_ENABLED
+请参考https://developers.facebook.com/docs/app-events/getting-started-app-events-ios
+在app 对应的生命周期函数里加上
+[EYSdkUtils initFacebookSdkWithApplication:application options:launchOptions];
+[EYSdkUtils application:app openURL:url options:options];
+
+unity广告 需要在GCC_PREPROCESSOR_DEFINITIONS 加上 UNITY_ADS_ENABLED
+adConfig.unityClientId = @"xxxxxxx";
+
+Vungle广告 需要在GCC_PREPROCESSOR_DEFINITIONS 加上 VUNGLE_ADS_ENABLED
+adConfig.vungleClientId = @"xxxxxxxxxxx";
+
+applovin广告 需要在GCC_PREPROCESSOR_DEFINITIONS 加上 APPLOVIN_ADS_ENABLED
+AppLovin需要在info.plist里设置AppLovinSdkKey
+
+ironsource广告 需要在GCC_PREPROCESSOR_DEFINITIONS 加上 IRON_ADS_ENABLED
+adConfig.ironSourceAppKey = @"xxxxxxxx";
+
+firebase 及 crashlytics 以及ADMOB
+https://firebase.google.com/docs/ios/setup?authuser=0
+下载 GoogleService-Info.plist 并放到xcode的根目录
+需要在GCC_PREPROCESSOR_DEFINITIONS 加上 FIREBASE_ENABLED ADMOB_ADS_ENABLED
+[EYSdkUtils initFirebaseSdk];
+Info.plist 加上以下内容
+<key>GADIsAdManagerApp</key>
+<true/>
+
+友盟 需要在GCC_PREPROCESSOR_DEFINITIONS 加上 UM_ENABLED
+[EYSdkUtils initUMMobSdk:@"XXXXXXXXXXXXXXXXXX" channel:@"channel"];
+
+AppsFlyer 需要在GCC_PREPROCESSOR_DEFINITIONS 加上 AF_ENABLED
+[EYSdkUtils initAppFlyer:@"XXXXXXXXXXXXXXXXX" appId:@"XXXXXXXXXXXXX"];
+
+广点通买量  需要在GCC_PREPROCESSOR_DEFINITIONS 加上 GDT_ACTION_ENABLED
+[EYSdkUtils initGDTActionSdk:@"XXXXXX" secretkey:@"XXXXXXXXX"];
+并在- (void)applicationDidBecomeActive:(UIApplication *)application中调用[EYSdkUtils doGDTSDKActionStartApp];
+
+FB登录 需要在GCC_PREPROCESSOR_DEFINITIONS 加上 FACEBOOK_LOGIN_ENABLED
+
 
 //初始化FB， Firebase， UMMobSdk， AppFlyer， GDTActionSdk，及firebase 远程配置
 
@@ -67,15 +117,11 @@ EYAdConfig* adConfig = [[EYAdConfig alloc] init];
 adConfig.adKeyData =  [EYSdkUtils readFileWithName:@"ios_ad_key_setting"];
 adConfig.adGroupData = [EYSdkUtils readFileWithName:@"ios_ad_cache_setting"];
 adConfig.adPlaceData = [EYSdkUtils readFileWithName:@"ios_ad_setting"];
-adConfig.maxTryLoadNativeAd = 7;
-adConfig.maxTryLoadRewardAd = 7;
-adConfig.maxTryLoadInterstitialAd = 7;
 adConfig.unityClientId = @"XXXXXX";
 adConfig.vungleClientId = @"XXXXXXXXXXXXXXX";
 adConfig.ironSourceAppKey = @"XXXXXXX";
 adConfig.wmAppKey = @"XXXXXX";
 
-AppLovin需要在info.plist里设置AppLovinSdkKey
 
 [[EYAdManager sharedInstance] setupWithConfig:adConfig];
 [[EYAdManager sharedInstance] setDelegate:self];

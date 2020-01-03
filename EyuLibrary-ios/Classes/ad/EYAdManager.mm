@@ -18,22 +18,44 @@
 #import "EYNativeAdAdapter.h"
 #import "EYNativeAdView.h"
 #import <CoreTelephony/CTCellularData.h>
+
+#ifdef BYTE_DANCE_ADS_ENABLED
 #import <BUAdSDK/BUAdSDKManager.h>
+#endif
 
 
-#ifndef BYTE_DANCE_ONLY
+#ifdef APPLOVIN_ADS_ENABLED
 #import <AppLovinSDK/AppLovinSDK.h>
+#endif
+
+#ifdef MTG_ADS_ENABLED
 #import <MTGSDK/MTGSDK.h>
+#endif
+
+#ifdef IRON_ADS_ENABLED
 #import "IronSource/IronSource.h"
+#endif
+
+#ifdef ADMOB_ADS_ENABLED
 #import "GoogleMobileAds/GoogleMobileAds.h"
 #endif
 
 
-#ifndef BYTE_DANCE_ONLY
-@interface EYAdManager()<UnityAdsDelegate, VungleSDKDelegate, ISDemandOnlyInterstitialDelegate, ISDemandOnlyRewardedVideoDelegate>
-#else
-@interface EYAdManager()
+//#ifndef BYTE_DANCE_ONLY
+//@interface EYAdManager()<UnityAdsDelegate, VungleSDKDelegate, ISDemandOnlyInterstitialDelegate, ISDemandOnlyRewardedVideoDelegate>
+//#else
+@interface EYAdManager()<EYAdDelegate
+#ifdef UNITY_ADS_ENABLED
+    ,UnityAdsDelegate
 #endif
+#ifdef VUNGLE_ADS_ENABLED
+    ,VungleSDKDelegate
+#endif
+#ifdef IRON_ADS_ENABLED
+    ,ISDemandOnlyInterstitialDelegate,ISDemandOnlyRewardedVideoDelegate
+#endif
+>
+//#endif
 {
 
 }
@@ -49,10 +71,15 @@
 @property(nonatomic,strong) NSMutableDictionary<NSNumber*,NSMutableDictionary<NSString*,EYNativeAdView*>*>*  nativeAdViewDict;
 @property(nonatomic,weak) UIViewController* nativeAdController;
 
-#ifndef BYTE_DANCE_ONLY
-
+#ifdef UNITY_ADS_ENABLED
 @property(nonatomic,strong) NSMutableDictionary<NSString*, id<UnityAdsDelegate>>* unityAdsDelegateDict;
+#endif
+
+#ifdef VUNGLE_ADS_ENABLED
 @property(nonatomic,strong) NSMutableDictionary<NSString*, id<VungleSDKDelegate>>* vungleAdsDelegateDict;
+#endif
+
+#ifdef IRON_ADS_ENABLED
 @property(nonatomic,strong) NSMutableDictionary<NSString*, id<ISDemandOnlyRewardedVideoDelegate>>* ironRewardDelegateDict;
 @property(nonatomic,strong) NSMutableDictionary<NSString*, id<ISDemandOnlyInterstitialDelegate>>* ironInterDelegateDict;
 #endif
@@ -75,13 +102,19 @@ static id s_sharedInstance;
 @synthesize nativeAdViewDict = _nativeAdViewDict;
 @synthesize nativeAdViewNibDict = _nativeAdViewNibDict;
 @synthesize nativeAdController = _nativeAdController;
-#ifndef BYTE_DANCE_ONLY
-
+#ifdef UNITY_ADS_ENABLED
 @synthesize unityAdsDelegateDict = _unityAdsDelegateDict;
+#endif
+
+#ifdef VUNGLE_ADS_ENABLED
 @synthesize vungleAdsDelegateDict = _vungleAdsDelegateDict;
+#endif
+
+#ifdef IRON_ADS_ENABLED
 @synthesize ironRewardDelegateDict = _ironRewardDelegateDict;
 @synthesize ironInterDelegateDict = _ironInterDelegateDict;
 #endif
+
 @synthesize isAdmobRewardAdLoaded = _isAdmobRewardAdLoaded;
 @synthesize isAdmobRewardAdLoading = _isAdmobRewardAdLoading;
 @synthesize cellularData = _cellularData;
@@ -195,6 +228,7 @@ static id s_sharedInstance;
 
 -(void) initSdk:(EYAdConfig*) config
 {
+#ifdef BYTE_DANCE_ADS_ENABLED
     NSString* wmAppKey = config.wmAppKey;
     if(wmAppKey == NULL || [wmAppKey isEqualToString:@""])
     {
@@ -204,14 +238,9 @@ static id s_sharedInstance;
         [BUAdSDKManager setAppID:wmAppKey];
         [BUAdSDKManager setIsPaidApp:config.isPaidApp];
     }
+#endif
     
-#ifdef BYTE_DANCE_ONLY
-    config.isWmOnly = true;
-#else
-    if(config.isWmOnly){
-        return;
-    }
-    
+#ifdef MTG_ADS_ENABLED
     NSString* mtgAppId = config.mtgAppId;
     NSString* mtgAppKey = config.mtgAppKey;
     if(mtgAppId == NULL || [mtgAppId isEqualToString:@""] ||
@@ -222,7 +251,9 @@ static id s_sharedInstance;
         NSLog(@"lwq, setup mtgAppId =  %@, mtgAppKey = %@", mtgAppId, mtgAppKey);
         [[MTGSDK sharedInstance] setAppID:mtgAppId ApiKey:mtgAppKey];
     }
+#endif
     
+#ifdef ADMOB_ADS_ENABLED
     NSString* admobClientId = config.admobClientId;
     if(admobClientId == NULL || [admobClientId isEqualToString:@""])
     {
@@ -233,13 +264,17 @@ static id s_sharedInstance;
             NSLog(@"lwq, setup admobClient status = %@", status);
         }];
     }
-    
+#endif
+
+#ifdef APPLOVIN_ADS_ENABLED
     //init Applovin SDK
     /**
      *需要在info.plist里设置AppLovinSdkKey
      **/
     [ALSdk initializeSdk];
+#endif
     
+#ifdef UNITY_ADS_ENABLED
         NSString* unityClientId = config.unityClientId;
         if(unityClientId == NULL || [unityClientId isEqualToString:@""])
         {
@@ -249,7 +284,9 @@ static id s_sharedInstance;
             //[GADMobileAds configureWithApplicationID:unityClientId];
             [UnityAds initialize:unityClientId delegate:self];
         }
-        
+#endif
+      
+#ifdef VUNGLE_ADS_ENABLED
         NSString* vungleClientId = config.vungleClientId;
         if(vungleClientId == NULL || [vungleClientId isEqualToString:@""])
         {
@@ -264,6 +301,9 @@ static id s_sharedInstance;
                 NSLog(@"lwq, setup VungleSDK error =  %@", error);
             }
         }
+#endif
+    
+#ifdef IRON_ADS_ENABLED
         NSString *ironSourceAppKey = config.ironSourceAppKey;
         if(ironSourceAppKey == NULL || [ironSourceAppKey isEqualToString:@""]) {
             NSLog(@"lwq, setup ironSourceAppKey ==  NULL");
@@ -312,9 +352,13 @@ static id s_sharedInstance;
     self.nativeAdViewDict = [[NSMutableDictionary alloc] init];
     self.nativeAdViewNibDict = [[NSMutableDictionary alloc] init];
     self.nativeAdController = nil;
-#ifndef BYTE_DANCE_ONLY
+#ifdef UNITY_ADS_ENABLED
     self.unityAdsDelegateDict = [[NSMutableDictionary alloc] init];
+#endif
+#ifdef VUNGLE_ADS_ENABLED
     self.vungleAdsDelegateDict = [[NSMutableDictionary alloc] init];
+#endif
+#ifdef IRON_ADS_ENABLED
     self.ironInterDelegateDict = [[NSMutableDictionary alloc] init];
     self.ironRewardDelegateDict = [[NSMutableDictionary alloc] init];
 #endif
@@ -668,7 +712,7 @@ static id s_sharedInstance;
      return self.adKeyDict[keyId];
 }
 
-#ifndef BYTE_DANCE_ONLY
+#ifdef UNITY_ADS_ENABLED
 
 -(void) addUnityAdsDelegate:(id<UnityAdsDelegate>) delegate withKey:(NSString*) adKey
 {
@@ -713,7 +757,9 @@ static id s_sharedInstance;
         [delegate unityAdsDidFinish:placementId withFinishState:state];
     }
 }
+#endif /**UNITY_ADS_ENABLED*/
 
+#ifdef VUNGLE_ADS_ENABLED
 -(void) addVungleAdsDelegate:(id<VungleSDKDelegate>) delegate withKey:(NSString*) adKey
 {
     [self.vungleAdsDelegateDict setObject:delegate forKey:adKey];
@@ -791,7 +837,9 @@ static id s_sharedInstance;
 {
     NSLog(@"vungleSDKFailedToInitializeWithError , error = %@", error);
 }
+#endif /**VUNGLE_ADS_ENABLED*/
 
+#ifdef IRON_ADS_ENABLED
 #pragma mark - ISDemandOnlyInterstitialDelegate
 //Invoked when Interstitial Ad is ready to be shown after the load function was called.
 - (void)interstitialDidLoad:(NSString *)instanceId {
@@ -910,7 +958,7 @@ static id s_sharedInstance;
     }
 }
 
-#endif
+#endif /**IRON_ADS_ENABLED*/
 -(void) onDefaultNativeAdClicked
 {
     if(self.delegate!= nil && [self.delegate respondsToSelector:@selector(onDefaultNativeAdClicked)])
@@ -921,9 +969,17 @@ static id s_sharedInstance;
 
 -(void) reset
 {
-#ifndef BYTE_DANCE_ONLY
+#ifdef VUNGLE_ADS_ENABLED
     [self.vungleAdsDelegateDict removeAllObjects];
+#endif
+
+#ifdef UNITY_ADS_ENABLED
     [self.unityAdsDelegateDict removeAllObjects];
+#endif
+
+#ifdef IRON_ADS_ENABLED
+    [self.ironRewardDelegateDict removeAllObjects];
+    [self.ironInterDelegateDict removeAllObjects];
 #endif
     [self.rewardAdGroupDict removeAllObjects];
     [self.interstitialAdGroupDict removeAllObjects];

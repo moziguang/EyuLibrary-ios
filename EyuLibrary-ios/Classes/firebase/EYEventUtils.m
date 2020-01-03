@@ -7,9 +7,19 @@
 
 #import <Foundation/Foundation.h>
 #import "EYEventUtils.h"
+
+#ifdef AF_ENABLED
 #import <AppsFlyerLib/AppsFlyerTracker.h>
+#endif
+
+#ifdef UM_ENABLED
 #import <UMAnalytics/MobClick.h>
+#endif
+
+#ifdef GDT_ACTION_ENABLED
 #import <GDTActionSDK/GDTAction.h>
+#endif
+
 #import "EYSdkUtils.h"
 
 #ifdef FIREBASE_ENABLED
@@ -37,13 +47,22 @@
 #ifdef FIREBASE_ENABLED
     [FIRAnalytics logEventWithName:event parameters:strDict];
 #endif
+    
+#ifdef UM_ENABLED
     if([EYSdkUtils isUMInited]){
         [MobClick event:event attributes:strDict];
     }
+#endif
+    
+#ifdef AF_ENABLED
     [[AppsFlyerTracker sharedTracker] trackEvent:event withValues:strDict];
+#endif
+    
+#ifdef GDT_ACTION_ENABLED
     if([EYSdkUtils isGDTInited]){
         [GDTAction logAction:event actionParam:strDict];
     }
+#endif
     
 #ifdef FACEBOOK_ENABLED
     if([EYSdkUtils isFBInited]){

@@ -4,8 +4,7 @@
 //
 //  Created by apple on 2018/3/9.
 //
-#ifndef BYTE_DANCE_ONLY
-#ifdef GDT_AD_ENABLED
+#ifdef GDT_ADS_ENABLED
 
 #ifndef EYGdtRewardAdAdapter_h
 #define EYGdtRewardAdAdapter_h
@@ -20,6 +19,5 @@
 @end
 
 #endif /* EYGdtRewardAdAdapter_h */
-#endif /*GDT_AD_ENABLED*/
+#endif /*GDT_ADS_ENABLED*/
 
-#endif /*BYTE_DANCE_ONLY*/

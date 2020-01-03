@@ -38,24 +38,28 @@
     self = [super init];
     if(self)
     {
-        if(adConfig.isWmOnly){
-            self.adapterClassDict = [[NSDictionary alloc] initWithObjectsAndKeys:
-                                     NSClassFromString(@"EYWMNativeAdAdapter"), ADNetworkWM,
-                                     nil];
-        }else {
-            self.adapterClassDict = [[NSDictionary alloc] initWithObjectsAndKeys:
-                                     NSClassFromString(@"EYFbNativeAdAdapter"), ADNetworkFacebook,
-                                     NSClassFromString(@"EYAdmobNativeAdAdapter"), ADNetworkAdmob,
-                                     NSClassFromString(@"EYApplovinNativeAdAdapter"), ADNetworkApplovin,
-                                     NSClassFromString(@"EYWMNativeAdAdapter"), ADNetworkWM,
-                                     NSClassFromString(@"EYMtgNativeAdAdapter"), ADNetworkMtg,
-    //                                 NSClassFromString(@"EYGdtNativeAdAdapter"), ADNetworkGdt,
-                                     nil];
-        }
+        self.adapterClassDict = [[NSDictionary alloc] initWithObjectsAndKeys:
+#ifdef FB_ADS_ENABLED
+        NSClassFromString(@"EYFbNativeAdAdapter"), ADNetworkFacebook,
+#endif
+#ifdef ADMOB_ADS_ENABLED
+        NSClassFromString(@"EYAdmobNativeAdAdapter"), ADNetworkAdmob,
+#endif
+#ifdef APPLOVIN_ADS_ENABLED
+        NSClassFromString(@"EYApplovinNativeAdAdapter"), ADNetworkApplovin,
+#endif
+#ifdef BYTE_DANCE_ADS_ENABLED
+        NSClassFromString(@"EYWMNativeAdAdapter"), ADNetworkWM,
+#endif
+#ifdef MTG_ADS_ENABLED
+        NSClassFromString(@"EYMtgNativeAdAdapter"), ADNetworkMtg,
+#endif
+        nil];
+        
         self.adGroup = group;
         self.adapterArray = [[NSMutableArray alloc] init];
 
-        self.maxTryLoadAd = adConfig.maxTryLoadNativeAd > 0 ? adConfig.maxTryLoadNativeAd : 7;
+//        self.maxTryLoadAd = adConfig.maxTryLoadNativeAd > 0 ? adConfig.maxTryLoadNativeAd : 7;
         self.curLoadingIndex = -1;
         self.tryLoadAdCounter = 0;
         self.reportEvent = adConfig.reportEvent;
@@ -71,6 +75,7 @@
                 }
             }
         }
+        self.maxTryLoadAd = ((int)self.adapterArray.count) * 2;
     }
     return self;
 }

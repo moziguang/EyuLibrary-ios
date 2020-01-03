@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'EyuLibrary-ios'
-  s.version          = '1.2.25'
+  s.version          = '1.3.0'
   s.summary          = 'A short description of EyuLibrary-ios.'
 
 # This description is used to generate tags and improve search results.
@@ -30,7 +30,8 @@ Pod::Spec.new do |s|
 
   s.subspec 'Core' do |b|
       b.source_files = 'EyuLibrary-ios/Classes/**/*'
-      
+      b.dependency 'SVProgressHUD'
+      b.dependency 'FFToast'
       # a.resource_bundles = {
       #   'BUAdSDK' => ['EyuLibrary-ios/Assets/BUAdSDK.bundle/*']
       #}
@@ -38,77 +39,91 @@ Pod::Spec.new do |s|
       #a.public_header_files = 'Pod/Classes/**/*.h'
       # a.frameworks = 'UIKit', 'MapKit'
       # a.dependency 'AFNetworking', '~> 2.3'
-      
+      b.frameworks = 'AdSupport','CoreData','SystemConfiguration','AVFoundation','CoreMedia'
+#      a.ios.libraries = 'c++','resolv.9'
   end
-  #s.subspec 'GoogleAnalytics' do |sga|
-  #    sga.preserve_paths = 'EyuLibrary-ios/Classes/framework/GoogleAnalytics/Headers/*.h'
-  #    sga.vendored_libraries = 'EyuLibrary-ios/Classes/framework/GoogleAnalytics/libAdIdAccess.a', 'EyuLibrary-ios/Classes/framework/GoogleAnalytics/libGoogleAnalyticsServices.a'
-  #    sga.libraries = 'AdIdAccess', 'GoogleAnalyticsServices'
-  #    sga.xcconfig = { 'HEADER_SEARCH_PATHS' => "${PODS_ROOT}/#{s.name}/framework/GoogleAnalytics/Headers/**",'LIBRARY_SEARCH_PATHS' => "${PODS_ROOT}/#{s.name}/framework/GoogleAnalytics/**" }
-  #end
  
- #s.subspec 'UnityAds' do |c|
- #     c.vendored_frameworks = ['EyuLibrary-ios/Classes/framework/UnityAds.framework']
- #end
+# s.subspec '3rd' do |a|
+#     a.dependency 'SVProgressHUD'
+##     a.dependency 'AppsFlyerFramework','4.10.4'
+#     a.dependency 'FFToast'
+##     a.dependency 'UMCAnalytics'
+#     #a.vendored_frameworks = ['EyuLibrary-ios/Classes/framework/UnityAds.framework','EyuLibrary-ios/Classes/framework/BUAdSDK.framework']
+#     a.frameworks = 'AdSupport','CoreData','SystemConfiguration','AVFoundation','CoreMedia'
+#     a.ios.libraries = 'c++','resolv.9'
+# end
  
- s.subspec '3rd' do |a|
-     a.dependency 'SVProgressHUD'
-     a.dependency 'AppsFlyerFramework','4.10.4'
-     a.dependency 'FFToast'
-     a.dependency 'UMCAnalytics'
-     #a.vendored_frameworks = ['EyuLibrary-ios/Classes/framework/UnityAds.framework','EyuLibrary-ios/Classes/framework/BUAdSDK.framework']
-     a.frameworks = 'AdSupport','CoreData','SystemConfiguration','AVFoundation','CoreMedia'
-     a.ios.libraries = 'c++','resolv.9'
+ s.subspec 'gdt_action' do |gdt_action|
+     gdt_action.vendored_frameworks = ['EyuLibrary-ios/3rd/GDTActionSDK.framework']
+     gdt_action.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) GDT_ACTION_ENABLED'}
  end
  
- s.subspec 'BytedanceOnly' do |bo|
-     bo.dependency 'Bytedance-UnionAD','2.5.1.5'
-     bo.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) BYTE_DANCE_ONLY=1'}
+ s.subspec 'um_sdk' do |um|
+     um.dependency 'UMCAnalytics'
+     um.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) UM_ENABLED'}
  end
  
- s.subspec 'mtg' do |b|
-     b.vendored_frameworks = ['EyuLibrary-ios/3rd/MTGSDK.framework','EyuLibrary-ios/3rd/MTGSDKReward.framework','EyuLibrary-ios/3rd/MTGSDKInterstitialVideo.framework']
+ s.subspec 'af_sdk' do |af|
+     af.dependency 'AppsFlyerFramework','4.10.4'
+     af.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) AF_ENABLED'}
  end
  
- s.subspec 'gdt' do |c|
-     c.vendored_frameworks = ['EyuLibrary-ios/3rd/GDTActionSDK.framework']
- end
- 
- s.subspec 'gdt_ad_sdk' do |gdt_ad|
-     gdt_ad.dependency 'GDTMobSDK','4.10.14'
-     gdt_ad.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) GDT_AD_ENABLED'}
- end
- 
- s.subspec 'ironsource' do |d|
-     d.dependency 'IronSourceSDK','6.11.0.0'
+ s.subspec 'iron_ads_sdk' do |iron_ads_sdk|
+     iron_ads_sdk.dependency 'IronSourceSDK','6.11.0.0'
+     iron_ads_sdk.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) IRON_ADS_ENABLED'}
  end
  
  s.subspec 'admob_sdk' do |admob|
      admob.dependency 'Google-Mobile-Ads-SDK'
+     admob.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) ADMOB_ADS_ENABLED'}
  end
  
- s.subspec 'others_ads_sdk' do |e|
-     #e.dependency 'Firebase/AdMob'#,'5.6.0'
-     e.dependency 'AppLovinSDK','6.9.5'
-     e.dependency 'FBAudienceNetwork','5.5.1'
-     e.dependency 'UnityAds','3.3.0'
-     e.dependency 'VungleSDK-iOS','6.4.5'
-     e.dependency 'Bytedance-UnionAD','2.5.1.5'
+ s.subspec 'fb_ads_sdk' do |fb_ads_sdk|
+     fb_ads_sdk.dependency 'FBAudienceNetwork','5.5.1'
+     fb_ads_sdk.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) FB_ADS_ENABLED'}
  end
  
- s.subspec 'others_ads_sdk_5_4_0' do |other|
-     other.dependency 'AppLovinSDK','6.9.5'
-     other.dependency 'FBAudienceNetwork','5.4.0'
-     other.dependency 'UnityAds','3.3.0'
-     other.dependency 'VungleSDK-iOS','6.4.5'
-     other.dependency 'Bytedance-UnionAD','2.5.1.5'
+ #新版本的FB广告sdk与白鹭引擎符号表冲突，需要使用此版本
+ s.subspec 'fb_ads_sdk_5_4_0' do |fb_ads_sdk_5_4_0|
+     fb_ads_sdk_5_4_0.dependency 'FBAudienceNetwork','5.4.0'
+     fb_ads_sdk_5_4_0.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) FB_ADS_ENABLED'}
  end
  
- s.subspec 'fb_sdk' do |fb|
+ s.subspec 'applovin_ads_sdk' do |applovin_ads_sdk|
+     applovin_ads_sdk.dependency 'AppLovinSDK','6.9.5'
+     applovin_ads_sdk.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) APPLOVIN_ADS_ENABLED'}
+ end
+ 
+ s.subspec 'unity_ads_sdk' do |unity_ads_sdk|
+     unity_ads_sdk.dependency 'UnityAds','3.3.0'
+     unity_ads_sdk.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) UNITY_ADS_ENABLED'}
+ end
+
+ s.subspec 'vungle_ads_sdk' do |vungle_ads_sdk|
+     vungle_ads_sdk.dependency 'VungleSDK-iOS','6.4.5'
+     vungle_ads_sdk.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) VUNGLE_ADS_ENABLED'}
+ end
+ 
+ s.subspec 'byte_dance_ads_sdk' do |byte_dance_ads_sdk|
+     byte_dance_ads_sdk.dependency 'Bytedance-UnionAD','2.5.1.5'
+     byte_dance_ads_sdk.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) BYTE_DANCE_ADS_ENABLED'}
+ end
+ 
+ s.subspec 'mtg_ads_sdk' do |mtg_ads_sdk|
+     mtg_ads_sdk.vendored_frameworks = ['EyuLibrary-ios/3rd/MTGSDK.framework','EyuLibrary-ios/3rd/MTGSDKReward.framework','EyuLibrary-ios/3rd/MTGSDKInterstitialVideo.framework']
+     mtg_ads_sdk.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) MTG_ADS_ENABLED'}
+ end
+ 
+ s.subspec 'gdt_ads_sdk' do |gdt_ad|
+     gdt_ad.dependency 'GDTMobSDK','4.10.14'
+     gdt_ad.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) GDT_ADS_ENABLED'}
+ end
+ 
+ s.subspec 'fb_login_sdk' do |fb|
      fb.dependency 'FBSDKCoreKit','5.8.0'
      fb.dependency 'FBSDKShareKit','5.8.0'
      fb.dependency 'FBSDKLoginKit','5.8.0'
-     fb.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) FACEBOOK_ENABLED'}
+     fb.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) FACEBOOK_LOGIN_ENABLED'}
  end
  
  s.subspec 'crashlytics_sdk' do |crash|
@@ -126,11 +141,6 @@ end
      firebase.dependency 'Firebase/Storage'
      firebase.dependency 'Firebase/DynamicLinks'
      firebase.dependency 'Firebase/AdMob'#,'5.6.0'
-     firebase.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) FIREBASE_ENABLED'}
+     firebase.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) FIREBASE_ENABLED ADMOB_ADS_ENABLED'}
  end
- 
- # s.subspec 'ironsource_config' do |f|
- #    f.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => 'ENABLE_IRON_SOURCE=1'}
- #end
-
 end

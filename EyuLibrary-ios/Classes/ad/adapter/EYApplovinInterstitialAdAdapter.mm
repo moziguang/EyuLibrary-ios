@@ -4,7 +4,7 @@
 //
 //  Created by apple on 2018/3/9.
 //
-#ifndef BYTE_DANCE_ONLY
+#ifdef APPLOVIN_ADS_ENABLED
 
 #include "EYApplovinInterstitialAdAdapter.h"
 #import <AppLovinSDK/AppLovinSDK.h>
@@ -142,4 +142,4 @@
 }
 
 @end
-#endif /*BYTE_DANCE_ONLY*/
+#endif /*APPLOVIN_ADS_ENABLED*/

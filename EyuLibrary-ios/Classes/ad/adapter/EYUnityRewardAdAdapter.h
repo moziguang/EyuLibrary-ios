@@ -4,7 +4,7 @@
 //
 //  Created by apple on 2018/3/9.
 //
-#ifndef BYTE_DANCE_ONLY
+#ifdef UNITY_ADS_ENABLED
 
 #ifndef UnityRewardAdAdapter_h
 #define UnityRewardAdAdapter_h
@@ -21,4 +21,4 @@
 @end
 
 #endif /* UnityRewardAdAdapter_h */
-#endif /*BYTE_DANCE_ONLY*/
+#endif /*UNITY_ADS_ENABLED*/
