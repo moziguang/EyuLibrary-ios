@@ -28,6 +28,10 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #endif
 
+#ifdef TRACKING_ENABLED
+#import "Tracking.h"
+#endif
+
 
 
 @implementation EYSdkUtils
@@ -118,6 +122,20 @@ static bool sIsFBInited = false;
 }
 
 #endif
+
+#ifdef TRACKING_ENABLED
+
++ (void)initTrackingWithAppKey:(NSString *)appKey
+{
+    [EYSdkUtils initTrackingWithAppKey:appKey withChannelId:@"_default_"];
+}
+
++ (void)initTrackingWithAppKey:(NSString *)appKey withChannelId:(NSString *)channelId
+{
+    [Tracking initWithAppKey:appKey withChannelId:channelId];
+}
+#endif
+
     
 +(bool) isFBInited
 {

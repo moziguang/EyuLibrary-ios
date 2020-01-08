@@ -17,7 +17,7 @@ EyuLibrary-ios is available through [CocoaPods](https://cocoapods.org). To insta
 it, simply add the following line to your Podfile:
 
 ```ruby
-本SDK所有第三方模块均可单独集成
+本SDK所有第三方sdk均可以模块形式集成
 模块：易娱 sdk          :'Core'
     穿山甲SDK          :'byte_dance_ads_sdk'    BYTE_DANCE_ADS_ENABLED
     广点通广告          :'gdt_ads_sdk'           GDT_ADS_ENABLED
@@ -33,6 +33,7 @@ it, simply add the following line to your Podfile:
     AppsFlyer         :'af_sdk'                 AF_ENABLED
     广点通买量          :'gdt_action'             GDT_ACTION_ENABLED
     FB登录             :'fb_login_sdk'          FACEBOOK_LOGIN_ENABLED 
+    热云               :'ReYunTracking'         TRACKING_ENABLED
 
 1、修改项目的Podfile文件，例如
 pod 'EyuLibrary-ios',:subspecs => ['Core','byte_dance_ads_sdk','um_sdk', 'af_sdk', 'gdt_action','gdt_ads_sdk', 'mtg_ads_sdk', 'fb_ads_sdk', 'unity_ads_sdk', 'vungle_ads_sdk', 'applovin_ads_sdk', 'iron_ads_sdk', 'firebase_sdk', 'crashlytics_sdk','fb_login_sdk'], :git => 'https://github.com/moziguang/EyuLibrary-ios.git',:tag =>'1.3.0'
@@ -95,6 +96,8 @@ AppsFlyer 需要在GCC_PREPROCESSOR_DEFINITIONS 加上 AF_ENABLED
 并在- (void)applicationDidBecomeActive:(UIApplication *)application中调用[EYSdkUtils doGDTSDKActionStartApp];
 
 FB登录 需要在GCC_PREPROCESSOR_DEFINITIONS 加上 FACEBOOK_LOGIN_ENABLED
+
+热云  需要在GCC_PREPROCESSOR_DEFINITIONS 加上 TRACKING_ENABLED
 
 
 //初始化FB， Firebase， UMMobSdk， AppFlyer， GDTActionSdk，及firebase 远程配置

@@ -43,16 +43,6 @@ Pod::Spec.new do |s|
 #      a.ios.libraries = 'c++','resolv.9'
   end
  
-# s.subspec '3rd' do |a|
-#     a.dependency 'SVProgressHUD'
-##     a.dependency 'AppsFlyerFramework','4.10.4'
-#     a.dependency 'FFToast'
-##     a.dependency 'UMCAnalytics'
-#     #a.vendored_frameworks = ['EyuLibrary-ios/Classes/framework/UnityAds.framework','EyuLibrary-ios/Classes/framework/BUAdSDK.framework']
-#     a.frameworks = 'AdSupport','CoreData','SystemConfiguration','AVFoundation','CoreMedia'
-#     a.ios.libraries = 'c++','resolv.9'
-# end
- 
  s.subspec 'gdt_action' do |gdt_action|
      gdt_action.vendored_frameworks = ['EyuLibrary-ios/3rd/GDTActionSDK.framework']
      gdt_action.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) GDT_ACTION_ENABLED'}
@@ -143,4 +133,14 @@ end
      firebase.dependency 'Firebase/AdMob'#,'5.6.0'
      firebase.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) FIREBASE_ENABLED ADMOB_ADS_ENABLED'}
  end
+ 
+ s.subspec 'ReYunTracking' do |tracking|
+     tracking.preserve_paths = 'EyuLibrary-ios/Classes/framework/ReYunTracking/Headers/*.h'
+     tracking.vendored_libraries = 'EyuLibrary-ios/Classes/framework/ReYunTracking/libReYunTracking.a'
+     tracking.libraries = 'ReYunTracking'
+     tracking.xcconfig = { 'HEADER_SEARCH_PATHS' => "${PODS_ROOT}/#{s.name}/framework/ReYunTracking/Headers/**",'LIBRARY_SEARCH_PATHS' => "${PODS_ROOT}/#{s.name}/framework/ReYunTracking/**" }
+     tracking.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) TRACKING_ENABLED'}
+ end
+ 
+ 
 end

@@ -25,6 +25,8 @@
 + (BOOL)application:(UIApplication *)application
             openURL:(NSURL *)url
             options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options;
++(bool) isFBInited;
+
 #endif
 
 #ifdef FIREBASE_ENABLED
@@ -34,19 +36,26 @@
 #ifdef AF_ENABLED
 +(void) initAppFlyer:(NSString*) devKey appId:(NSString*)appId;
 #endif
+
 #ifdef UM_ENABLED
 +(void) initUMMobSdk:(NSString*) appKey channel:(NSString*) channel;
 +(bool) isUMInited;
 #endif
+
 #ifdef GDT_ACTION_ENABLED
 +(void) initGDTActionSdk:(NSString*) setid secretkey:(NSString*)secretkey;
 +(void) doGDTSDKActionStartApp;
 +(bool) isGDTInited;
 #endif
+
+#ifdef TRACKING_ENABLED
++ (void)initTrackingWithAppKey:(NSString *)appKey;
++ (void)initTrackingWithAppKey:(NSString *)appKey withChannelId:(NSString *)channelId;
+#endif
+
 + (NSData *)readFileWithName:(NSString *)name;
 + (NSDictionary *)readJsonFileWithName:(NSString *)name;
 
-+(bool) isFBInited;
 @end
 
 

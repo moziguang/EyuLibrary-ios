@@ -616,6 +616,7 @@
 					VUNGLE_ADS_ENABLED,
 					UNITY_ADS_ENABLED,
 					APPLOVIN_ADS_ENABLED,
+					TRACKING_ENABLED,
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
