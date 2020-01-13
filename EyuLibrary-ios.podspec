@@ -70,13 +70,14 @@ Pod::Spec.new do |s|
  
  s.subspec 'fb_ads_sdk' do |fb_ads_sdk|
      fb_ads_sdk.dependency 'FBAudienceNetwork','5.5.1'
-     fb_ads_sdk.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) FB_ADS_ENABLED'}
+     fb_ads_sdk.dependency 'FBSDKCoreKit','5.8.0'
+     fb_ads_sdk.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) FB_ADS_ENABLED FACEBOOK_ENABLED'}
  end
  
  #新版本的FB广告sdk与白鹭引擎符号表冲突，需要使用此版本
  s.subspec 'fb_ads_sdk_5_4_0' do |fb_ads_sdk_5_4_0|
      fb_ads_sdk_5_4_0.dependency 'FBAudienceNetwork','5.4.0'
-     fb_ads_sdk_5_4_0.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) FB_ADS_ENABLED'}
+     fb_ads_sdk_5_4_0.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) FB_ADS_ENABLED FACEBOOK_ENABLED'}
  end
  
  s.subspec 'applovin_ads_sdk' do |applovin_ads_sdk|
@@ -113,7 +114,7 @@ Pod::Spec.new do |s|
      fb.dependency 'FBSDKCoreKit','5.8.0'
      fb.dependency 'FBSDKShareKit','5.8.0'
      fb.dependency 'FBSDKLoginKit','5.8.0'
-     fb.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) FACEBOOK_LOGIN_ENABLED'}
+     fb.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) FACEBOOK_LOGIN_ENABLED FACEBOOK_ENABLED'}
  end
  
  s.subspec 'crashlytics_sdk' do |crash|

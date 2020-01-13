@@ -22,7 +22,7 @@ it, simply add the following line to your Podfile:
     穿山甲SDK          :'byte_dance_ads_sdk'    BYTE_DANCE_ADS_ENABLED
     广点通广告          :'gdt_ads_sdk'           GDT_ADS_ENABLED
     mtg广告            :'mtg_ads_sdk'           MTG_ADS_ENABLED
-    FB广告             :'fb_ads_sdk'            FB_ADS_ENABLED
+    FB广告             :'fb_ads_sdk'            FACEBOOK_ENABLED FB_ADS_ENABLED
     unity广告          :'unity_ads_sdk'         UNITY_ADS_ENABLED
     Vungle广告         :'vungle_ads_sdk'        VUNGLE_ADS_ENABLED
     applovin广告       :'applovin_ads_sdk'      APPLOVIN_ADS_ENABLED
@@ -32,11 +32,11 @@ it, simply add the following line to your Podfile:
     友盟               :'um_sdk'                UM_ENABLED
     AppsFlyer         :'af_sdk'                 AF_ENABLED
     广点通买量          :'gdt_action'             GDT_ACTION_ENABLED
-    FB登录             :'fb_login_sdk'          FACEBOOK_LOGIN_ENABLED 
+    FB登录             :'fb_login_sdk'          FACEBOOK_ENABLED FACEBOOK_LOGIN_ENABLED 
     热云               :'ReYunTracking'         TRACKING_ENABLED
 
 1、修改项目的Podfile文件，例如
-pod 'EyuLibrary-ios',:subspecs => ['Core','byte_dance_ads_sdk','um_sdk', 'af_sdk', 'gdt_action','gdt_ads_sdk', 'mtg_ads_sdk', 'fb_ads_sdk', 'unity_ads_sdk', 'vungle_ads_sdk', 'applovin_ads_sdk', 'iron_ads_sdk', 'firebase_sdk', 'crashlytics_sdk','fb_login_sdk'], :git => 'https://github.com/moziguang/EyuLibrary-ios.git',:tag =>'1.3.0'
+pod 'EyuLibrary-ios',:subspecs => ['Core','byte_dance_ads_sdk','um_sdk', 'af_sdk', 'gdt_action','gdt_ads_sdk', 'mtg_ads_sdk', 'fb_ads_sdk', 'unity_ads_sdk', 'vungle_ads_sdk', 'applovin_ads_sdk', 'iron_ads_sdk', 'firebase_sdk', 'crashlytics_sdk','fb_login_sdk'], :git => 'https://github.com/moziguang/EyuLibrary-ios.git',:tag =>'1.3.1'
     （以上模块可以根据项目需要进行删减）
 
 2、在终端里运行 pod install或者pod update，并留意执行是否有警告或者报错
@@ -63,6 +63,11 @@ FB广告 需要在GCC_PREPROCESSOR_DEFINITIONS 加上 FB_ADS_ENABLED
 在app 对应的生命周期函数里加上
 [EYSdkUtils initFacebookSdkWithApplication:application options:launchOptions];
 [EYSdkUtils application:app openURL:url options:options];
+在Info.plist文件里加上
+<key>FacebookAppID</key>
+<string>xxxxxx</string>
+<key>FacebookDisplayName</key>
+<string>xxxxxx</string>
 
 unity广告 需要在GCC_PREPROCESSOR_DEFINITIONS 加上 UNITY_ADS_ENABLED
 adConfig.unityClientId = @"xxxxxxx";
