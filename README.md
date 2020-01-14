@@ -48,7 +48,19 @@ HEADER_SEARCH_PATHS 加上 $(inherited)
 LIBRARY_SEARCH_PATHS 加上 $(inherited)
 OTHER_LDFLAGS 加上 $(inherited)
 
-穿山甲SDK 需要在GCC_PREPROCESSOR_DEFINITIONS 加上 BYTE_DANCE_ADS_ENABLED
+穿山甲SDK 
+如果pod install 时遇到类似这样的错误，请先安装lfs：https://git-lfs.github.com/
+[!] Error installing Bytedance-UnionAD
+[!] /usr/bin/git clone https://github.com/bytedance/Bytedance-UnionAD.git /var/folders/15/ylqd5mp108g51x0k7lhzxfk80000gn/T/d20200114-38218-13bj6cl --template= --single-branch --depth 1 --branch 2.7.5.2
+
+Cloning into '/var/folders/15/ylqd5mp108g51x0k7lhzxfk80000gn/T/d20200114-38218-13bj6cl'...
+Note: checking out '1d1206705f631fac08309b5cbb3ad989ffd9df8f'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by performing another checkout.
+
+在GCC_PREPROCESSOR_DEFINITIONS 加上 BYTE_DANCE_ADS_ENABLED
 adConfig.wmAppKey = @"XXXXXX";//代码里设置穿山甲sdk app key
 
 广点通广告 需要在GCC_PREPROCESSOR_DEFINITIONS 加上 GDT_ADS_ENABLED
