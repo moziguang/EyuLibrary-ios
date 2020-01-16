@@ -66,17 +66,23 @@ You are in 'detached HEAD' state. You can look around, make experimental
 changes and commit them, and you can discard any commits you make in this
 state without impacting any branches by performing another checkout.
 ```
+```txt
 在GCC_PREPROCESSOR_DEFINITIONS 加上 BYTE_DANCE_ADS_ENABLED
 adConfig.wmAppKey = @"XXXXXX";//代码里设置穿山甲sdk app key
+```
 
 ### 6、广点通广告
+```txt
 广点通广告 需要在GCC_PREPROCESSOR_DEFINITIONS 加上 GDT_ADS_ENABLED
 adConfig.gdtAppId = @"xxxxxxxxxx";//代码里设置广点通广告sdk app id
+```
 
 ### 7、mtg广告
+```txt
 mtg广告 需要在GCC_PREPROCESSOR_DEFINITIONS 加上 MTG_ADS_ENABLED
 adConfig.mtgAppId = @"xxxxxx";//代码里设置mtg广告sdk app id 及app key
 adConfig.mtgAppKey = @"xxxxxxxxxxxxxxxxx";
+```
 
 ### 8、FB广告
 FB广告 需要在GCC_PREPROCESSOR_DEFINITIONS 加上 FB_ADS_ENABLED
@@ -94,31 +100,42 @@ FB广告 需要在GCC_PREPROCESSOR_DEFINITIONS 加上 FB_ADS_ENABLED
 <string>xxxxxx</string>
 ```
 ### 9、unity广告
+```txt
 unity广告 需要在GCC_PREPROCESSOR_DEFINITIONS 加上 UNITY_ADS_ENABLED
 adConfig.unityClientId = @"xxxxxxx";
-
+```
 ### 10、Vungle广告
+```txt
 Vungle广告 需要在GCC_PREPROCESSOR_DEFINITIONS 加上 VUNGLE_ADS_ENABLED
 adConfig.vungleClientId = @"xxxxxxxxxxx";
+```
 
 ### 11、applovin广告
+```txt
 applovin广告 需要在GCC_PREPROCESSOR_DEFINITIONS 加上 APPLOVIN_ADS_ENABLED
 AppLovin需要在info.plist里设置AppLovinSdkKey
+```
 
 ### 12、ironsource广告
+```txt
 ironsource广告 需要在GCC_PREPROCESSOR_DEFINITIONS 加上 IRON_ADS_ENABLED
 adConfig.ironSourceAppKey = @"xxxxxxxx";
+```
 
 ### 13、firebase 及 crashlytics 以及ADMOB
 #### firebase
+```txt
 参考资料：https://firebase.google.com/docs/ios/setup?authuser=0
 从firebase下载 GoogleService-Info.plist 并放到xcode的根目录
 在GCC_PREPROCESSOR_DEFINITIONS 加上 FIREBASE_ENABLED 
 [EYSdkUtils initFirebaseSdk];
+```
 
 #### admob
+```txt
 admob可以通过"firebase_sdk"模块或者"admob_sdk"模块来引入，海外使用firebase_sdk，国内使用admob_sdk
 在GCC_PREPROCESSOR_DEFINITIONS 加上 ADMOB_ADS_ENABLED
+```
 Info.plist 加上以下内容
 ```xml
 <key>GADIsAdManagerApp</key>
@@ -129,23 +146,31 @@ Info.plist 加上以下内容
 adConfig.admobClientId = @"ca-app-pub-7585239226773233~4631740346";
 ```
 ### 14、友盟
+```txt
 需要在GCC_PREPROCESSOR_DEFINITIONS 加上 UM_ENABLED
 [EYSdkUtils initUMMobSdk:@"XXXXXXXXXXXXXXXXXX" channel:@"channel"];
-
+```
 ### 15、AppsFlyer
+```txt
 需要在GCC_PREPROCESSOR_DEFINITIONS 加上 AF_ENABLED
 [EYSdkUtils initAppFlyer:@"XXXXXXXXXXXXXXXXX" appId:@"XXXXXXXXXXXXX"];
+```
 
 ### 16、广点通买量
+```txt
 需要在GCC_PREPROCESSOR_DEFINITIONS 加上 GDT_ACTION_ENABLED
 [EYSdkUtils initGDTActionSdk:@"XXXXXX" secretkey:@"XXXXXXXXX"];
 并在- (void)applicationDidBecomeActive:(UIApplication *)application中调用[EYSdkUtils doGDTSDKActionStartApp];
+```
 
 ### 17、FB登录
+```txt
 需要在GCC_PREPROCESSOR_DEFINITIONS 加上 FACEBOOK_LOGIN_ENABLED
-
+```
 ### 18、热云
+```txt
 热云  需要在GCC_PREPROCESSOR_DEFINITIONS 加上 TRACKING_ENABLED
+```
 
 ### 初始化FB， Firebase， UMMobSdk， AppFlyer， GDTActionSdk，及firebase 远程配置
 ```oc
