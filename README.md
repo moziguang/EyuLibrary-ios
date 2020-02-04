@@ -36,7 +36,7 @@ it, simply add the following line to your Podfile:
     FB登录             :'fb_login_sdk'          FACEBOOK_ENABLED FACEBOOK_LOGIN_ENABLED 
     热云               :'ReYunTracking'         TRACKING_ENABLED
     
-    ADMOB             :'admob_sdk'              ADMOB_ENABLED
+    ADMOB             :'admob_sdk'              ADMOB_ADS_ENABLED
 ```
 ### 1、修改项目的Podfile文件，例如
 ```pod
@@ -170,6 +170,7 @@ adConfig.admobClientId = @"ca-app-pub-7585239226773233~4631740346";
 ### 18、热云
 ```txt
 热云  需要在GCC_PREPROCESSOR_DEFINITIONS 加上 TRACKING_ENABLED
+[EYSdkUtils initTrackingWithAppKey:appKey];
 ```
 
 ### 初始化FB， Firebase， UMMobSdk， AppFlyer， GDTActionSdk，及firebase 远程配置
