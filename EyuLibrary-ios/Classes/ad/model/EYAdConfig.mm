@@ -68,10 +68,10 @@
 #ifdef IRON_ADS_ENABLED
         self.ironSourceAppKey = nil;
 #endif
-#ifdef GDT_AD_ENABLED
+#ifdef GDT_ADS_ENABLED
         self.gdtAppId = nil;
 #endif
-#ifdef MTG_ADS_ENABLED
+#ifdef MTG_ADS_ESNABLED
         self.mtgAppId = nil;
         self.mtgAppKey = nil;
 #endif
