@@ -85,7 +85,7 @@ adConfig.mtgAppKey = @"xxxxxxxxxxxxxxxxx";
 ```
 
 ### 8、FB广告
-FB广告 需要在GCC_PREPROCESSOR_DEFINITIONS 加上 FB_ADS_ENABLED
+FB广告 需要在GCC_PREPROCESSOR_DEFINITIONS 加上 FB_ADS_ENABLED 及FACEBOOK_ENABLED
 请参考https://developers.facebook.com/docs/app-events/getting-started-app-events-ios
 在app 对应的生命周期函数里加上
 ```oc
