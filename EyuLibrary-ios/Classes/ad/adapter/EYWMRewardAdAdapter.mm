@@ -136,9 +136,9 @@
 - (void)rewardedVideoAdServerRewardDidSucceed:(BURewardedVideoAd *)rewardedVideoAd verify:(BOOL)verify{
     NSLog(@"lwq, wm rewarded verify succeed");
     NSLog(@"lwq, wm verify result: %@", verify ? @"success" : @"fail");
-    if(verify){
+//    if(verify){
         self.isRewarded = true;
-    }
+//    }
 }
 
 @end
