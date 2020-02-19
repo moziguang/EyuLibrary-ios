@@ -67,17 +67,17 @@
             NSClassFromString(@"EYApplovinRewardAdAdapter"), ADNetworkApplovin,
 #endif
                                  
-//#ifdef BYTE_DANCE_ADS_ENABLED
+#ifdef BYTE_DANCE_ADS_ENABLED
             NSClassFromString(@"EYWMRewardAdAdapter"), ADNetworkWM,
-//#endif
+#endif
         
-//#ifdef GDT_ADS_ENABLED
+#ifdef GDT_ADS_ENABLED
             NSClassFromString(@"EYGdtRewardAdAdapter"), ADNetworkGdt,
-//#endif
+#endif
                                  
-//#ifdef MTG_ADS_ENABLED
+#ifdef MTG_ADS_ENABLED
             NSClassFromString(@"EYMtgRewardAdAdapter"), ADNetworkMtg,
-//#endif
+#endif
 
 #ifdef IRON_ADS_ENABLED
             NSClassFromString(@"EYIronSourceRewardAdAdapter"), ADNetworkIronSource,
