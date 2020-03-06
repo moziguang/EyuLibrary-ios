@@ -16,9 +16,15 @@
 
 @implementation EYAppDelegate
 
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-//    [EYSdkUtils initFirebaseSdk];
+//    [EYSdkUtils initUMMobSdk:@"test" channel:@"eyu"];
+//    [EYSdkUtils initAppFlyer:@"test" appId:@"test"];
+//    [EYSdkUtils initGDTActionSdk:@"test" secretkey:@"test"];
+    [EYSdkUtils initFirebaseSdk];
+//    [EYSdkUtils initTrackingWithAppKey:@"475938c702f7451a88eaffb524962649"];
+    [EYSdkUtils initFacebookSdkWithApplication:application options:launchOptions];
     // Override point for customization after application launch.
 //    EYAdConfig* adConfig2 = [[EYAdConfig alloc] init];
     EYAdConfig* adConfig = [[EYAdConfig alloc] init];
@@ -27,18 +33,15 @@
     adConfig.adKeyData =  [EYSdkUtils readFileWithName:@"ios_ad_key_setting"];
     adConfig.adGroupData = [EYSdkUtils readFileWithName:@"ios_ad_cache_setting"];
     adConfig.adPlaceData = [EYSdkUtils readFileWithName:@"ios_ad_setting"];
-    adConfig.maxTryLoadNativeAd = 7;
-    adConfig.maxTryLoadRewardAd = 7;
-    adConfig.maxTryLoadInterstitialAd = 7;
-//    adConfig.mtgAppId = @"111418";
-//    adConfig.mtgAppKey = @"a339a16bbaca844012276afad6f59eaa";
-//    adConfig.admobClientId = @"ca-app-pub-7585239226773233~4631740346";
-//    adConfig.wmAppKey = @"5010261";
-//    adConfig.gdtAppId = @"1108127036";
-//    adConfig.unityClientId = @"2340038";
-//    adConfig.vungleClientId = @"5def74f71115a000111a178b";
-    adConfig.ironSourceAppKey = @"a78e7db5";
-//    [EYAdManager sharedInstance].useIronSource = true;
+
+    adConfig.mtgAppId = @"111418";
+    adConfig.mtgAppKey = @"a339a16bbaca844012276afad6f59eaa";
+    adConfig.admobClientId = @"ca-app-pub-7585239226773233~4631740346";
+    adConfig.wmAppKey = @"5010261";
+    adConfig.gdtAppId = @"1108127036";
+    adConfig.unityClientId = @"2340038";
+    adConfig.vungleClientId = @"5bdbc67a6d9d2200139056f9";
+//    adConfig.ironSourceAppKey = @"a78e7db5";
     [[EYAdManager sharedInstance] setupWithConfig:adConfig];
     [[EYAdManager sharedInstance] setDelegate:self];
     
@@ -87,12 +90,11 @@
 -(void) onAdShowed:(NSString*) adPlaceId  type:(NSString*)type
 {
     NSLog(@"lwq, onAdShowed adPlaceId = %@, type = %@", adPlaceId, type);
-    [[EYAdManager sharedInstance] loadRewardVideoAd:@"reward_ad"];
 }
 -(void) onAdClosed:(NSString*) adPlaceId  type:(NSString*)type
 {
     NSLog(@"lwq, onAdClosed adPlaceId = %@, type = %@", adPlaceId, type);
-
+    [[EYAdManager sharedInstance] loadRewardVideoAd:@"reward_ad"];
 }
 -(void) onAdClicked:(NSString*) adPlaceId  type:(NSString*)type
 {
@@ -115,7 +117,7 @@
 
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options
 {
-//    return [EYSdkUtils application:app openURL:url options:options];
+    return [EYSdkUtils application:app openURL:url options:options];
     return false;
 }
 

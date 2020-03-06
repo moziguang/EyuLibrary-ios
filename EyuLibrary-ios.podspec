@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
 #    s.use_frameworks!
   s.name             = 'EyuLibrary-ios'
-  s.version          = '1.3.5'
+  s.version          = '1.3.6'
   s.summary          = 'A short description of EyuLibrary-ios.'
 
 # This description is used to generate tags and improve search results.
@@ -69,7 +69,7 @@ Pod::Spec.new do |s|
  end
  
  s.subspec 'fb_ads_sdk' do |fb_ads_sdk|
-     fb_ads_sdk.dependency 'FBAudienceNetwork','5.5.1'
+     fb_ads_sdk.dependency 'FBAudienceNetwork','5.7.1'
      fb_ads_sdk.dependency 'FBSDKCoreKit','5.8.0'
      fb_ads_sdk.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) FB_ADS_ENABLED FACEBOOK_ENABLED'}
  end
@@ -81,17 +81,17 @@ Pod::Spec.new do |s|
  end
  
  s.subspec 'applovin_ads_sdk' do |applovin_ads_sdk|
-     applovin_ads_sdk.dependency 'AppLovinSDK','6.9.5'
+     applovin_ads_sdk.dependency 'AppLovinSDK','6.11.4'
      applovin_ads_sdk.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) APPLOVIN_ADS_ENABLED'}
  end
  
  s.subspec 'unity_ads_sdk' do |unity_ads_sdk|
-     unity_ads_sdk.dependency 'UnityAds','3.3.0'
+     unity_ads_sdk.dependency 'UnityAds','3.4.2'
      unity_ads_sdk.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) UNITY_ADS_ENABLED'}
  end
 
  s.subspec 'vungle_ads_sdk' do |vungle_ads_sdk|
-     vungle_ads_sdk.dependency 'VungleSDK-iOS','6.4.5'
+     vungle_ads_sdk.dependency 'VungleSDK-iOS','6.5.2'
      vungle_ads_sdk.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) VUNGLE_ADS_ENABLED'}
  end
  
@@ -107,7 +107,7 @@ Pod::Spec.new do |s|
  end
  
  s.subspec 'gdt_ads_sdk' do |gdt_ad|
-     gdt_ad.dependency 'GDTMobSDK','4.10.14'
+     gdt_ad.dependency 'GDTMobSDK','4.11.5'
      gdt_ad.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) GDT_ADS_ENABLED'}
  end
  

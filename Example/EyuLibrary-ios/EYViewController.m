@@ -72,7 +72,13 @@
 
 - (void)showInterstitialAd:(UITapGestureRecognizer *)gesture {
     NSLog(@"showInterstitialAd");
-    [[EYAdManager sharedInstance] showInterstitialAd:@"inter_ad" withViewController:self];
+    if([[EYAdManager sharedInstance] isInterstitialAdLoaded:@"inter_ad"])
+    {
+        [[EYAdManager sharedInstance] showInterstitialAd:@"inter_ad" withViewController:self];
+
+    }else{
+        [[EYAdManager sharedInstance] loadInterstitialAd:@"inter_ad"];
+    }
 }
 
 - (void)showNativeAd:(UITapGestureRecognizer *)gesture {

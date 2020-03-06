@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5635DFC123EA9BDE0065566A /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5635DFC023EA9BDD0065566A /* iAd.framework */; };
 		56E252BA21785EE500584CB9 /* ios_ad_key_setting.json in Resources */ = {isa = PBXBuildFile; fileRef = 56E252B321785EE500584CB9 /* ios_ad_key_setting.json */; };
 		56E252BC21785EE500584CB9 /* ios_ad_setting.json in Resources */ = {isa = PBXBuildFile; fileRef = 56E252B521785EE500584CB9 /* ios_ad_setting.json */; };
 		56E252BE21785EE500584CB9 /* defaults_setting.json in Resources */ = {isa = PBXBuildFile; fileRef = 56E252B721785EE500584CB9 /* defaults_setting.json */; };
@@ -58,6 +59,7 @@
 		1C79031D01F0DD3B761FBD0D /* libPods-EyuLibrary-ios_Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EyuLibrary-ios_Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		372537BE4D1D744A193EB00E /* libPods-EyuLibrary-ios_Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EyuLibrary-ios_Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		37374FD33AEC6D404E1C48F2 /* Pods-EyuLibrary-ios_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EyuLibrary-ios_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EyuLibrary-ios_Tests/Pods-EyuLibrary-ios_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		5635DFC023EA9BDD0065566A /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		56E252B321785EE500584CB9 /* ios_ad_key_setting.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ios_ad_key_setting.json; sourceTree = "<group>"; };
 		56E252B521785EE500584CB9 /* ios_ad_setting.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ios_ad_setting.json; sourceTree = "<group>"; };
 		56E252B721785EE500584CB9 /* defaults_setting.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = defaults_setting.json; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5635DFC123EA9BDE0065566A /* iAd.framework in Frameworks */,
 				6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */,
 				6003F592195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F58E195388D20070C39A /* Foundation.framework in Frameworks */,
@@ -181,6 +184,7 @@
 		6003F58C195388D20070C39A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5635DFC023EA9BDD0065566A /* iAd.framework */,
 				6003F58D195388D20070C39A /* Foundation.framework */,
 				6003F58F195388D20070C39A /* CoreGraphics.framework */,
 				6003F591195388D20070C39A /* UIKit.framework */,
@@ -257,7 +261,7 @@
 				6003F587195388D20070C39A /* Frameworks */,
 				6003F588195388D20070C39A /* Resources */,
 				8348D6EEF5E018FE8A15FFF1 /* [CP] Copy Pods Resources */,
-				6A403469E6373C86F579522F /* [CP] Embed Pods Frameworks */,
+				F6FDEA2101B7F8FC970412F3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -387,28 +391,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		6A403469E6373C86F579522F /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-EyuLibrary-ios_Example/Pods-EyuLibrary-ios_Example-frameworks.sh",
-				"${PODS_ROOT}/../../EyuLibrary-ios/3rd/GDTActionSDK.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GDTActionSDK.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-EyuLibrary-ios_Example/Pods-EyuLibrary-ios_Example-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		8348D6EEF5E018FE8A15FFF1 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -416,8 +398,9 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-EyuLibrary-ios_Example/Pods-EyuLibrary-ios_Example-resources.sh",
-				"${PODS_ROOT}/AppLovinSDK/applovin-ios-sdk-6.9.5/AppLovinSDKResources.bundle",
+				"${PODS_ROOT}/AppLovinSDK/applovin-ios-sdk-6.11.4/AppLovinSDKResources.bundle",
 				"${PODS_ROOT}/Bytedance-UnionAD/Bytedance-UnionAd/Frameworks/BUAdSDK.bundle",
+				"${PODS_ROOT}/FBSDKCoreKit/FacebookSDKStrings.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/FFToast/FFToast.bundle",
 				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/gRPC-C++/gRPCCertificates-Cpp.bundle",
@@ -426,6 +409,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AppLovinSDKResources.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/BUAdSDK.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FacebookSDKStrings.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FFToast.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVProgressHUD.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/gRPCCertificates-Cpp.bundle",
@@ -455,6 +439,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F6FDEA2101B7F8FC970412F3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EyuLibrary-ios_Example/Pods-EyuLibrary-ios_Example-frameworks.sh",
+				"${PODS_ROOT}/../../EyuLibrary-ios/3rd/GDTActionSDK.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GDTActionSDK.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-EyuLibrary-ios_Example/Pods-EyuLibrary-ios_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -603,20 +609,17 @@
 					"PB_FIELD_32BIT=1",
 					"PB_NO_PACKED_STRUCTS=1",
 					"PB_ENABLE_MALLOC=1",
-					GDT_ADS_ENABLED,
 					MTG_ADS_ENABLED,
 					BYTE_DANCE_ADS_ENABLED,
 					UM_ENABLED,
 					FIREBASE_ENABLED,
-					AF_ENABLED,
-					GDT_ACTION_ENABLED,
 					FB_ADS_ENABLED,
 					ADMOB_ADS_ENABLED,
-					IRON_ADS_ENABLED,
 					VUNGLE_ADS_ENABLED,
 					UNITY_ADS_ENABLED,
 					APPLOVIN_ADS_ENABLED,
-					TRACKING_ENABLED,
+					FACEBOOK_ENABLED,
+					GDT_ADS_ENABLED,
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
