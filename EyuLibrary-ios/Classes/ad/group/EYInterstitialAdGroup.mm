@@ -69,6 +69,10 @@
 #ifdef IRON_ADS_ENABLED
         NSClassFromString(@"EYIronSourceInterstitialAdAdapter"), ADNetworkIronSource,
 #endif
+#ifdef GDT_ADS_ENABLED
+        NSClassFromString(@"EYGdtInterstitialAdAdapter"), ADNetworkGdt,
+#endif
+
         nil];
 
         self.adGroup = adGroup;
