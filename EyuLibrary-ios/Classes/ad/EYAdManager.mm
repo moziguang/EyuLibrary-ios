@@ -1027,28 +1027,29 @@ static id s_sharedInstance;
 
 -(void) showNetworkAlert
 {
-    bool showNetworkAlert = [[NSUserDefaults standardUserDefaults] boolForKey:@"SHOW_NETWORK_ALERT"];
-    if(!showNetworkAlert){
-        [[NSUserDefaults standardUserDefaults] setBool:true forKey:@"SHOW_NETWORK_ALERT"];
-        UIAlertController* networkAlertController = [UIAlertController alertControllerWithTitle:@"Network connection failed" message:@"Your device is not connected. Please check your cellular data setting." preferredStyle:UIAlertControllerStyleAlert];
-//        __block UIAlertController *blockAlertController = networkAlertController;
-        [networkAlertController addAction:[UIAlertAction actionWithTitle:@"Cannel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-//            if(blockAlertController){
-//                [blockAlertController dismissViewControllerAnimated:YES completion:nil];
-//            }
-        }]];
-        
-        [networkAlertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                NSURL *settingsURL = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
-                if([[UIApplication sharedApplication] canOpenURL:settingsURL]) {
-                    [[UIApplication sharedApplication] openURL:settingsURL];
-                }
-        }]];
-        [SVProgressHUD dismiss];
-        [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:networkAlertController animated:YES completion:nil];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        bool showNetworkAlert = [[NSUserDefaults standardUserDefaults] boolForKey:@"SHOW_NETWORK_ALERT"];
+            if(!showNetworkAlert){
+                [[NSUserDefaults standardUserDefaults] setBool:true forKey:@"SHOW_NETWORK_ALERT"];
+                UIAlertController* networkAlertController = [UIAlertController alertControllerWithTitle:@"Network connection failed" message:@"Your device is not connected. Please check your cellular data setting." preferredStyle:UIAlertControllerStyleAlert];
+        //        __block UIAlertController *blockAlertController = networkAlertController;
+                [networkAlertController addAction:[UIAlertAction actionWithTitle:@"Cannel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        //            if(blockAlertController){
+        //                [blockAlertController dismissViewControllerAnimated:YES completion:nil];
+        //            }
+                }]];
+                
+                [networkAlertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                        NSURL *settingsURL = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+                        if([[UIApplication sharedApplication] canOpenURL:settingsURL]) {
+                            [[UIApplication sharedApplication] openURL:settingsURL];
+                        }
+                }]];
+                [SVProgressHUD dismiss];
+                [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:networkAlertController animated:YES completion:nil];
 
-    }
-    
+            }
+    });
 }
 
 @end
