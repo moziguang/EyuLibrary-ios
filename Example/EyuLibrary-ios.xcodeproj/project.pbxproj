@@ -616,6 +616,8 @@
 					UNITY_ADS_ENABLED,
 					FACEBOOK_ENABLED,
 					BYTE_DANCE_ADS_ENABLED,
+					MTG_ADS_ENABLED,
+					GDT_ADS_ENABLED,
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",

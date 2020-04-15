@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
 #    s.use_frameworks!
   s.name             = 'EyuLibrary-ios'
-  s.version          = '1.3.9'
+  s.version          = '1.3.10'
   s.summary          = 'A short description of EyuLibrary-ios.'
 
 # This description is used to generate tags and improve search results.
@@ -69,7 +69,7 @@ Pod::Spec.new do |s|
  end
  
  s.subspec 'fb_ads_sdk' do |fb_ads_sdk|
-     fb_ads_sdk.dependency 'FBAudienceNetwork','5.7.1'
+     fb_ads_sdk.dependency 'FBAudienceNetwork','5.8.0'
      fb_ads_sdk.dependency 'FBSDKCoreKit','5.8.0'
      fb_ads_sdk.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) FB_ADS_ENABLED FACEBOOK_ENABLED'}
  end
@@ -97,17 +97,20 @@ Pod::Spec.new do |s|
  
  s.subspec 'byte_dance_ads_sdk' do |byte_dance_ads_sdk|
 #     byte_dance_ads_sdk.source 'https://github.com/CocoaPods/Specs.git'
-     byte_dance_ads_sdk.dependency 'Bytedance-UnionAD','2.9.0.1'
+     byte_dance_ads_sdk.dependency 'Bytedance-UnionAD','2.9.0.3'
      byte_dance_ads_sdk.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) BYTE_DANCE_ADS_ENABLED'}
  end
  
  s.subspec 'mtg_ads_sdk' do |mtg_ads_sdk|
-     mtg_ads_sdk.vendored_frameworks = ['EyuLibrary-ios/3rd/MTGSDK.framework','EyuLibrary-ios/3rd/MTGSDKReward.framework','EyuLibrary-ios/3rd/MTGSDKInterstitialVideo.framework']
+#     mtg_ads_sdk.vendored_frameworks = ['EyuLibrary-ios/3rd/MTGSDK.framework','EyuLibrary-ios/3rd/MTGSDKReward.framework','EyuLibrary-ios/3rd/MTGSDKInterstitialVideo.framework']
+    mtg_ads_sdk.dependency 'MintegralAdSDK/InterstitialVideoAd'
+    mtg_ads_sdk.dependency 'MintegralAdSDK/RewardVideoAd'
+
      mtg_ads_sdk.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) MTG_ADS_ENABLED'}
  end
  
  s.subspec 'gdt_ads_sdk' do |gdt_ad|
-     gdt_ad.dependency 'GDTMobSDK','4.11.5'
+     gdt_ad.dependency 'GDTMobSDK','4.11.6'
      gdt_ad.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) GDT_ADS_ENABLED'}
  end
  

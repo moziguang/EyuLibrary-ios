@@ -40,7 +40,7 @@ it, simply add the following line to your Podfile:
 ```
 ### 1、修改项目的Podfile文件，例如
 ```pod
-pod 'EyuLibrary-ios',:subspecs => ['Core','byte_dance_ads_sdk','um_sdk', 'af_sdk', 'gdt_action','gdt_ads_sdk', 'mtg_ads_sdk', 'fb_ads_sdk', 'unity_ads_sdk', 'vungle_ads_sdk', 'applovin_ads_sdk', 'iron_ads_sdk', 'firebase_sdk', 'crashlytics_sdk','fb_login_sdk'], :git => 'https://github.com/moziguang/EyuLibrary-ios.git',:tag =>'1.3.9'
+pod 'EyuLibrary-ios',:subspecs => ['Core','byte_dance_ads_sdk','um_sdk', 'af_sdk', 'gdt_action','gdt_ads_sdk', 'mtg_ads_sdk', 'fb_ads_sdk', 'unity_ads_sdk', 'vungle_ads_sdk', 'applovin_ads_sdk', 'iron_ads_sdk', 'firebase_sdk', 'crashlytics_sdk','fb_login_sdk'], :git => 'https://github.com/moziguang/EyuLibrary-ios.git',:tag =>'1.3.10'
     （以上模块可以根据项目需要进行删减）
 ```
 ### 2、在终端里运行 pod install或者pod update，并留意执行是否有警告或者报错
@@ -54,18 +54,6 @@ LIBRARY_SEARCH_PATHS 加上 $(inherited)
 OTHER_LDFLAGS 加上 $(inherited)
 ```
 ### 5、穿山甲SDK 
-如果pod install 时遇到类似这样的错误，请先安装lfs：https://git-lfs.github.com/
-```sh
-[!] Error installing Bytedance-UnionAD
-[!] /usr/bin/git clone https://github.com/bytedance/Bytedance-UnionAD.git /var/folders/15/ylqd5mp108g51x0k7lhzxfk80000gn/T/d20200114-38218-13bj6cl --template= --single-branch --depth 1 --branch 2.7.5.2
-
-Cloning into '/var/folders/15/ylqd5mp108g51x0k7lhzxfk80000gn/T/d20200114-38218-13bj6cl'...
-Note: checking out '1d1206705f631fac08309b5cbb3ad989ffd9df8f'.
-
-You are in 'detached HEAD' state. You can look around, make experimental
-changes and commit them, and you can discard any commits you make in this
-state without impacting any branches by performing another checkout.
-```
 ```txt
 在GCC_PREPROCESSOR_DEFINITIONS 加上 BYTE_DANCE_ADS_ENABLED
 adConfig.wmAppKey = @"XXXXXX";//代码里设置穿山甲sdk app key
