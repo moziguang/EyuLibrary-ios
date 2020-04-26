@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
 #    s.use_frameworks!
   s.name             = 'EyuLibrary-ios'
-  s.version          = '1.3.10'
+  s.version          = '1.3.11'
   s.summary          = 'A short description of EyuLibrary-ios.'
 
 # This description is used to generate tags and improve search results.
@@ -103,8 +103,8 @@ Pod::Spec.new do |s|
  
  s.subspec 'mtg_ads_sdk' do |mtg_ads_sdk|
 #     mtg_ads_sdk.vendored_frameworks = ['EyuLibrary-ios/3rd/MTGSDK.framework','EyuLibrary-ios/3rd/MTGSDKReward.framework','EyuLibrary-ios/3rd/MTGSDKInterstitialVideo.framework']
-    mtg_ads_sdk.dependency 'MintegralAdSDK/InterstitialVideoAd'
-    mtg_ads_sdk.dependency 'MintegralAdSDK/RewardVideoAd'
+    mtg_ads_sdk.dependency 'MintegralAdSDK/InterstitialVideoAd','6.1.3.0'
+    mtg_ads_sdk.dependency 'MintegralAdSDK/RewardVideoAd','6.1.3.0'
 
      mtg_ads_sdk.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) MTG_ADS_ENABLED'}
  end
