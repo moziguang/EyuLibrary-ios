@@ -13,7 +13,7 @@
 #endif
 
 #ifdef UM_ENABLED
-#import <UMAnalytics/MobClick.h>
+#import <UMCommon/MobClick.h>
 #endif
 
 #ifdef GDT_ACTION_ENABLED

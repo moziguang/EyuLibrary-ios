@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
 #    s.use_frameworks!
   s.name             = 'EyuLibrary-ios'
-  s.version          = '1.3.15'
+  s.version          = '1.3.16'
   s.summary          = 'A short description of EyuLibrary-ios.'
 
 # This description is used to generate tags and improve search results.
@@ -49,7 +49,7 @@ Pod::Spec.new do |s|
  end
  
  s.subspec 'um_sdk' do |um|
-     um.dependency 'UMCAnalytics'
+     um.dependency 'UMCCommon'
      um.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) UM_ENABLED'}
  end
  
