@@ -55,7 +55,7 @@ static bool sIsFBInited = false;
     
     [[FBSDKApplicationDelegate sharedInstance] application:application
                              didFinishLaunchingWithOptions:launchOptions];
-    
+    [self fetchDeferredAppLink:launchOptions];
     [FBSDKAppEvents activateApp];
     sIsFBInited = true;
 }
@@ -71,6 +71,19 @@ static bool sIsFBInited = false;
                         ];
         
     return handled;
+}
+
++(void) fetchDeferredAppLink:(NSDictionary *)launchOptions {
+    if (launchOptions[UIApplicationLaunchOptionsURLKey] == nil) {
+      [FBSDKAppLinkUtility fetchDeferredAppLink:^(NSURL *url, NSError *error) {
+        if (error) {
+          NSLog(@"Received error while fetching deferred app link %@", error);
+        }
+        if (url) {
+          [[UIApplication sharedApplication] openURL:url];
+        }
+      }];
+    }
 }
 #endif
 
