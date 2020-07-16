@@ -133,6 +133,10 @@ static bool sIsFBInited = false;
         NSLog(@"This is an organic install.");
     }
 }
+
+- (void)onConversionDataRequestFailure:(NSError *)error {
+    NSLog(@"%@", error);
+}
 #endif
 
 #ifdef UM_ENABLED
