@@ -31,6 +31,7 @@
 #define     EVENT_LOAD_SUCCESS  @"_LOAD_SUCCESS"
 #define     EVENT_REWARDED  @"_REWARDED"
 #define     EVENT_CLICKED  @"_CLICKED"
+#define     EVENT_CONVERSION  @"conversion"
 #define     EVENT_AD_IMPRESSION  @"eyu_ad_impression"
 
 

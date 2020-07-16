@@ -7,6 +7,7 @@
 
 #import <Foundation/Foundation.h>
 #import "EYSdkUtils.h"
+#import "EYEventUtils.h"
 
 #ifdef FIREBASE_ENABLED
 #import "Firebase.h"
@@ -100,7 +101,37 @@ static bool sIsFBInited = false;
 {
     [AppsFlyerTracker sharedTracker].appsFlyerDevKey = devKey;
     [AppsFlyerTracker sharedTracker].appleAppID = appId;
+    [AppsFlyerTracker sharedTracker].delegate = self;
     [[AppsFlyerTracker sharedTracker] trackAppLaunch];
+}
+
+- (void)onConversionDataReceived:(NSDictionary *)installData {
+    NSNumber *is_first_launch = installData[@"is_first_launch"];
+    if (is_first_launch.integerValue == 0) {
+        return;
+    }
+    id status = [installData objectForKey:@"af_status"];
+    if([status isEqualToString:@"Non-organic"]) {
+        NSMutableDictionary *mDic = [[NSMutableDictionary alloc]init];
+        mDic[@"pid"] = installData[@"pid"];
+        mDic[@"c"] = installData[@"c"];
+        mDic[@"af_ad_id"] = installData[@"af_ad_id"];
+        mDic[@"af_ad"] = installData[@"af_ad"];
+        mDic[@"af_ad_type"] = installData[@"af_ad_type"];
+        mDic[@"af_adset_id"] = installData[@"af_adset_id"];
+        mDic[@"af_adset"] = installData[@"af_adset"];
+        mDic[@"af_c_id"] = installData[@"af_c_id"];
+        mDic[@"af_channel"] = installData[@"af_channel"];
+        mDic[@"af_siteid"] = installData[@"af_siteid"];
+        mDic[@"advertising_id"] = installData[@"advertising_id"];
+        mDic[@"idfa"] = installData[@"idfa"];
+//        id sourceID = [installData objectForKey:@"media_source"];
+//        id campaign = [installData objectForKey:@"campaign"];
+        [EYEventUtils logEvent:EVENT_CONVERSION parameters:mDic];
+        NSLog(@"This is a none organic install: %@", mDic);
+    } else if([status isEqualToString:@"Organic"]) {
+        NSLog(@"This is an organic install.");
+    }
 }
 #endif
 
