@@ -81,7 +81,16 @@ static bool sIsFBInited = false;
           NSLog(@"Received error while fetching deferred app link %@", error);
         }
         if (url) {
-          [[UIApplication sharedApplication] openURL:url];
+            NSURLComponents *components = [[NSURLComponents alloc]initWithURL:url resolvingAgainstBaseURL:NO];
+            NSMutableDictionary *mDic = [[NSMutableDictionary alloc]init];
+            mDic[@"eyu_channel"] = @"facebook";
+            for (NSURLQueryItem *item in components.queryItems) {
+                if ([item.name isEqualToString:@"ad_name"]) {
+                    mDic[item.name] = item.value;
+                    break;
+                }
+            }
+            [EYEventUtils logEvent:EVENT_FBCONVERSION parameters:mDic];
         }
       }];
     }

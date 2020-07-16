@@ -32,6 +32,7 @@
 #define     EVENT_REWARDED  @"_REWARDED"
 #define     EVENT_CLICKED  @"_CLICKED"
 #define     EVENT_CONVERSION  @"conversion"
+#define     EVENT_FBCONVERSION  @"fb_conversion"
 #define     EVENT_AD_IMPRESSION  @"eyu_ad_impression"
 
 
