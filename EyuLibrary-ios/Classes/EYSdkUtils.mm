@@ -47,8 +47,8 @@
     id status = [installData objectForKey:@"af_status"];
     if([status isEqualToString:@"Non-organic"]) {
         NSMutableDictionary *mDic = [[NSMutableDictionary alloc]init];
-        mDic[@"pid"] = installData[@"pid"];
-        mDic[@"c"] = installData[@"c"];
+        mDic[@"pid"] = installData[@"media_source"];
+        mDic[@"c"] = installData[@"campaign"];
         mDic[@"af_ad_id"] = installData[@"af_ad_id"];
         mDic[@"af_ad"] = installData[@"af_ad"];
         mDic[@"af_ad_type"] = installData[@"af_ad_type"];
@@ -59,8 +59,6 @@
         mDic[@"af_siteid"] = installData[@"af_siteid"];
         mDic[@"advertising_id"] = installData[@"advertising_id"];
         mDic[@"idfa"] = installData[@"idfa"];
-//        id sourceID = [installData objectForKey:@"media_source"];
-//        id campaign = [installData objectForKey:@"campaign"];
         [EYEventUtils logEvent:EVENT_CONVERSION parameters:mDic];
         NSLog(@"This is a af none organic install: %@", mDic);
     } else if([status isEqualToString:@"Organic"]) {
