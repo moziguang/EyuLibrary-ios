@@ -37,7 +37,7 @@
     adConfig.mtgAppId = @"111418";
     adConfig.mtgAppKey = @"a339a16bbaca844012276afad6f59eaa";
     adConfig.admobClientId = @"ca-app-pub-7585239226773233~4631740346";
-    adConfig.wmAppKey = @"5010261";
+    adConfig.wmAppKey = @"5088950";//@"5010261";
     adConfig.gdtAppId = @"1108127036";
     adConfig.unityClientId = @"2340038";
     adConfig.vungleClientId = @"5bdbc67a6d9d2200139056f9";
