@@ -50,7 +50,13 @@
         mDic[@"pid"] = installData[@"media_source"];
         mDic[@"c"] = installData[@"campaign"];
         mDic[@"af_ad_id"] = installData[@"af_ad_id"];
-        mDic[@"af_ad"] = installData[@"af_ad"];
+        NSString *afId = installData[@"af_ad"];
+        if (afId.length > 100) {
+            mDic[@"af_ad"] = [afId substringToIndex:100];
+            mDic[@"af_ad2"] = [afId substringWithRange: NSMakeRange(100, afId.length-100)];
+        } else {
+            mDic[@"af_ad"] = afId;
+        }
         mDic[@"af_ad_type"] = installData[@"af_ad_type"];
         mDic[@"af_adset_id"] = installData[@"af_adset_id"];
         mDic[@"af_adset"] = installData[@"af_adset"];
@@ -123,7 +129,13 @@ static bool sIsFBInited = false;
             mDic[@"eyu_channel"] = @"facebook";
             for (NSURLQueryItem *item in components.queryItems) {
                 if ([item.name isEqualToString:@"ad_name"]) {
-                    mDic[item.name] = item.value;
+                    NSString *ad_name = item.value;
+                    if (ad_name.length > 100) {
+                        mDic[@"ad_name"] = [ad_name substringToIndex:100];
+                        mDic[@"ad_name2"] = [ad_name substringWithRange: NSMakeRange(100, ad_name.length-100)];
+                    } else {
+                        mDic[@"ad_name"] = ad_name;
+                    }
                     break;
                 }
             }
