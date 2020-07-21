@@ -54,7 +54,7 @@ Pod::Spec.new do |s|
  end
  
  s.subspec 'af_sdk' do |af|
-     af.dependency 'AppsFlyerFramework','4.10.4'
+     af.dependency 'AppsFlyerFramework','5.4.1'
      af.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) AF_ENABLED'}
  end
  
