@@ -39,7 +39,13 @@
 @end
 
 @implementation AppsFlyerDelegate
-- (void)onConversionDataReceived:(NSDictionary *)installData {
+- (void)onConversionDataFail:(nonnull NSError *)error {
+    NSLog(@"onConversionDataFail %@", error);
+}
+
+- (void)onConversionDataSuccess:(nonnull NSDictionary *)installData {
+    NSLog(@"onConversionDataSuccess %@", installData);
+    if(installData == nil) return;
     NSNumber *is_first_launch = installData[@"is_first_launch"];
     if (is_first_launch.integerValue == 0) {
         return;
@@ -72,9 +78,6 @@
     }
 }
 
-- (void)onConversionDataRequestFailure:(NSError *)error {
-    NSLog(@"%@", error);
-}
 @end
 # endif
 
