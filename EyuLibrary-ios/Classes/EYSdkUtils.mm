@@ -129,8 +129,8 @@ static bool sIsFBInited = false;
         if (url) {
             NSMutableDictionary *mDic = [[NSMutableDictionary alloc]init];
             mDic[@"eyu_channel"] = @"facebook";
-            NSArray *urlComponents = [url.absoluteString componentsSeparatedByString:@"://"];
-            NSString *ad_name = urlComponents.lastObject;
+            NSString *host = [url.absoluteString componentsSeparatedByString:@"?"].firstObject;
+            NSString *ad_name = [host componentsSeparatedByString:@"://"].lastObject;
             if (ad_name.length > 100) {
                 mDic[@"ad_name"] = [ad_name substringToIndex:100];
                 mDic[@"ad_name2"] = [ad_name substringWithRange: NSMakeRange(100, ad_name.length-100)];
