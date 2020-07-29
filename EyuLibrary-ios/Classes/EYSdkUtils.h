@@ -10,9 +10,8 @@
 
 #import <Foundation/Foundation.h>
 #import "EYAdConstants.h"
-@protocol AppsFlyerTrackerDelegate;
 
-@interface EYSdkUtils : NSObject <AppsFlyerTrackerDelegate> {
+@interface EYSdkUtils : NSObject {
     
 }
 

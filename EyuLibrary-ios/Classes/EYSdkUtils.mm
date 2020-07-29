@@ -124,20 +124,15 @@ static bool sIsFBInited = false;
           NSLog(@"Received error while fetching deferred app link %@", error);
         }
         if (url) {
-            NSURLComponents *components = [[NSURLComponents alloc]initWithURL:url resolvingAgainstBaseURL:NO];
             NSMutableDictionary *mDic = [[NSMutableDictionary alloc]init];
             mDic[@"eyu_channel"] = @"facebook";
-            for (NSURLQueryItem *item in components.queryItems) {
-                if ([item.name isEqualToString:@"ad_name"]) {
-                    NSString *ad_name = item.value;
-                    if (ad_name.length > 100) {
-                        mDic[@"ad_name"] = [ad_name substringToIndex:100];
-                        mDic[@"ad_name2"] = [ad_name substringWithRange: NSMakeRange(100, ad_name.length-100)];
-                    } else {
-                        mDic[@"ad_name"] = ad_name;
-                    }
-                    break;
-                }
+            NSArray *urlComponents = [url.absoluteString componentsSeparatedByString:@"://"];
+            NSString *ad_name = urlComponents.lastObject;
+            if (ad_name.length > 100) {
+                mDic[@"ad_name"] = [ad_name substringToIndex:100];
+                mDic[@"ad_name2"] = [ad_name substringWithRange: NSMakeRange(100, ad_name.length-100)];
+            } else {
+                mDic[@"ad_name"] = ad_name;
             }
             NSLog(@"This is a fb none organic install: %@", mDic);
             [EYEventUtils logEvent:EVENT_FBCONVERSION parameters:mDic];
