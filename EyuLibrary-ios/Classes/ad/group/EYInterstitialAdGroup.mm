@@ -164,11 +164,11 @@
         self.tryLoadAdCounter = 2;
     }
     
-    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-    [dic setObject:adapter.adKey.keyId forKey:@"type"];
-    if(self.reportEvent){
-        [EYEventUtils logEvent:[self.adGroup.groupId stringByAppendingString:EVENT_LOADING]  parameters:dic];
-    }
+//    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+//    [dic setObject:adapter.adKey.keyId forKey:@"type"];
+//    if(self.reportEvent){
+//        [EYEventUtils logEvent:[self.adGroup.groupId stringByAppendingString:EVENT_LOADING]  parameters:dic];
+//    }
 }
 
 -(EYInterstitialAdAdapter*) createAdAdapterWithKey:(EYAdKey*)adKey adGroup:(EYAdGroup*)group
@@ -198,11 +198,11 @@
         [self.delegate onAdLoaded:self.adPlaceId type:ADTypeInterstitial];
     }
     
-    if(self.reportEvent){
-        NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-        [dic setObject:adapter.adKey.keyId forKey:@"type"];
-        [EYEventUtils logEvent:[self.adGroup.groupId stringByAppendingString:EVENT_LOAD_SUCCESS]  parameters:dic];
-    }
+//    if(self.reportEvent){
+//        NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+//        [dic setObject:adapter.adKey.keyId forKey:@"type"];
+//        [EYEventUtils logEvent:[self.adGroup.groupId stringByAppendingString:EVENT_LOAD_SUCCESS]  parameters:dic];
+//    }
 }
 
 -(void) onAdLoadFailed:(EYInterstitialAdAdapter*)adapter withError:(int)errorCode
@@ -210,12 +210,12 @@
     EYAdKey* adKey = adapter.adKey;
     NSLog(@"onAdLoadFailed adKey = %@, errorCode = %d", adKey.keyId, errorCode);
     
-    if(self.reportEvent){
-        NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-        [dic setObject:[[NSString alloc] initWithFormat:@"%d",errorCode] forKey:@"code"];
-        [dic setObject:adKey.keyId forKey:@"type"];
-        [EYEventUtils logEvent:[self.adGroup.groupId stringByAppendingString:EVENT_LOAD_FAILED]  parameters:dic];
-    }
+//    if(self.reportEvent){
+//        NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+//        [dic setObject:[[NSString alloc] initWithFormat:@"%d",errorCode] forKey:@"code"];
+//        [dic setObject:adKey.keyId forKey:@"type"];
+//        [EYEventUtils logEvent:[self.adGroup.groupId stringByAppendingString:EVENT_LOAD_FAILED]  parameters:dic];
+//    }
     
     if(self.curLoadingIndex>=0 && self.adapterArray[self.curLoadingIndex] == adapter)
     {
@@ -226,11 +226,11 @@
             self.curLoadingIndex = (self.curLoadingIndex+1)%self.adapterArray.count;
             EYInterstitialAdAdapter* adapter = self.adapterArray[self.curLoadingIndex];
             [adapter loadAd];
-            if(self.reportEvent){
-                NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-                [dic setObject:adapter.adKey.keyId forKey:@"type"];
-                [EYEventUtils logEvent:[self.adGroup.groupId stringByAppendingString:EVENT_LOADING]  parameters:dic];
-            }
+//            if(self.reportEvent){
+//                NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+//                [dic setObject:adapter.adKey.keyId forKey:@"type"];
+//                [EYEventUtils logEvent:[self.adGroup.groupId stringByAppendingString:EVENT_LOADING]  parameters:dic];
+//            }
         }
     }
     
@@ -259,11 +259,11 @@
     {
         [self.delegate onAdClicked:self.adPlaceId type:ADTypeInterstitial];
     }
-    if(self.reportEvent){
-        NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-        [dic setObject:adapter.adKey.keyId forKey:@"type"];
-        [EYEventUtils logEvent:[self.adGroup.groupId stringByAppendingString:EVENT_CLICKED]  parameters:dic];
-    }
+//    if(self.reportEvent){
+//        NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+//        [dic setObject:adapter.adKey.keyId forKey:@"type"];
+//        [EYEventUtils logEvent:[self.adGroup.groupId stringByAppendingString:EVENT_CLICKED]  parameters:dic];
+//    }
 }
 -(void) onAdClosed:(EYInterstitialAdAdapter*)adapter
 {
