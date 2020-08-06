@@ -292,7 +292,7 @@
 -(void) onAdShowed:(EYRewardAdAdapter*)adapter
 {
     if(self.delegate)
-    { 
+    {
         [self.delegate onAdShowed:self.adPlaceId type:ADTypeReward];
     }
 //    if(self.reportEvent){
