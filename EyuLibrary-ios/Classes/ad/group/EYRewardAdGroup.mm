@@ -128,11 +128,11 @@
         self.tryLoadAdCounter = 2;
     }
     
-//    if(self.reportEvent){
-//        NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-//        [dic setObject:adapter.adKey.keyId forKey:@"type"];
-//        [EYEventUtils logEvent:[self.adGroup.groupId stringByAppendingString:EVENT_LOADING]  parameters:dic];
-//    }
+    if(self.reportEvent){
+        NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+        [dic setObject:adapter.adKey.keyId forKey:@"type"];
+        [EYEventUtils logEvent:[self.adGroup.groupId stringByAppendingString:EVENT_LOADING]  parameters:dic];
+    }
 }
 
 -(bool) isCacheAvailable
@@ -231,11 +231,11 @@
     {
         self.curLoadingIndex = -1;
     }
-//    if(self.reportEvent){
-//        NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-//        [dic setObject:adapter.adKey.keyId forKey:@"type"];
-//        [EYEventUtils logEvent:[self.adGroup.groupId stringByAppendingString:EVENT_LOAD_SUCCESS]  parameters:dic];
-//    }
+    if(self.reportEvent){
+        NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+        [dic setObject:adapter.adKey.keyId forKey:@"type"];
+        [EYEventUtils logEvent:[self.adGroup.groupId stringByAppendingString:EVENT_LOAD_SUCCESS]  parameters:dic];
+    }
     
     if(self.delegate)
     {
@@ -255,12 +255,12 @@
     EYAdKey* adKey = adapter.adKey;
     NSLog(@"onAdLoadFailed adKey = %@, errorCode = %d", adKey.keyId, errorCode);
     
-//    if(self.reportEvent){
-//        NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-//        [dic setObject:[[NSString alloc] initWithFormat:@"%d",errorCode] forKey:@"code"];
-//        [dic setObject:adKey.keyId forKey:@"type"];
-//        [EYEventUtils logEvent:[self.adGroup.groupId stringByAppendingString:EVENT_LOAD_FAILED]  parameters:dic];
-//    }
+    if(self.reportEvent){
+        NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+        [dic setObject:[[NSString alloc] initWithFormat:@"%d",errorCode] forKey:@"code"];
+        [dic setObject:adKey.keyId forKey:@"type"];
+        [EYEventUtils logEvent:[self.adGroup.groupId stringByAppendingString:EVENT_LOAD_FAILED]  parameters:dic];
+    }
     
     if(self.curLoadingIndex>=0 && self.adapterArray[self.curLoadingIndex] == adapter)
     {
@@ -276,11 +276,11 @@
             self.curLoadingIndex = (self.curLoadingIndex+1)%self.adapterArray.count;
             EYRewardAdAdapter* adapter = self.adapterArray[self.curLoadingIndex];
             [adapter loadAd];
-//            if(self.reportEvent){
-//                NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-//                [dic setObject:adapter.adKey.keyId forKey:@"type"];
-//                [EYEventUtils logEvent:[self.adGroup.groupId stringByAppendingString:EVENT_LOADING]  parameters:dic];
-//            }
+            if(self.reportEvent){
+                NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+                [dic setObject:adapter.adKey.keyId forKey:@"type"];
+                [EYEventUtils logEvent:[self.adGroup.groupId stringByAppendingString:EVENT_LOADING]  parameters:dic];
+            }
         }
     }
     if(self.delegate)
@@ -292,7 +292,7 @@
 -(void) onAdShowed:(EYRewardAdAdapter*)adapter
 {
     if(self.delegate)
-    {
+    { 
         [self.delegate onAdShowed:self.adPlaceId type:ADTypeReward];
     }
 //    if(self.reportEvent){
@@ -308,11 +308,11 @@
     {
         [self.delegate onAdClicked:self.adPlaceId type:ADTypeReward];
     }
-//    if(self.reportEvent){
-//        NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-//        [dic setObject:adapter.adKey.keyId forKey:@"type"];
-//        [EYEventUtils logEvent:[self.adGroup.groupId stringByAppendingString:EVENT_CLICKED]  parameters:dic];
-//    }
+    if(self.reportEvent){
+        NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+        [dic setObject:adapter.adKey.keyId forKey:@"type"];
+        [EYEventUtils logEvent:[self.adGroup.groupId stringByAppendingString:EVENT_CLICKED]  parameters:dic];
+    }
 }
 
 -(void) onAdClosed:(EYRewardAdAdapter*)adapter
