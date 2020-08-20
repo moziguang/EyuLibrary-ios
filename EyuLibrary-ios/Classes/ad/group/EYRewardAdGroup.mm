@@ -231,11 +231,11 @@
     {
         self.curLoadingIndex = -1;
     }
-    if(self.reportEvent){
+//    if(self.reportEvent){
         NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
         [dic setObject:adapter.adKey.keyId forKey:@"type"];
         [EYEventUtils logEvent:[self.adGroup.groupId stringByAppendingString:EVENT_LOAD_SUCCESS]  parameters:dic];
-    }
+//    }
     
     if(self.delegate)
     {
