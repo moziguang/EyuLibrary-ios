@@ -198,11 +198,11 @@
         [self.delegate onAdLoaded:self.adPlaceId type:ADTypeInterstitial];
     }
     
-    if(self.reportEvent){
+//    if(self.reportEvent){
         NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
         [dic setObject:adapter.adKey.keyId forKey:@"type"];
         [EYEventUtils logEvent:[self.adGroup.groupId stringByAppendingString:EVENT_LOAD_SUCCESS]  parameters:dic];
-    }
+//    }
 }
 
 -(void) onAdLoadFailed:(EYInterstitialAdAdapter*)adapter withError:(int)errorCode
