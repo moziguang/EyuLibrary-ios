@@ -21,7 +21,7 @@
 {
 //    [EYSdkUtils initUMMobSdk:@"test" channel:@"eyu"];
 //    [EYSdkUtils initAppFlyer:@"test" appId:@"test"];
-//    [EYSdkUtils initGDTActionSdk:@"test" secretkey:@"test"];
+    [EYSdkUtils initGDTActionSdk:@"test" secretkey:@"test"];
     [EYSdkUtils initFirebaseSdk];
 //    [EYSdkUtils initTrackingWithAppKey:@"475938c702f7451a88eaffb524962649"];
     [EYSdkUtils initFacebookSdkWithApplication:application options:launchOptions];
@@ -41,7 +41,7 @@
     adConfig.gdtAppId = @"1108127036";
     adConfig.unityClientId = @"2340038";
     adConfig.vungleClientId = @"5bdbc67a6d9d2200139056f9";
-//    adConfig.ironSourceAppKey = @"a78e7db5";
+    adConfig.ironSourceAppKey = @"cceee1bd";//@"a78e7db5";
     [[EYAdManager sharedInstance] setupWithConfig:adConfig];
     [[EYAdManager sharedInstance] setDelegate:self];
     

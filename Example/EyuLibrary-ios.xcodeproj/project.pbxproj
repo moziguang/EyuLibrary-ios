@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5635DFC123EA9BDE0065566A /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5635DFC023EA9BDD0065566A /* iAd.framework */; };
+		56792D5824FDEA9F00655101 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56792D5724FDEA9F00655101 /* File.swift */; };
 		56E252BA21785EE500584CB9 /* ios_ad_key_setting.json in Resources */ = {isa = PBXBuildFile; fileRef = 56E252B321785EE500584CB9 /* ios_ad_key_setting.json */; };
 		56E252BC21785EE500584CB9 /* ios_ad_setting.json in Resources */ = {isa = PBXBuildFile; fileRef = 56E252B521785EE500584CB9 /* ios_ad_setting.json */; };
 		56E252BE21785EE500584CB9 /* defaults_setting.json in Resources */ = {isa = PBXBuildFile; fileRef = 56E252B721785EE500584CB9 /* defaults_setting.json */; };
@@ -60,6 +61,8 @@
 		372537BE4D1D744A193EB00E /* libPods-EyuLibrary-ios_Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EyuLibrary-ios_Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		37374FD33AEC6D404E1C48F2 /* Pods-EyuLibrary-ios_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EyuLibrary-ios_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EyuLibrary-ios_Tests/Pods-EyuLibrary-ios_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		5635DFC023EA9BDD0065566A /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
+		56792D5624FDEA9F00655101 /* EyuLibrary-ios_Example-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EyuLibrary-ios_Example-Bridging-Header.h"; sourceTree = "<group>"; };
+		56792D5724FDEA9F00655101 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		56E252B321785EE500584CB9 /* ios_ad_key_setting.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ios_ad_key_setting.json; sourceTree = "<group>"; };
 		56E252B521785EE500584CB9 /* ios_ad_setting.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ios_ad_setting.json; sourceTree = "<group>"; };
 		56E252B721785EE500584CB9 /* defaults_setting.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = defaults_setting.json; sourceTree = "<group>"; };
@@ -164,11 +167,13 @@
 		6003F581195388D10070C39A = {
 			isa = PBXGroup;
 			children = (
+				56792D5724FDEA9F00655101 /* File.swift */,
 				60FF7A9C1954A5C5007DD14C /* Podspec Metadata */,
 				6003F593195388D20070C39A /* Example for EyuLibrary-ios */,
 				6003F58C195388D20070C39A /* Frameworks */,
 				6003F58B195388D20070C39A /* Products */,
 				72E7B76D74CB6D0F0B7B74CB /* Pods */,
+				56792D5624FDEA9F00655101 /* EyuLibrary-ios_Example-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -261,7 +266,6 @@
 				6003F587195388D20070C39A /* Frameworks */,
 				6003F588195388D20070C39A /* Resources */,
 				8348D6EEF5E018FE8A15FFF1 /* [CP] Copy Pods Resources */,
-				E7DD9D89174BDECD2B94F31C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -303,6 +307,7 @@
 				TargetAttributes = {
 					6003F589195388D20070C39A = {
 						DevelopmentTeam = 3DLCS59FSN;
+						LastSwiftMigration = 1160;
 					};
 					6003F5AD195388D20070C39A = {
 						TestTargetID = 6003F589195388D20070C39A;
@@ -398,7 +403,7 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-EyuLibrary-ios_Example/Pods-EyuLibrary-ios_Example-resources.sh",
-				"${PODS_ROOT}/AppLovinSDK/applovin-ios-sdk-6.11.4/AppLovinSDKResources.bundle",
+				"${PODS_ROOT}/AppLovinSDK/applovin-ios-sdk-6.13.4/AppLovinSDKResources.bundle",
 				"${PODS_ROOT}/Bytedance-UnionAD/Bytedance-UnionAd/Frameworks/BUAdSDK.bundle",
 				"${PODS_ROOT}/FBSDKCoreKit/FacebookSDKStrings.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/FFToast/FFToast.bundle",
@@ -441,28 +446,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E7DD9D89174BDECD2B94F31C /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-EyuLibrary-ios_Example/Pods-EyuLibrary-ios_Example-frameworks.sh",
-				"${PODS_ROOT}/../../EyuLibrary-ios/3rd/GDTActionSDK.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GDTActionSDK.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-EyuLibrary-ios_Example/Pods-EyuLibrary-ios_Example-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -470,6 +453,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56792D5824FDEA9F00655101 /* File.swift in Sources */,
 				6003F59E195388D20070C39A /* EYAppDelegate.m in Sources */,
 				56E252C521786A7C00584CB9 /* EYViewControllerB.m in Sources */,
 				6003F5A7195388D20070C39A /* EYViewController.m in Sources */,
@@ -532,6 +516,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_BITCODE = NO;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -572,6 +557,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
+				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -593,7 +579,9 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 3DLCS59FSN;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/lib",
@@ -609,17 +597,19 @@
 					"PB_FIELD_32BIT=1",
 					"PB_NO_PACKED_STRUCTS=1",
 					"PB_ENABLE_MALLOC=1",
-					UM_ENABLED,
 					FIREBASE_ENABLED,
-					FB_ADS_ENABLED,
-					ADMOB_ADS_ENABLED,
-					UNITY_ADS_ENABLED,
 					FACEBOOK_ENABLED,
+					FB_ADS_ENABLED,
 					BYTE_DANCE_ADS_ENABLED,
-					MTG_ADS_ENABLED,
 					GDT_ADS_ENABLED,
+					UM_ENABLED,
+					TRACKING_ENABLED,
+					ADMOB_ADS_ENABLED,
+					MTG_ADS_ENABLED,
+					UNITY_ADS_ENABLED,
 					VUNGLE_ADS_ENABLED,
-					FACEBOOK_LOGIN_ENABLED,
+					IRON_ADS_ENABLED,
+					GDT_ACTION_ENABLED,
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -654,9 +644,13 @@
 				);
 				INFOPLIST_FILE = "EyuLibrary-ios/EyuLibrary-ios-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = com.eyu.pianodream;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "EyuLibrary-ios_Example-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				USER_HEADER_SEARCH_PATHS = "$(inherited)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -668,7 +662,9 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 3DLCS59FSN;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/lib",
@@ -718,9 +714,12 @@
 				);
 				INFOPLIST_FILE = "EyuLibrary-ios/EyuLibrary-ios-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = com.eyu.pianodream;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "EyuLibrary-ios_Example-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				USER_HEADER_SEARCH_PATHS = "$(inherited)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -730,6 +729,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 37374FD33AEC6D404E1C48F2 /* Pods-EyuLibrary-ios_Tests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -754,6 +754,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6EC2983E7371BD3AD23C286D /* Pods-EyuLibrary-ios_Tests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",

@@ -17,7 +17,7 @@
 #endif
 
 #ifdef GDT_ACTION_ENABLED
-#import <GDTActionSDK/GDTAction.h>
+#import "GDTAction.h"
 #endif
 
 #import "EYSdkUtils.h"

@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
 #    s.use_frameworks!
   s.name             = 'EyuLibrary-ios'
-  s.version          = '1.3.30'
+  s.version          = '1.3.31'
   s.summary          = 'A short description of EyuLibrary-ios.'
 
 # This description is used to generate tags and improve search results.
@@ -40,13 +40,13 @@ Pod::Spec.new do |s|
       # a.frameworks = 'UIKit', 'MapKit'
       # a.dependency 'AFNetworking', '~> 2.3'
       b.frameworks = 'AdSupport','CoreData','SystemConfiguration','AVFoundation','CoreMedia'
-#      a.ios.libraries = 'c++','resolv.9'
+      #      a.ios.libraries = 'c++','resolv.9'
   end
  
- s.subspec 'gdt_action' do |gdt_action|
-     gdt_action.vendored_frameworks = ['EyuLibrary-ios/3rd/GDTActionSDK.framework']
-     gdt_action.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) GDT_ACTION_ENABLED'}
- end
+# s.subspec 'gdt_action' do |gdt_action|
+#     gdt_action.vendored_frameworks = ['EyuLibrary-ios/3rd/GDTActionSDK.framework']
+#     gdt_action.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) GDT_ACTION_ENABLED'}
+# end
  
  s.subspec 'um_sdk' do |um|
      um.dependency 'UMCCommon'
@@ -59,7 +59,7 @@ Pod::Spec.new do |s|
  end
  
  s.subspec 'iron_ads_sdk' do |iron_ads_sdk|
-     iron_ads_sdk.dependency 'IronSourceSDK','6.11.0.0'
+     iron_ads_sdk.dependency 'IronSourceSDK','7.0.0.0'
      iron_ads_sdk.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) IRON_ADS_ENABLED'}
  end
  
@@ -69,24 +69,24 @@ Pod::Spec.new do |s|
  end
  
  s.subspec 'fb_ads_sdk' do |fb_ads_sdk|
-     fb_ads_sdk.dependency 'FBAudienceNetwork','5.9.0'
-     fb_ads_sdk.dependency 'FBSDKCoreKit','6.5.1'
+     fb_ads_sdk.dependency 'FBAudienceNetwork','5.10.1'
+     fb_ads_sdk.dependency 'FBSDKCoreKit','7.1.1'
      fb_ads_sdk.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) FB_ADS_ENABLED FACEBOOK_ENABLED'}
  end
  
- #新版本的FB广告sdk与白鹭引擎符号表冲突，需要使用此版本
- s.subspec 'fb_ads_sdk_5_4_0' do |fb_ads_sdk_5_4_0|
-     fb_ads_sdk_5_4_0.dependency 'FBAudienceNetwork','5.4.0'
-     fb_ads_sdk_5_4_0.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) FB_ADS_ENABLED FACEBOOK_ENABLED'}
- end
+# #新版本的FB广告sdk与白鹭引擎符号表冲突，需要使用此版本
+# s.subspec 'fb_ads_sdk_5_4_0' do |fb_ads_sdk_5_4_0|
+#     fb_ads_sdk_5_4_0.dependency 'FBAudienceNetwork','5.4.0'
+#     fb_ads_sdk_5_4_0.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) FB_ADS_ENABLED FACEBOOK_ENABLED'}
+# end
  
  s.subspec 'applovin_ads_sdk' do |applovin_ads_sdk|
-     applovin_ads_sdk.dependency 'AppLovinSDK','6.11.4'
+     applovin_ads_sdk.dependency 'AppLovinSDK','6.13.4'
      applovin_ads_sdk.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) APPLOVIN_ADS_ENABLED'}
  end
  
  s.subspec 'unity_ads_sdk' do |unity_ads_sdk|
-     unity_ads_sdk.dependency 'UnityAds','3.4.2'
+     unity_ads_sdk.dependency 'UnityAds','3.4.8'
      unity_ads_sdk.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) UNITY_ADS_ENABLED'}
  end
 
@@ -102,7 +102,6 @@ Pod::Spec.new do |s|
  end
  
  s.subspec 'mtg_ads_sdk' do |mtg_ads_sdk|
-#     mtg_ads_sdk.vendored_frameworks = ['EyuLibrary-ios/3rd/MTGSDK.framework','EyuLibrary-ios/3rd/MTGSDKReward.framework','EyuLibrary-ios/3rd/MTGSDKInterstitialVideo.framework']
     mtg_ads_sdk.dependency 'MintegralAdSDK/InterstitialVideoAd','6.1.3.0'
     mtg_ads_sdk.dependency 'MintegralAdSDK/RewardVideoAd','6.1.3.0'
 
@@ -110,14 +109,14 @@ Pod::Spec.new do |s|
  end
  
  s.subspec 'gdt_ads_sdk' do |gdt_ad|
-     gdt_ad.dependency 'GDTMobSDK','4.11.8'
+     gdt_ad.dependency 'GDTMobSDK','4.11.10'
      gdt_ad.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) GDT_ADS_ENABLED'}
  end
  
  s.subspec 'fb_login_sdk' do |fb|
-     fb.dependency 'FBSDKCoreKit','6.5.1'
-     fb.dependency 'FBSDKShareKit','6.5.1'
-     fb.dependency 'FBSDKLoginKit','6.5.1'
+     fb.dependency 'FBSDKCoreKit','7.1.1'
+     fb.dependency 'FBSDKShareKit','7.1.1'
+     fb.dependency 'FBSDKLoginKit','7.1.1'
      fb.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) FACEBOOK_LOGIN_ENABLED FACEBOOK_ENABLED'}
  end
  
@@ -148,5 +147,13 @@ end
      tracking.frameworks = 'iAd'
  end
  
+ s.subspec 'gdt_action' do |gdt_action|
+     gdt_action.preserve_paths = 'EyuLibrary-ios/Classes/framework/GDTActionSDK/Headers/*.h'
+     gdt_action.vendored_libraries = 'EyuLibrary-ios/Classes/framework/GDTActionSDK/libGDTActionSDK.a'
+     gdt_action.libraries = 'GDTActionSDK'
+     gdt_action.xcconfig = { 'HEADER_SEARCH_PATHS' => "${PODS_ROOT}/#{s.name}/framework/GDTActionSDK/Headers/**",'LIBRARY_SEARCH_PATHS' => "${PODS_ROOT}/#{s.name}/framework/GDTActionSDK/**" }
+     gdt_action.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) GDT_ACTION_ENABLED'}
+ end
+
  
 end

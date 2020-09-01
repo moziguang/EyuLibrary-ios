@@ -45,7 +45,7 @@
         [ALInterstitialAd shared].adDisplayDelegate = self;
 //        [ALInterstitialAd shared].adVideoPlaybackDelegate = self;
         
-        [[ALInterstitialAd shared] showOver: [UIApplication sharedApplication].keyWindow andRender: self.ad];
+        [[ALInterstitialAd shared] showAd: self.ad];
         return true;
     }
     return false;
