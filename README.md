@@ -38,6 +38,13 @@ it, simply add the following line to your Podfile:
     
     ADMOB             :'admob_sdk'              ADMOB_ADS_ENABLED
 ```
+### IOS 14适配
+skadnetwork说明文档
+https://developer.apple.com/documentation/storekit/skadnetwork
+
+admob关于ios14的建议
+https://support.google.com/admob/answer/9997589?hl=zh-Hans
+
 ### 1、修改项目的Podfile文件，例如
 ```pod
 pod 'EyuLibrary-ios',:subspecs => ['Core','byte_dance_ads_sdk','um_sdk', 'af_sdk', 'gdt_action','gdt_ads_sdk', 'mtg_ads_sdk', 'fb_ads_sdk', 'unity_ads_sdk', 'vungle_ads_sdk', 'applovin_ads_sdk', 'iron_ads_sdk', 'firebase_sdk', 'crashlytics_sdk','fb_login_sdk'], :git => 'https://github.com/moziguang/EyuLibrary-ios.git',:tag =>'1.3.31'
