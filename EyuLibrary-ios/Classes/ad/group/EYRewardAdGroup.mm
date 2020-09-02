@@ -67,6 +67,10 @@
             NSClassFromString(@"EYApplovinRewardAdAdapter"), ADNetworkApplovin,
 #endif
                                  
+#ifdef APPLOVIN_MAX_ENABLED
+            NSClassFromString(@"EYMaxRewardAdAdapter"), ADNetworkMAX,
+#endif
+                                 
 #ifdef BYTE_DANCE_ADS_ENABLED
             NSClassFromString(@"EYWMRewardAdAdapter"), ADNetworkWM,
 #endif

@@ -14,6 +14,7 @@
 #define     ADNetworkUnity                  @"unity"
 #define     ADNetworkVungle                 @"vungle"
 #define     ADNetworkApplovin               @"applovin"
+#define     ADNetworkMAX                    @"max"
 #define     ADNetworkWM                     @"wm"
 #define     ADNetworkGdt                    @"gdt"
 #define     ADNetworkMtg                    @"mintegral"

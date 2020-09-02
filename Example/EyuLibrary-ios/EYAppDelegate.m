@@ -21,7 +21,7 @@
 {
 //    [EYSdkUtils initUMMobSdk:@"test" channel:@"eyu"];
 //    [EYSdkUtils initAppFlyer:@"test" appId:@"test"];
-    [EYSdkUtils initGDTActionSdk:@"test" secretkey:@"test"];
+//    [EYSdkUtils initGDTActionSdk:@"test" secretkey:@"test"];
     [EYSdkUtils initFirebaseSdk];
 //    [EYSdkUtils initTrackingWithAppKey:@"475938c702f7451a88eaffb524962649"];
     [EYSdkUtils initFacebookSdkWithApplication:application options:launchOptions];
@@ -30,18 +30,18 @@
     EYAdConfig* adConfig = [[EYAdConfig alloc] init];
     //[[EYRemoteConfigHelper sharedInstance] setDefaults:dict];
 //    [[EYRemoteConfigHelper sharedInstance] getString:@"ios_ad_key_setting"];
-    adConfig.adKeyData =  [EYSdkUtils readFileWithName:@"ios_ad_key_setting"];
-    adConfig.adGroupData = [EYSdkUtils readFileWithName:@"ios_ad_cache_setting"];
-    adConfig.adPlaceData = [EYSdkUtils readFileWithName:@"ios_ad_setting"];
+    adConfig.adKeyData =  [EYSdkUtils readFileWithName:@"max_iOSAdKeySetting"];
+    adConfig.adGroupData = [EYSdkUtils readFileWithName:@"max_iOSAdCacheSetting"];
+    adConfig.adPlaceData = [EYSdkUtils readFileWithName:@"max_iOSAdSetting"];
 
-    adConfig.mtgAppId = @"111418";
-    adConfig.mtgAppKey = @"a339a16bbaca844012276afad6f59eaa";
+//    adConfig.mtgAppId = @"111418";
+//    adConfig.mtgAppKey = @"a339a16bbaca844012276afad6f59eaa";
     adConfig.admobClientId = @"ca-app-pub-7585239226773233~4631740346";
-    adConfig.wmAppKey = @"5088950";//@"5010261";
-    adConfig.gdtAppId = @"1108127036";
-    adConfig.unityClientId = @"2340038";
-    adConfig.vungleClientId = @"5bdbc67a6d9d2200139056f9";
-    adConfig.ironSourceAppKey = @"cceee1bd";//@"a78e7db5";
+    adConfig.wmAppKey = @"5010261";
+//    adConfig.gdtAppId = @"1108127036";
+//    adConfig.unityClientId = @"2340038";
+//    adConfig.vungleClientId = @"5bdbc67a6d9d2200139056f9";
+//    adConfig.ironSourceAppKey = @"cceee1bd";//@"a78e7db5";
     [[EYAdManager sharedInstance] setupWithConfig:adConfig];
     [[EYAdManager sharedInstance] setDelegate:self];
     

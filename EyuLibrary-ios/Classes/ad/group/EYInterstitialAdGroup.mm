@@ -60,6 +60,11 @@
 #ifdef APPLOVIN_ADS_ENABLED
         NSClassFromString(@"EYApplovinInterstitialAdAdapter"), ADNetworkApplovin,
 #endif
+                                 
+#ifdef APPLOVIN_MAX_ENABLED
+        NSClassFromString(@"EYMaxInterstitialAdAdapter"), ADNetworkMAX,
+#endif
+
 #ifdef BYTE_DANCE_ADS_ENABLED
         NSClassFromString(@"EYWMInterstitialAdAdapter"), ADNetworkWM,
 #endif

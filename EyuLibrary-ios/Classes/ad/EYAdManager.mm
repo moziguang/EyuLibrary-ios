@@ -23,6 +23,11 @@
 #import <BUAdSDK/BUAdSDKManager.h>
 #endif
 
+#ifdef APPLOVIN_MAX_ENABLED
+
+#define  APPLOVIN_ADS_ENABLED
+
+#endif
 
 #ifdef APPLOVIN_ADS_ENABLED
 #import <AppLovinSDK/AppLovinSDK.h>
@@ -266,12 +271,21 @@ static id s_sharedInstance;
     }
 #endif
 
+
 #ifdef APPLOVIN_ADS_ENABLED
     //init Applovin SDK
     /**
      *需要在info.plist里设置AppLovinSdkKey
      **/
-    [ALSdk initializeSdk];
+#ifdef APPLOVIN_MAX_ENABLED
+    [ALSdk shared].mediationProvider = @"max";
+#endif
+    [[ALSdk shared] initializeSdkWithCompletionHandler:^(ALSdkConfiguration *configuration) {
+        // AppLovin SDK is initialized, start loading ads
+        [[EYAdManager sharedInstance] loadRewardVideoAd:@"Auto"];
+        [[EYAdManager sharedInstance] loadInterstitialAd:@"Auto"];
+    }];
+
 #endif
     
 #ifdef UNITY_ADS_ENABLED

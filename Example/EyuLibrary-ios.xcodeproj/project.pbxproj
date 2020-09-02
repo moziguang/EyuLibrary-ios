@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		5635DFC123EA9BDE0065566A /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5635DFC023EA9BDD0065566A /* iAd.framework */; };
 		56792D5824FDEA9F00655101 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56792D5724FDEA9F00655101 /* File.swift */; };
+		56792D7724FF997600655101 /* max_iOSAdCacheSetting.json in Resources */ = {isa = PBXBuildFile; fileRef = 56792D7424FF997600655101 /* max_iOSAdCacheSetting.json */; };
+		56792D7824FF997600655101 /* max_iOSAdSetting.json in Resources */ = {isa = PBXBuildFile; fileRef = 56792D7524FF997600655101 /* max_iOSAdSetting.json */; };
+		56792D7924FF997600655101 /* max_iOSAdKeySetting.json in Resources */ = {isa = PBXBuildFile; fileRef = 56792D7624FF997600655101 /* max_iOSAdKeySetting.json */; };
 		56E252BA21785EE500584CB9 /* ios_ad_key_setting.json in Resources */ = {isa = PBXBuildFile; fileRef = 56E252B321785EE500584CB9 /* ios_ad_key_setting.json */; };
 		56E252BC21785EE500584CB9 /* ios_ad_setting.json in Resources */ = {isa = PBXBuildFile; fileRef = 56E252B521785EE500584CB9 /* ios_ad_setting.json */; };
 		56E252BE21785EE500584CB9 /* defaults_setting.json in Resources */ = {isa = PBXBuildFile; fileRef = 56E252B721785EE500584CB9 /* defaults_setting.json */; };
@@ -63,6 +66,9 @@
 		5635DFC023EA9BDD0065566A /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		56792D5624FDEA9F00655101 /* EyuLibrary-ios_Example-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EyuLibrary-ios_Example-Bridging-Header.h"; sourceTree = "<group>"; };
 		56792D5724FDEA9F00655101 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		56792D7424FF997600655101 /* max_iOSAdCacheSetting.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = max_iOSAdCacheSetting.json; sourceTree = "<group>"; };
+		56792D7524FF997600655101 /* max_iOSAdSetting.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = max_iOSAdSetting.json; sourceTree = "<group>"; };
+		56792D7624FF997600655101 /* max_iOSAdKeySetting.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = max_iOSAdKeySetting.json; sourceTree = "<group>"; };
 		56E252B321785EE500584CB9 /* ios_ad_key_setting.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ios_ad_key_setting.json; sourceTree = "<group>"; };
 		56E252B521785EE500584CB9 /* ios_ad_setting.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ios_ad_setting.json; sourceTree = "<group>"; };
 		56E252B721785EE500584CB9 /* defaults_setting.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = defaults_setting.json; sourceTree = "<group>"; };
@@ -137,6 +143,9 @@
 		56E252B221785EE500584CB9 /* config */ = {
 			isa = PBXGroup;
 			children = (
+				56792D7424FF997600655101 /* max_iOSAdCacheSetting.json */,
+				56792D7624FF997600655101 /* max_iOSAdKeySetting.json */,
+				56792D7524FF997600655101 /* max_iOSAdSetting.json */,
 				56E252B321785EE500584CB9 /* ios_ad_key_setting.json */,
 				56E252B521785EE500584CB9 /* ios_ad_setting.json */,
 				56E252B821785EE500584CB9 /* ios_ad_cache_setting.json */,
@@ -339,12 +348,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56792D7824FF997600655101 /* max_iOSAdSetting.json in Resources */,
 				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
+				56792D7724FF997600655101 /* max_iOSAdCacheSetting.json in Resources */,
 				56E252DB2178704500584CB9 /* yuanshengguanggao-dikuang03@2x.png in Resources */,
 				56E252D72178704500584CB9 /* yuanshengguanggao_dikuang.png in Resources */,
 				71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */,
 				56E252C221785F5700584CB9 /* GoogleService-Info.plist in Resources */,
 				56E252D62178704500584CB9 /* install@2x.png in Resources */,
+				56792D7924FF997600655101 /* max_iOSAdKeySetting.json in Resources */,
 				56E252D92178704500584CB9 /* guanggao_bg.png in Resources */,
 				56E252DA2178704500584CB9 /* guanggaoguanbi02@2x.png in Resources */,
 				56E252DD2178704500584CB9 /* Icon-57.png in Resources */,
@@ -600,16 +612,12 @@
 					FIREBASE_ENABLED,
 					FACEBOOK_ENABLED,
 					FB_ADS_ENABLED,
-					BYTE_DANCE_ADS_ENABLED,
-					GDT_ADS_ENABLED,
 					UM_ENABLED,
 					TRACKING_ENABLED,
 					ADMOB_ADS_ENABLED,
-					MTG_ADS_ENABLED,
-					UNITY_ADS_ENABLED,
-					VUNGLE_ADS_ENABLED,
-					IRON_ADS_ENABLED,
+					APPLOVIN_MAX_ENABLED,
 					GDT_ACTION_ENABLED,
+					BYTE_DANCE_ADS_ENABLED,
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
