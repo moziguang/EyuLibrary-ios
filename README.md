@@ -37,6 +37,8 @@ it, simply add the following line to your Podfile:
     热云               :'ReYunTracking'         TRACKING_ENABLED
     
     ADMOB             :'admob_sdk'              ADMOB_ADS_ENABLED
+    
+    applovin MAX       :'applovin_max_sdk'      APPLOVIN_MAX_ENABLED
 ```
 ### IOS 14适配
 skadnetwork说明文档
@@ -47,7 +49,7 @@ https://support.google.com/admob/answer/9997589?hl=zh-Hans
 
 ### 1、修改项目的Podfile文件，例如
 ```pod
-pod 'EyuLibrary-ios',:subspecs => ['Core','byte_dance_ads_sdk','um_sdk', 'af_sdk', 'gdt_action','gdt_ads_sdk', 'mtg_ads_sdk', 'fb_ads_sdk', 'unity_ads_sdk', 'vungle_ads_sdk', 'applovin_ads_sdk', 'iron_ads_sdk', 'firebase_sdk', 'crashlytics_sdk','fb_login_sdk'], :git => 'https://github.com/moziguang/EyuLibrary-ios.git',:tag =>'1.3.32'
+pod 'EyuLibrary-ios',:subspecs => ['Core','byte_dance_ads_sdk','um_sdk', 'af_sdk', 'gdt_action','gdt_ads_sdk', 'mtg_ads_sdk', 'fb_ads_sdk', 'unity_ads_sdk', 'vungle_ads_sdk', 'applovin_ads_sdk', 'iron_ads_sdk', 'firebase_sdk', 'crashlytics_sdk','fb_login_sdk'], :git => 'https://github.com/moziguang/EyuLibrary-ios.git',:tag =>'1.3.33'
     （以上模块可以根据项目需要进行删减）
 ```
 ### 2、在终端里运行 pod install或者pod update，并留意执行是否有警告或者报错

@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
 #    s.use_frameworks!
   s.name             = 'EyuLibrary-ios'
-  s.version          = '1.3.32'
+  s.version          = '1.3.33'
   s.summary          = 'A short description of EyuLibrary-ios.'
 
 # This description is used to generate tags and improve search results.
@@ -88,7 +88,7 @@ Pod::Spec.new do |s|
  s.subspec 'applovin_max_sdk' do |applovin_max_sdk|
      applovin_max_sdk.dependency 'AppLovinSDK','6.13.4'
      applovin_max_sdk.dependency 'AppLovinMediationFacebookAdapter','5.10.1.5'
-     applovin_max_sdk.dependency 'AppLovinMediationMintegralAdapter','6.4.1.0.1'
+#     applovin_max_sdk.dependency 'AppLovinMediationMintegralAdapter','6.4.1.0.1'
      applovin_max_sdk.dependency 'AppLovinMediationGoogleAdapter','7.64.0.2'
      applovin_max_sdk.dependency 'AppLovinMediationIronSourceAdapter','7.0.1.0.0'
      applovin_max_sdk.dependency 'AppLovinMediationByteDanceAdapter','3.2.0.1.0'
