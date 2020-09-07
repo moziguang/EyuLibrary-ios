@@ -24,9 +24,9 @@
 #endif
 
 #ifdef APPLOVIN_MAX_ENABLED
-
-#define  APPLOVIN_ADS_ENABLED
-
+#ifndef APPLOVIN_ADS_ENABLED
+#define APPLOVIN_ADS_ENABLED
+#endif
 #endif
 
 #ifdef APPLOVIN_ADS_ENABLED
@@ -282,8 +282,25 @@ static id s_sharedInstance;
 #endif
     [[ALSdk shared] initializeSdkWithCompletionHandler:^(ALSdkConfiguration *configuration) {
         // AppLovin SDK is initialized, start loading ads
-        [[EYAdManager sharedInstance] loadRewardVideoAd:@"Auto"];
-        [[EYAdManager sharedInstance] loadInterstitialAd:@"Auto"];
+        if(self.interstitialAdGroupDict)
+        {
+            for(NSString* groupName in self.interstitialAdGroupDict)
+            {
+                EYAdGroup* group = self.adGroupDict[groupName];
+                if(group && group.isAutoLoad){
+                    [self.interstitialAdGroupDict[groupName] loadAd:@"auto"];
+                }
+            }
+        }
+        if(self.rewardAdGroupDict){
+            for(NSString* groupName in self.rewardAdGroupDict)
+            {
+                EYAdGroup* group = self.adGroupDict[groupName];
+                if(group && group.isAutoLoad){
+                    [self.rewardAdGroupDict[groupName] loadAd:@"auto"];
+                }
+            }
+        }
     }];
 
 #endif
