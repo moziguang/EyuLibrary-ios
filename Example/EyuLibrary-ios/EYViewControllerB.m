@@ -76,12 +76,12 @@
 
 - (void)showNativeAd:(UITapGestureRecognizer *)gesture {
     NSLog(@"showNativeAd");
-    [[EYAdManager sharedInstance] showNativeAd:@"NATIVE_AD_1" withViewController:self viewGroup:self.nativeAdRootView1];
+    [[EYAdManager sharedInstance] showNativeAd:@"native_ad" withViewController:self viewGroup:self.nativeAdRootView1];
 }
 
 - (void)showNativeAd2:(UITapGestureRecognizer *)gesture {
     NSLog(@"showNativeAd2");
-    [[EYAdManager sharedInstance] showNativeAd:@"NATIVE_AD_2" withViewController:self viewGroup:self.nativeAdRootView2];
+    [[EYAdManager sharedInstance] showNativeAd:@"native_ad" withViewController:self viewGroup:self.nativeAdRootView2];
 
 }
 
