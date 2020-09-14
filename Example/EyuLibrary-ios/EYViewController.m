@@ -72,12 +72,12 @@
 
 - (void)showInterstitialAd:(UITapGestureRecognizer *)gesture {
     NSLog(@"showInterstitialAd");
-    if([[EYAdManager sharedInstance] isInterstitialAdLoaded:@"play_song_inter_ad"])
+    if([[EYAdManager sharedInstance] isInterstitialAdLoaded:@"inter_ad"])
     {
-        [[EYAdManager sharedInstance] showInterstitialAd:@"play_song_inter_ad" withViewController:self];
+        [[EYAdManager sharedInstance] showInterstitialAd:@"inter_ad" withViewController:self];
 
     }else{
-        [[EYAdManager sharedInstance] loadInterstitialAd:@"play_song_inter_ad"];
+        [[EYAdManager sharedInstance] loadInterstitialAd:@"inter_ad"];
     }
 }
 
