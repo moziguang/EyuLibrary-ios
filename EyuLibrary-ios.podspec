@@ -135,9 +135,9 @@ Pod::Spec.new do |s|
  
  s.subspec 'crashlytics_sdk' do |crash|
      crash.dependency 'Fabric'
-     crash.dependency 'Crashlytics'
+     crash.dependency 'Firebase/Crashlytics'
 end
- 
+
  s.subspec 'firebase_sdk' do |firebase|
      firebase.dependency 'Firebase/Analytics'
      firebase.dependency 'Firebase/Core'

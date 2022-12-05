@@ -30,9 +30,9 @@
     EYAdConfig* adConfig = [[EYAdConfig alloc] init];
     //[[EYRemoteConfigHelper sharedInstance] setDefaults:dict];
 //    [[EYRemoteConfigHelper sharedInstance] getString:@"ios_ad_key_setting"];
-    adConfig.adKeyData =  [EYSdkUtils readFileWithName:@"max_iOSAdKeySetting"];
-    adConfig.adGroupData = [EYSdkUtils readFileWithName:@"max_iOSAdCacheSetting"];
-    adConfig.adPlaceData = [EYSdkUtils readFileWithName:@"max_iOSAdSetting"];
+    adConfig.adKeyData =  [EYSdkUtils readFileWithName:@"ios_ad_key_setting"];
+    adConfig.adGroupData = [EYSdkUtils readFileWithName:@"ios_ad_cache_setting"];
+    adConfig.adPlaceData = [EYSdkUtils readFileWithName:@"ios_ad_setting"];
 
 //    adConfig.mtgAppId = @"111418";
 //    adConfig.mtgAppKey = @"a339a16bbaca844012276afad6f59eaa";

@@ -46,6 +46,9 @@
 - (void)onConversionDataSuccess:(nonnull NSDictionary *)installData {
     NSLog(@"onConversionDataSuccess %@", installData);
     if(installData == nil) return;
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"isAFInstallReported"]) {
+        return;
+    }
     NSNumber *is_first_launch = installData[@"is_first_launch"];
     if (is_first_launch.integerValue == 0) {
         return;
@@ -71,6 +74,7 @@
         mDic[@"af_siteid"] = installData[@"af_siteid"];
         mDic[@"advertising_id"] = installData[@"advertising_id"];
         mDic[@"idfa"] = installData[@"idfa"];
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isAFInstallReported"];
         [EYEventUtils logEvent:EVENT_CONVERSION parameters:mDic];
         NSLog(@"This is a af none organic install: %@", mDic);
     } else if([status isEqualToString:@"Organic"]) {
@@ -121,6 +125,9 @@ static bool sIsFBInited = false;
 }
 
 +(void) fetchDeferredAppLink:(NSDictionary *)launchOptions {
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"isFbInstallReported"]) {
+        return;
+    }
     if (launchOptions[UIApplicationLaunchOptionsURLKey] == nil) {
       [FBSDKAppLinkUtility fetchDeferredAppLink:^(NSURL *url, NSError *error) {
         if (error) {
@@ -138,6 +145,7 @@ static bool sIsFBInited = false;
                 mDic[@"ad_name"] = ad_name;
             }
             NSLog(@"This is a fb none organic install: %@", mDic);
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isFbInstallReported"];
             [EYEventUtils logEvent:EVENT_FBCONVERSION parameters:mDic];
         }
       }];
